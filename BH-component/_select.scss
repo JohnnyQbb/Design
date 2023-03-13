@@ -1,0 +1,76 @@
+// -------------------------------------
+//   BH-INTERACTIVE
+// -------------------------------------
+
+@use "../BH-style/" as *;
+
+.#{$prefix}-select {
+    select {
+        display: none;
+        /*hide original SELECT element: */
+    }
+    .select-selected {
+        display: flex;
+        flex-grow: 1;
+        min-width: 88px;
+        min-height: 28px;
+        padding: 8px 24px 8px 8px;
+        background-color: var(--f1-bg);
+        border: 1px solid var(--primary-border);
+        border-radius: $radius-4;
+        transition: all 0.3s;
+        @include FontFamily;
+        &:after {
+            font: normal normal normal 14px/1 FontAwesome;
+            position: absolute;
+            content: "\f107";
+            top: 8px;
+            right: 10px;
+            cursor: pointer;
+        }
+        &.select-active {
+            border-radius: $radius-4 $radius-4 0 0;
+            &:hover {
+                border: 1px solid var(--primary-border);
+                background-color: var(--f1-bg);
+            }
+            &:after {
+            content: "\f106";
+            top: 8px;
+            }
+        }
+        &:hover {
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            background-color: var(--primary-transparent);
+        }
+    }
+
+    /* Style items (options): */
+    .select-items {
+        position: absolute;
+        background-color: var(--f1-bg);
+        top: 100%;
+        left: 0;
+        right: 0;
+        z-index: z-layers(nav);
+        border-radius: 0 0 $radius-4 $radius-4;
+        overflow: hidden;
+        div {
+            cursor: pointer;
+            background-color: var(--f1-bg);
+            border: 1px solid var(--primary-border);
+            border-top: none;
+            padding: 8px 16px;
+            &:hover {
+                color: var(--purewhite);
+                background-color: var(--primary);
+            }
+        }
+    }
+
+    /* Hide the items when the select box is closed: */
+    .select-hide {
+        display: none;
+    }
+}

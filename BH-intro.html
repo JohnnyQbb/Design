@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BAHA_COMPONENT</title>
+    <meta property="og:title" content="巴哈姆特電玩資訊站" />
+    <meta property="og:image" content="https://i2.bahamut.com.tw/bahaLOGO_1200x630.jpg" />
+    <meta name="thumbnail" content="https://i2.bahamut.com.tw/bahaLOGO_1200x630.jpg" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Teko:300,400">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="github-dark.css">
+    <link rel="stylesheet" href="component_library.css">
+</head>
+
+<body>
+    <div class="BH-container">
+        <!--[主欄位]-->
+        <div class="BH-mobile_menu">
+            <div class="BH-frame-autolayout-align_center mg16-bottom">
+                <div id="ham_m" class="ham"><i class="fa fa-bars"></i></div>
+                <script>
+                    $(document).ready(function () {
+                        $("#ham_m").on("click", function () {
+                            $("#ham_m").toggleClass("active");
+                        });
+                    });
+                </script>
+                <div href="" class="BH-logo"></div>
+            </div>
+            <ul>
+                <li class="is-active"><a href="BH-intro.html">Intro</a></li>
+                <li><a href="BH-style.html">Style</a></li>
+                <li><a href="BH-component.html">Component</a></li>
+                <li><a href="BH-card.html">Card</a></li>
+                <div id='bar' class="bar"></div>
+            </ul>
+            <hr class="divider mg12-top mg16-bottom">
+        </div>
+        <div class="backdrop"></div>
+        <div class="BH-frame-autolayout-column-fill-align_center">
+            <div class="BH-frame-autolayout-align_center-between" style="position: sticky;top: 0;width: 100%;height: 40px;z-index: 10;background-color: var(--base-bg);">
+                <div class="BH-frame-autolayout-align_center show_tablet_land">
+                    <div class="ham"><i class="fa fa-bars"></i></div>
+                    <script>
+                        $(document).ready(function () {
+                            $(".ham").on("click", function () {
+                                $(".BH-mobile_menu").toggleClass("active");
+                            });
+                        });
+                    </script>
+                    <div href="" class="BH-logo"></div>
+                </div>
+                <div class="BH-frame-autolayout-align_center">
+                    <div class="BH-switch pd4-pd4">
+                        <i class="fa fa-code mg8-right"></i>
+                        <label>
+                            <input id="codeToggle" type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="BH-switch pd4-pd4">
+                        <i class="fa fa-universal-access mg8-right"></i>
+                        <label>
+                            <input id="accessibilityToggle" type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <script>
+                        const toggleSwitch = document.querySelector('#accessibilityToggle');
+                        const body = document.querySelector('body');
+
+                        toggleSwitch.addEventListener('change', function () {
+                            if (this.checked) {
+                                body.classList.add('accessibility-filter');
+                            } else {
+                                body.classList.remove('accessibility-filter');
+                            }
+                        });
+                    </script>
+                    <div class="BH-switch pd4-pd4">
+                        <i class="fa fa-moon-o mg8-right"></i>
+                        <label>
+                            <input id="themeToggle" type="checkbox" checked="checked">
+                            <span class="slider"></span>
+                        </label>
+                        <script>
+                            const myDiv = $("html");
+                            const themeToggle = $("#themeToggle");
+                            const currentTheme = localStorage.getItem("theme");
+
+                            if (currentTheme) {
+                                myDiv.attr("data-theme", currentTheme);
+                                if (currentTheme === "light") {
+                                    themeToggle.prop("checked", false);
+                                }
+                            }
+
+                            themeToggle.change(function () {
+                                if ($(this).is(":checked")) {
+                                    myDiv.attr("data-theme", "dark");
+                                    localStorage.setItem("theme", "dark");
+                                } else {
+                                    myDiv.attr("data-theme", "light");
+                                    localStorage.setItem("theme", "light");
+                                }
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>
+            <div class="BH-wrapper-main BH-frame-f1-autolayout-column-start pd20-pd24">
+                <div class="BH-frame-autolayout-column-fill pd12">
+                        <h2 class="mg8-bottom">Intro</h2 class="mg8-bottom">
+                        <p class="paragraph-medium-spacing-m">這一份 Design Guideline 為了幫助在各個服務之間建立容易遵守的規範，並減少開發與設計成本，以下會逐一介紹如何使用各種設計元素的設計系統、貢獻以及維護方式，期待讓產品開發可以更便捷與輕鬆，讓設計們事半功倍。</p>
+                        <hr class="divider mg12-top mg16-bottom">
+                        <h4 class="mg12-top mg8-bottom">Goal</h4>
+                        <ul>
+                            <li class="paragraph-medium-spacing-m mg16-left mg8-top">1.降低每個組員介入項目的門檻成本。</li>
+                            <li class="paragraph-medium-spacing-m mg16-left mg8-top">2.提高工作效率及協同開發的便捷性。</li>
+                            <li class="paragraph-medium-spacing-m mg16-left mg8-top">3.高度統一的風格。</li>
+                            <li class="paragraph-medium-spacing-m mg16-left mg8-top">4.提升代碼質量和可維護性。</li>
+                            <li class="paragraph-medium-spacing-m mg16-left mg8-top">5.讓 RD 也能快速做出高質量的符合需求的頁面。</li>
+                        </ul>
+                        <hr class="divider mg12-top mg16-bottom">
+                        <h4 class="mg8-bottom">Setup</h4 class="mg8-bottom">
+                            <p class="paragraph-medium-spacing-m">在要編輯的頁面的最上面， @use 這兩個 scss</p>
+                            <p class="paragraph-small-note-spacing-l">請參考 _component_library</p>
+                            <pre>
+                                <code class="language-scss" style="display: block; border-radius: 8px;">
+    //讀取樣式//
+    @use "BH-style" as *;
+    
+    //讀取元件//
+    @use "BH-component" as *;
+                                </code>
+                            </pre>
+                        <hr class="divider mg12-top mg16-bottom">
+                        <h4 class="mg8-bottom">Color Data-Theme</h4 class="mg8-bottom">
+                        <p class="paragraph-medium-spacing-m">此文件內部的所有元件、文字、匡線、背景都已經套用變數來讓 RD 可以一鍵切換亮暗色版本，理論上不再需要也不應該多寫一支 -dark.scss 的檔案，提升切版效，點擊右上角的開關可以預覽切換。</p>
+                        <p class="paragraph-small-note-spacing-l">請參考 _color.scss</p>
+                        <pre>
+                            <code class="language-scss" style="display: block; border-radius: 8px;">
+    /*example*/                            
+    color: var(--primary);
+                            </code>
+                        </pre>
+                        <hr class="divider mg12-top mg16-bottom">
+                        <h4 class="mg8-bottom">Font-Size Definition</h4 class="mg8-bottom">
+                        <p class="paragraph-medium-spacing-m"> h 與 p 標籤都已經內建預設的大小、文字顏色，以及 line-height 預設值，並預設可以用 RWD 同步縮放字體的功能，不受瀏覽器內建的縮放影響。 </p>
+                        <p class="paragraph-small-note-spacing-l">請參考 _font.scss</p>
+                        <pre>
+                            <code class="language-html pd12" style="display: block; border-radius: 8px;"> 
+                /載入    /字級     /行高                                
+    &lt;p class="paragraph-small-spacing-m"&gt;&lt;/p&gt;
+                            </code>
+                        </pre>
+                        <hr class="divider mg12-top mg16-bottom">
+                        <h4 class="mg8-bottom">Spacing System</h4 class="mg8-bottom">
+                        <p class="paragraph-medium-spacing-m">透過將所有間距定義為 4 的倍數，並且利用迴圈將所有排列組合產生出 class ，可以直接用增加以及調整 class 的方式去設定 paddiong & margin & gap 這三個屬性，大幅減少 scss 的行數與撰寫量。</p>
+                        <p class="paragraph-small-note-spacing-l">請參考 _spacing.scss 以及嘗試更改帶有 pd mg gp 這三個開頭的class</p>
+                        <pre>
+                            <code class="language-html pd12" style="display: block; border-radius: 8px;">
+    &lt;p class="pd12"&gt;&lt;/p&gt;
+    
+    &lt;p class="pd12-pd8"&gt;&lt;/p&gt;
+    
+    &lt;p class="pd12-right"&gt;&lt;/p&gt;
+                            </code>
+                        </pre>
+                        <hr class="divider mg12-top mg16-bottom">
+                        <h4 class="mg8-bottom">Z-Layers System</h4 class="mg8-bottom">
+                            <p class="paragraph-medium-spacing-m">透過建立 map 與 map-get 語法，將 z-index 的值給予直觀的定義，來避免層級混亂。</p>
+                            <p class="paragraph-small-note-spacing-l">請參考 _z-index.scss</p>
+                            <pre>
+                                <code class="language-scss" style="display: block; border-radius: 8px;">
+    /*example*/            
+            函式呼叫    （$key）                        
+    z-index: z-layers(default);
+    
+    /map
+    $z-layers: (
+      "popup":                1000,
+      "fix":                  100,
+      "nav":                  10,
+      "cover":                2,
+      "default":              1,//預設值
+      "below":                -1,
+      "hidden":               -10
+    );
+    //縮寫
+    @function z-layers($key) {
+      @return map-get($z-layers, $key);
+    }
+                                </code>
+                            </pre>
+                        <hr class="divider mg12-top mg16-bottom">
+                        <h4 class="mg8-bottom">Autolayout System</h4 class="mg8-bottom">
+                        <p class="paragraph-medium-spacing-m">透過類似 bootstrap 串接 class 名稱的方式，將 figma autolayout 的模式轉換為 class 讓設計可以與切版更加一致，也減少為了排版而產生的一次性 class</p>
+                        <p class="paragraph-small-note-spacing-l">請參考 _frame.scss</p>
+                        <pre>
+                            <code class="language-html pd12" style="display: block; border-radius: 8px;">
+                    載入    /啟動flex    /方向  /背景 
+    &lt;div class="BH-frame-autolayout-column-f1"&gt;
+                                        /對齊
+        &lt;div class="BH-frame-autolayout-align_center-justify_center"&gt;&lt;/div&gt;                
+    &lt;/div&gt;
+                            </code>
+                        </pre>
+                        <hr class="divider mg12-top mg16-bottom">
+                        <h4 class="mg8-bottom">OOCSS</h4 class="mg8-bottom">
+                        <p class="paragraph-medium-spacing-m">此文件也將 html 架構與元件完全剝離，不會被過深的架構影響而難以覆蓋、沿用、維護</p>
+                        <hr class="divider mg12-top mg16-bottom">
+                        <h4 class="mg8-bottom">Accessibility</h4 class="mg8-bottom">
+                            <p class="paragraph-medium-spacing-m">右上角有一個色盲開關，用來檢視設計元素是否能讓所有用戶都能夠識別</p>
+                            <div class="mg12-top">
+                                <a href="" class="BH-btn_main-disabled">測試</a>
+                                <a href="" class="BH-btn_main">測試</a>
+                                <a href="" class="BH-btn_main-primary">測試</a>
+                                <a href="" class="BH-btn_main-alert">測試</a>
+                            </div>
+                            <hr class="divider mg12-top mg16-bottom">
+                        <h4 class="mg8-bottom">Prefix Class Name</h4 class="mg8-bottom">
+                        <p class="paragraph-medium-spacing-m">此文件內的所有元件 class name 都帶有 prefix 的前綴設定，避免因為使用 attr selector 造成容易衝突的問題，</p>
+                        <p class="paragraph-small-note-spacing-l">請參考 /BH-component</p>
+                        <pre>
+                            <code class="language-scss" style="display: block; border-radius: 8px;">
+    /*example*/            
+    .#{$prefix}-example {
+        display: flex;
+    }
+                            </code>
+                        </pre>
+                </div> 
+            </div>
+        </div>
+    </div>
+    <script>
+        const codeSwitch = document.querySelector('#codeToggle');
+        const codeElements = document.querySelectorAll('pre');
+        codeSwitch.addEventListener('change', function () {
+            codeElements.forEach(function (code) {
+                if (codeSwitch.checked) {
+                    code.classList.add('show');
+                } else {
+                    code.classList.remove('show');
+                }
+            });
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="https://unpkg.com/@highlightjs/cdn-assets@11.7.0/languages/go.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+
+</html>

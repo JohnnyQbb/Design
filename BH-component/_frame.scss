@@ -1,0 +1,171 @@
+// -------------------------------------
+//   BH-FRAME
+// -------------------------------------
+
+@use "../BH-style/" as *;
+
+@mixin autolayout {
+    //前綴啟動
+    &[class*=-autolayout] {
+        display: flex;
+        //FILL
+
+        &[class*=-fill] {
+            flex-basis: 100%;
+        }
+
+        &[class*=-column] {
+            flex-direction: column;
+        }
+
+        &[class*=-between] {
+            justify-content: space-between;
+        }
+        //Align
+        &[class*=-align_center] {
+            align-items: center;
+        }
+
+        &[class*=-align_start] {
+            align-items: flex-start;
+        }
+
+        &[class*=-align_end] {
+            align-items: flex-end;
+        }
+
+        &[class*=-justify_center] {
+            justify-content: center;
+        }
+
+        &[class*=-justify_start] {
+            justify-content: start;
+        }
+
+        &[class*=-justify_end] {
+            justify-content: end;
+        }
+
+        &[class*=-wrap] {
+            flex-wrap: wrap;
+        }
+
+        &[class*=-hug] {
+            align-self: flex-start;
+        }
+
+    }
+}
+
+[class*=#{$prefix}-frame] {
+    min-width: 16px;
+    min-height: 16px;
+
+    &[class*=-base] {
+        background-color: var(--base-bg);
+    }
+
+    &[class*=-f1] {
+        border: 1px solid var(--primary-border);
+        background-color: var(--f1-bg);
+        border-radius: $radius-8;
+
+        @include media(tablet) {
+            border-radius: 0;
+            border: none;
+        }
+    }
+
+    &[class*=-f2] {
+        border: 1px solid var(--primary-border);
+        background-color: var(--f2-bg);
+    }
+
+    &[class*=-b1] {
+        border: 1px solid var(--primary-border);
+        background-color: var(--b1-bg);
+    }
+
+    &[class*=-card] {
+        cursor: pointer;
+        background-color: var(--f1-bg);
+        border-radius: $radius-4;
+        overflow: hidden;
+        @include Shadow-Soft;
+        flex-basis: 100%;
+        div {
+            border-radius: 0;
+        }
+        p {
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 3; // 行數
+            -webkit-box-orient: vertical;
+            white-space: normal;
+        }
+    }
+    &[class*=-radius] {
+        border-radius: $radius-8;
+    }
+
+    &[class*=bd-] {
+        &[class*=-top] {
+            border: none;
+            border-top: 1px solid var(--primary-border);
+        }
+
+        &[class*=-right] {
+            border: none;
+            border-right: 1px solid var(--primary-border);
+        }
+
+        &[class*=-bottom] {
+            border: none;
+            border-bottom: 1px solid var(--primary-border);
+        }
+
+        &[class*=-left] {
+            border: none;
+            border-left: 1px solid var(--primary-border);
+        }
+    }
+
+    &[class*=-sticky] {
+        position: sticky;
+    }
+
+    @include autolayout();
+}
+//RWD 啟動
+@each $key in $rwd {
+    @include media($key) {
+        [class*=-autolayout][class*=-column] {
+            &[class*=#{$key}-] {
+                &[class*=-swap] {
+                flex-direction: row;
+                }
+            }
+        }
+
+        [class*=-autolayout] {
+            &[class*=#{$key}-] {
+                &[class*=-swap] {
+                flex-direction: column;
+                }
+            }
+        }
+        [class*=#{$key}-] {
+            &[class*=-flip] {
+                flex-wrap: wrap;
+            }
+        }
+    }
+}
+
+hr {
+    &.divider {
+        width: 100%;
+        border: none;
+        border-top: 1px solid var(--primary-border);
+    }
+}

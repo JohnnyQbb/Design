@@ -1,0 +1,74 @@
+// -------------------------------------
+//   BH-CHECK-BOX
+// -------------------------------------
+
+@use "../BH-style" as *;
+
+.#{$prefix}-check_box {
+  .check-group {
+    display: inline-flex;
+    input[type="checkbox"] {
+      display: none;
+      vertical-align: middle;
+
+      & + label {
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        flex-wrap: nowrap;
+        .label-icon {
+          cursor: pointer;
+          display: inline-block;
+          padding: 2px 0 0;
+          margin-right: 4px;
+          width: 18px;
+          height: 18px;
+          @include P_Small(1);
+          text-align: center;
+          color: transparent;
+          background-color: var(--f1-bg);
+          border: 1px solid var(--secondary-border);
+          border-radius: 2px;
+          z-index: z-layers(cover);
+          transition: all .2s;
+        }
+        p {
+          white-space: nowrap;
+        }
+      }
+      &:checked {
+        & + label {
+          .label-icon {
+            background-color: var(--primary-light);
+            border-color: var(--primary-light);
+            color: var(--purewhite);
+          }
+        }
+      }
+      &:disabled {
+        & + label {
+          cursor: not-allowed;
+          .label-icon {
+            pointer-events: none;
+            background-color: var(--quaternary-text);
+            border-color: var(--quaternary-text);
+            opacity: 20%;
+          }
+    
+          p {
+            opacity: 20%;
+          }
+        }
+      }
+      &.is-active {
+        .label-icon {
+          color: var(--purewhite);
+          background-color: var(--primary-light);
+        }
+      }
+    }
+  }
+}
+
+
+  

@@ -1,0 +1,105 @@
+// -------------------------------------
+//   BH-BADGE
+// -------------------------------------
+
+@use "../BH-style" as *;
+
+.#{$prefix}-hot {
+    background-color: var(--primary-light);
+    color: var(--purewhite);
+    @include Label;
+    font-family: teko;
+    padding: 3px 4px 0;
+    display: inline-block;
+    border-radius: $radius-3;
+    margin-right: 4px;
+    line-height: 12px;
+    height: fit-content;
+}
+
+[class*=#{$prefix}-badge-] {
+    border-radius: $radius-3;
+    display: inline-flex;
+    align-items: center;
+    color: var(--purewhite);
+    background-color: var(--primary);
+    &[class*=-type] {
+        margin-right: 4px;
+        padding: 4px 6px;
+        @include Label(1);
+        &[class*=-master] {
+            background-color: #F39C12;
+            i {
+                margin-right: 4px;
+                width: 12px;
+                height: 12px;
+                top: -1px;
+                background-image: url(../BH-image/master.png);
+                background-position: center;
+                background-repeat: no-repeat;
+                
+            }
+        }
+        &[class*=-theme] {
+            background-color: #47832C;
+        }
+        &[class*=-novel] {
+            background-color: #3453BA;
+        }
+        &[class*=-illusration] {
+            background-color: #EA4D4C;
+        }
+        &[class*=-comics] {
+            background-color: #D56301;
+        }
+        &[class*=-cosplay] {
+            background-color: #BFA300;
+        }
+        &[class*=-doujin] {
+            background-color: #7D3E95;
+        }
+        &[class*=-attic] {
+            background-color: #69B14B;
+        }
+    }
+    &[class*=-platform] {
+        padding: 5px 4px;
+        height: 22px;
+        white-space:nowrap;
+        @include P_Small(1);
+        &[class*=-mobile] {
+            background-color: #F97976;
+        }
+        &[class*=-anime] {
+            background-color: #913D88;
+        }
+        &[class*=-web] {
+            background-color: #EB9532;
+        }
+        &[class*=-playstation] {
+            background-color: #0070C9;
+        }
+        &[class*=-ios] {
+            background-color: #231F20;
+        }
+        &[class*=-xbox] {
+            background-color: #107C10;
+        }
+        &[class*=-switch] {
+            background-color: #E60012;
+        }
+        &[class*=-android] {
+            background-color: #A2C139;
+        }
+        &[class*=-pc] {
+            background-color: #19B5FE;
+        }
+        &[class*=-other] {
+            background-color: #000000;
+        }
+        &[class*=-olg] {
+            background-color: #1AB5AB;
+        }
+        
+    }
+}

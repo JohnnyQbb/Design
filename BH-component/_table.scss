@@ -1,0 +1,58 @@
+// -------------------------------------
+//   BH-TABLE
+// -------------------------------------
+
+@use "../BH-style" as *;
+
+.#{$prefix}-table {
+    flex-grow: 1;
+    overflow: hidden;
+    tr {
+        border-top: 1px solid var(--primary-border);
+        &:first-child {
+            border: none;
+        }
+        &:has(th) {
+            pointer-events: none;
+        }
+        th {
+            flex-basis: 100%;
+            border: none;
+            pointer-events: none;
+            text-align: start;
+            align-self: center;
+            min-width: 96px;
+            white-space: nowrap;
+            color: var(--tertiary-text);
+            @include media(tablet) {
+                min-width: 48px;
+            }
+            @include media(mobile) {
+                min-width: 24px;
+            }
+        }
+        td {
+            flex-basis: 100%;
+            text-align: start;
+            align-self: center;
+            min-width: 96px;
+            @include media(tablet) {
+                min-width: 48px;
+            }
+            @include media(mobile) {
+                min-width: 24px;
+            }
+        }
+        &:hover {
+            background-color: var(--b1-bg);
+        }
+        .hug {
+            min-width: unset;
+            display: inline-block;
+        }
+        &.fill {
+            width: 100%;
+        }
+    }
+
+}

@@ -1,0 +1,92 @@
+// -------------------------------------
+//   BH-TOOLTIP
+// -------------------------------------
+
+@use "../BH-style/" as *;
+
+
+[class*=#{$prefix}-tooltip] {
+    span {
+        pointer-events: none;
+        white-space: nowrap;
+        position: absolute;
+        padding: 8px;
+        @include Caption(1);
+        color: var(--purewhite);
+        background: var(--primary-light);
+        border-radius: $radius-3;
+        z-index: z-layers(cover);
+        transition: all 0.3s;
+        opacity: 0;
+
+        &:after {
+            content: '';
+            position: absolute;
+            border-style: solid;;
+        }
+    }
+
+    &[class*=-top] {
+        span {
+            transform: translate(-50%, -100%);
+            top: -8px;
+            left: 50%;
+            &:after {
+                bottom: -4px;
+                left: 50%;
+                border-width: 5px 5px 0 5px;
+                border-color: var(--primary-light) transparent transparent;
+                transform: translateX(-50%)
+            }
+        }
+    }
+
+    &[class*=-right] {
+        span {
+            transform: translate(100%, 0%);
+            right: -8px;
+            top: -50%;
+            &:after {
+                left: -4px;
+                border-width: 5px 5px 5px 0px;
+                border-color: transparent var(--primary-light) transparent ;
+                transform: translateX(-50% 0)
+            }
+        }
+    }
+
+    &[class*=-bottom] {
+        span {
+            transform: translate(-50%, 100%);
+            bottom: -8px;
+            left: 50%;
+            &:after {
+                top: -4px;
+                left: 50%;
+                border-width: 0 5px 5px;
+                border-color: transparent transparent var(--primary-light);
+                transform: translateX(-50%)
+            }
+        }
+    }
+
+    &[class*=-left] {
+        span {
+            transform: translate(-100%, 0%);
+            left: -8px;
+            top: -50%;
+            &:after {
+                right: -4px;
+                border-width: 5px 0px 5px 5px;
+                border-color: transparent var(--primary-light) transparent ;
+                transform: translateX(-50% 0);
+            }
+        }
+    }
+
+    &:hover {
+        span {
+            opacity: 1;
+        }
+    }
+}

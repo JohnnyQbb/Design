@@ -1,0 +1,16 @@
+// -------------------------------------
+//   BH-ZINDEX
+// -------------------------------------
+$z-layers: (
+  "popup":                1000,
+  "fix":                  100,
+  "nav":                  10,
+  "cover":                2,
+  "default":              1,
+  "below":                -1,
+  "hidden":               -10
+);
+
+@function z-layers($key) {
+  @return map-get($z-layers, $key);
+}

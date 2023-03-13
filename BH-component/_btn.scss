@@ -1,0 +1,95 @@
+// -------------------------------------
+//   BH-BTN
+// -------------------------------------
+
+@use "../BH-style" as *;
+
+a{
+  &[class^=#{$prefix}-btn_main] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    padding: 8px 12px;
+    letter-spacing: 1px;
+    @include P_Medium(1);
+    color: var(--primary-dark);
+    background-color: var(--primary-transparent);
+    border-radius: $radius-3;
+    white-space: nowrap;
+    transition: all 0.3s;
+  
+    &:hover {
+      background-color:var(--primary-transparent-darken);
+    }
+    &:active {
+      top: 1px;
+    }
+    &[class*=-disabled] {
+      pointer-events: none;
+      border: 1px solid var(--primary-border);
+      color: var(--quaternary-text);
+      background-color: var(--b1-bg);
+      opacity: 45%;
+
+    }
+    &[class*=-primary] {
+      color: var(--purewhite);
+      background-color: var(--primary);
+    
+      &:hover {
+        background-color: var(--primary-dark);
+      }
+    }
+    &[class*=-secondary] {
+      color: var(--primary-light);
+      background-color: var(--f1-bg);
+      border: 1px solid var(--primary-light);
+      transition: all 0.3s;
+
+      &.subscribed {
+        color: var(--purewhite);
+        background-color: var(--primary-light);
+        border: 1px solid transparent;
+      }
+    }
+    
+    &[class*=-alert] {
+      color: var(--purewhite);
+      background-color: var(--warning);
+    }
+    &[class*=-large] {
+      padding: 8px 24px;
+      min-width: 120px;
+    }
+    &[class*=-fill] {
+      flex-grow: 1;
+    }
+    &[class*=-icon] {
+      i {
+        margin-right: 4px;
+      }
+    }
+  }
+  &[class*=#{$prefix}-btn_icon] {
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: $radius-4;
+    color: var(--primary);
+    background-color: var(--primary-transparent);
+
+    &:hover {
+      background-color:var(--primary-transparent-darken);
+    }
+  }
+  &.#{$prefix}-btn_text {
+    color: var(--primary);
+    @include P_Large;
+    i {
+      margin-right: 4px;
+    }
+    &:hover {
+      color: var(--primary-dark);
+    }
+  }
+}

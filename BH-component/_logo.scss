@@ -1,0 +1,23 @@
+// -------------------------------------
+//   BH-LOGO
+// -------------------------------------
+
+@use "../BH-style/" as *;
+
+.#{$prefix}-logo {
+    width: 120px;
+    height: 30px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("BH-image/LOGO_text_B.svg");
+    @include media (mobile_land) {
+        width: 100px;
+    }
+}
+
+html[data-theme="dark"] {
+    .#{$prefix}-logo {
+        background-image: url("BH-image/LOGO_text_W.svg");
+    }
+}

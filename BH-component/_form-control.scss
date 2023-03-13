@@ -1,0 +1,150 @@
+// -------------------------------------
+//   BH-FORM-CONTROL
+// -------------------------------------
+
+@use "../BH-style" as *;
+textarea {
+  resize: vertical;
+  min-height: 100px;
+  max-height: 300px;
+  overflow: hidden;
+  @include P_Medium(1.25);
+}
+textarea, input {
+  @include FontFamily;
+  &[class^=#{$prefix}-form_control] {
+    padding: 8px;
+    flex-grow: 1;
+    min-width: 180px;
+    color: var(--primary-text);
+    background-color: var(--f1-bg);
+    border: 1px solid var(--secondary-border);
+    border-radius: $radius-3;
+    outline: none;
+    &[class*=-small] {
+      @include P_Small;
+    }
+    &[class*=-limit] {
+      padding-right: 42px;
+      & + small {
+        position: absolute;
+        top: calc(50% - 6px);
+        right: 8px;
+        @include Label(1);
+        color: var(--quaternary-text);
+        .limited {
+          color: var(--warning);
+      }
+      }
+    }
+    &[class*=-search] {
+      padding-left: 36px;
+      & ~ .fa-search {
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        font-size: 16px;
+        left: 12px;
+        top: calc(50% - 8px);
+        color: var(--quaternary-text);
+      }
+    }
+    &[class*=-search_btn] {
+      border-radius: 4px 0 0 4px;
+      width: auto;
+      flex-grow: 1;
+      border-right: none;
+      & ~ .BH-btn_main {
+        align-self: stretch;
+        border-radius: 0 4px 4px 0;
+      }
+    }
+    &[class*=-search_f2] {
+      background-color: var(--f2-bg);
+      border-radius: 18px;
+      &:focus {
+        background-color: var(--f1-bg);
+      }
+    }
+    &[class*=-collapsed] {
+      padding-right: 32px;
+      & ~ .fa-angle-down {
+        cursor: pointer;
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
+        font-size: 16px;
+        font-weight: 800;
+        right: 6px;
+        top: calc(50% - 12px);
+        color: var(--primary);
+        border-radius: $radius-3;
+        &:hover {
+          color: var(--purewhite);
+          background-color: var(--primary)
+        }
+      }
+      & + ul {
+        position: absolute;
+        top: 34px;
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: var(--f1-bg);
+        border: 1px solid var(--primary-border);
+        border-top: none;
+        z-index: z-layers(cover);
+        border-radius: 0 0 $radius-4 $radius-4;
+        overflow: hidden;
+        &.collapsed {
+          display: flex;
+          & + .fa-angle-down {
+            transform: rotate(180deg);
+            color: var(--purewhite);
+            background-color: var(--primary);
+          }
+        }
+        li {
+          display: flex;
+          width: 100%;
+          padding: 12px 12px;
+          @include P_Medium;
+          border-bottom: 1px solid var(--primary-border);
+          &:hover {
+            color: var(--purewhite);
+            background-color: var(--primary);
+          }
+        }
+      }
+    }
+    &[class*=-reply] {
+      padding-right: 40px;
+      & + div {
+        position: absolute;
+        right: 8px;
+        background-color: var(--f1-bg);
+        padding-left: 4px;
+      }
+    }
+    &[class*=-error] {
+      border: 1px solid var(--warning);
+      &:focus {
+        border: 1px solid var(--warning);
+      }
+    }
+    &[disabled] {
+      cursor: not-allowed;
+      background-color: var(--f2-bg);
+      opacity: 40%;
+    }
+    &:focus {
+      border: 1px solid var(--primary);
+    }
+    &::placeholder {
+      color: var(--quaternary-text)
+    }
+  }  
+}

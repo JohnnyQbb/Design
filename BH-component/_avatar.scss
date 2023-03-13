@@ -1,0 +1,90 @@
+// -------------------------------------
+//   BH-AVATAR
+// -------------------------------------
+
+@use "../BH-style" as *;
+
+[class^=#{$prefix}-avatar] {
+
+    &[class*=-img] {
+        border-radius: 99em;
+        overflow: hidden;
+        border: 1px solid transparent;
+        box-sizing: unset;
+        width: 36px;
+        height: 36px;
+        &:hover {
+            transition: all 0.3s;
+            border: 1px solid var(--primary);
+        }
+        img {
+            width: 100%;
+            height: auto;
+        }
+        &[class*=-l] {
+            width: 40px;
+            height: 40px;
+        }
+        &[class*=-s] {
+            width: 25px;
+            height: 25px;
+        }
+        &[class*=-frame] {
+            border: 1px solid var(--secondary-border);
+        }
+    }
+    &[class*=-card] {
+        width: 110px;
+        height: 160px;
+        border: 4px solid var(--f1-bg);
+        background-color: var(--f1-bg);
+        border-radius: 12px;
+        @include Shadow-Soft;
+        overflow: hidden;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .mask {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            -webkit-backdrop-filter: saturate(180%) blur(4px);
+                    backdrop-filter: saturate(180%) blur(4px);
+            opacity: 0;
+            &:hover {
+                transition: all 0.3s;
+                opacity: 1;
+                a {
+                    opacity: 1;
+                }
+            }
+            a {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 84px;
+                display: block;
+                padding: 8px;
+                text-align: center;
+                @include Caption(1);
+                color: var(--purewhite);
+                background: rgba(0, 0, 0, 0.2);
+                border: 1px solid var(--purewhite);
+                border-radius: $radius-3;
+                opacity: 0;
+                z-index: z-layers(cover);
+                transform: translate(-50%, -50%);
+                &:hover {
+                    background: rgba(0, 0, 0, 0.3);
+                    transition: all 0.3s;
+                    @include Shadow-Soft;
+                }
+            }
+        }
+    }
+
+}

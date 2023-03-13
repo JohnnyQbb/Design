@@ -1,0 +1,58 @@
+// -------------------------------------
+//   BH-TAG
+// -------------------------------------
+
+@use "../BH-style" as *;
+
+[class^=#{$prefix}-tag] {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px 8px;
+
+    &[class*=-prompt] {
+        a {
+            padding: 6px 6px;
+            @include P_Medium;
+            color: var(--secondary-text);
+            background: var(--primary-border);
+            border-radius: $radius-3;
+
+            &:hover {
+                color: var(--purewhite);
+                background: var(--primary);
+            }
+        }
+    }
+    &[class*=-sort] {
+        a {
+            padding: 5px 8px;
+            @include P_Small(1);
+            color: var(--tertiary-text);
+            background: var(--f2-bg);
+            border-radius: $radius-max;
+
+            &:hover {
+                color: var(--purewhite);
+                background: var(--primary);
+            }
+        }
+    }
+    &[class*=-card] {
+        position: absolute;
+        width: fit-content;
+        top: 5px;
+        padding: 5px 10px;
+        @include P_Small;
+        color: var(--purewhite);
+        background: rgba(0, 0, 0, 0.6);
+        border-radius: 0 $radius-3 $radius-3 0;
+        span {
+            margin-left: 4px;
+            padding: 2px 4px;
+            border-radius: 2px;
+            background: var(--primary-light);
+            @include Caption;
+        }
+    }
+}

@@ -1,0 +1,2091 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BAHA_COMPONENT</title>
+    <meta property="og:title" content="巴哈姆特電玩資訊站" />
+    <meta property="og:image" content="https://i2.bahamut.com.tw/bahaLOGO_1200x630.jpg" />
+    <meta name="thumbnail" content="https://i2.bahamut.com.tw/bahaLOGO_1200x630.jpg" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Teko:300,400">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <!---->
+    <link rel="stylesheet" href="component_library.css">
+</head>
+
+<body>
+    <!--[內容]-->
+    <div class="BH-container">
+        <!--[主欄位]-->
+        <div class="BH-mobile_menu">
+            <div class="BH-frame-autolayout-align_center mg16-bottom">
+                <a href=""                                                                id="ham_m" class="ham"><i class="fa fa-bars"></i></a>
+                <div href="" class="BH-logo"></div>
+            </div>
+            <ul>
+                <li><a href="BH-intro.html">Intro</a></li>
+                <li><a href="BH-style.html">Style</a></li>
+                <li class="is-active"><a href="BH-component.html">Component</a></li>
+                <li><a href="BH-card.html">Card</a></li>
+                <div id='bar' class="bar"></div>
+            </ul>
+            <hr class="divider mg12-top mg16-bottom">
+            <ul>
+                <li><a href="#BH-avatar">BH-avatar</a></li>
+                <li><a href="#BH-btn_main">BH-btn_main</a></li>
+                <li><a href="#BH-badge">BH-badge</a></li>
+                <li><a href="#BH-pagination">BH-pagination</a></li>
+                <li><a href="#BH-form-control">BH-form-control</a></li>
+                <li><a href="#BH-select">BH-select</a></li>
+                <li><a href="#BH-menu">BH-menu</a></li>
+                <li><a href="#BH-table">BH-table</a></li>
+                <li><a href="#BH-checkbox">BH-checkbox</a></li>
+                <li><a href="#BH-interactive">BH-interactive</a></li>
+                <li><a href="#BH-tooltip">BH-tooltip</a></li>
+                <li><a href="#BH-tippy">BH-tippy</a></li>
+                <li><a href="#BH-carousel">BH-carousel</a></li>
+                <li><a href="#BH-dialogify">BH-dialogify</a></li>
+            </ul>
+        </div>
+        <div class="backdrop"></div>
+        <div class="BH-frame-autolayout-column-fill-align_center">
+            <div class="BH-frame-autolayout-align_center-between"
+                style="position: sticky;top: 0;width: 100%;height: 40px;z-index: 10;background-color: var(--base-bg);">
+                <div class="BH-frame-autolayout-align_center show_tablet_land">
+                    <div class="ham"><i class="fa fa-bars"></i></div>
+                    <script>
+                        $(document).ready(function () {
+                            $(".ham").on("click", function () {
+                                $(".BH-mobile_menu").toggleClass("active");
+                            });
+                        });
+                    </script>
+                    <div href="" class="BH-logo"></div>
+                </div>
+                <div class="BH-frame-autolayout-align_center">
+                    <div class="BH-switch pd4-pd4">
+                        <i class="fa fa-code mg8-right"></i>
+                        <label>
+                            <input id="codeToggle" type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="BH-switch pd4-pd4">
+                        <i class="fa fa-universal-access mg8-right"></i>
+                        <label>
+                            <input id="accessibilityToggle" type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <script>
+                        const toggleSwitch = document.querySelector('#accessibilityToggle');
+                        const body = document.querySelector('body');
+
+                        toggleSwitch.addEventListener('change', function () {
+                            if (this.checked) {
+                                body.classList.add('accessibility-filter');
+                            } else {
+                                body.classList.remove('accessibility-filter');
+                            }
+                        });
+                    </script>
+                    <div class="BH-switch pd4-pd4">
+                        <i class="fa fa-moon-o mg8-right"></i>
+                        <label>
+                            <input id="themeToggle" type="checkbox" checked="checked">
+                            <span class="slider"></span>
+                        </label>
+                        <script>
+                            const myDiv = $("html");
+                            const themeToggle = $("#themeToggle");
+                            const currentTheme = localStorage.getItem("theme");
+
+                            if (currentTheme) {
+                                myDiv.attr("data-theme", currentTheme);
+                                if (currentTheme === "light") {
+                                    themeToggle.prop("checked", false);
+                                }
+                            }
+
+                            themeToggle.change(function () {
+                                if ($(this).is(":checked")) {
+                                    myDiv.attr("data-theme", "dark");
+                                    localStorage.setItem("theme", "dark");
+                                } else {
+                                    myDiv.attr("data-theme", "light");
+                                    localStorage.setItem("theme", "light");
+                                }
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>
+            <div class="BH-wrapper-main BH-frame-autolayout-column-start mg8-top">
+                <!--[勇者頭像]-->
+                <div id="BH-avatar" class="BH-frame-autolayout-column-f1 pd24-pd32 mg16-bottom">
+                    <h4 class=" mg8-bottom">勇者頭像</h4>
+                    <p class="mg16-bottom paragraph-medium">BH-avatar</p>
+                    <!--[區塊]-->
+                    <div id="componentCanvas" class="BH-frame-autolayout-b1-column radius pd24">
+                        <!--[範例]-->
+                        <div class="BH-frame-autolayout-align_center">
+                            <a class="BH-avatar-img-l mg8-right">
+                                <img src="BH-image/avatar.png" alt="">
+                            </a>
+                            <a class="BH-avatar-img mg8-right">
+                                <img src="BH-image/avatar.png" alt="">
+                            </a>
+                            <a class="BH-avatar-img-s mg8-right">
+                                <img src="BH-image/avatar.png" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <pre>
+                        <code>
+    //l
+    &lt;a class="BH-avatar-img-l"&gt;
+        &lt;img src="/path/avatar.png" alt=""&gt;
+    &lt;/a&gt;
+    
+    //m
+    &lt;a class="BH-avatar-img"&gt;
+        &lt;img src="/path/avatar.png" alt=""&gt;
+    &lt;/a&gt;
+    
+    //s
+    &lt;a class="BH-avatar-img-s"&gt;
+        &lt;img src="/path/avatar.png" alt=""&gt;
+    &lt;/a&gt;
+                        </code>
+                    </pre>
+                    <!--[區塊]-->
+                    <div id="componentCanvas" class="BH-frame-autolayout-b1 radius pd24 mg12-top">
+                        <div class="BH-avatar-card">
+                            <img src="BH-image/avatar-l.png" alt="">
+                            <div class="mask">
+                                <a><i class="fa fa-camera"></i> 查看裝備</a>
+                            </div>
+                        </div>
+                    </div>
+                    <pre>
+                        <code>
+    &lt;div class="BH-avatar-card"&gt;
+        &lt;img src="/path" alt=""&gt;
+        &lt;div class="mask"&gt;
+            &lt;a&gt;&lt;i class="fa fa-camera"&gt;&lt;/i&gt; 查看裝備&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+                        </code>
+                    </pre>
+                    <!--[Figma]-->
+                    <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="100%" height="250"
+                        src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FSQ5Es3bJY0S4J1PDvJKiGV%2FWEB%25EF%25BC%259AComponent%3Fnode-id%3D27%253A414%26t%3D1Z7fxhD51iMgir0j-1"
+                        allowfullscreen></iframe>
+                </div>
+                <!--[按鈕]-->
+                <div id="BH-btn_main" class="BH-frame-autolayout-column-f1 pd24-pd32 mg16-bottom">
+                    <h4 class=" mg8-bottom">主按鈕</h4>
+                    <p class="mg16-bottom paragraph-medium">BH-btn_main</p>
+                    <!--[區塊]-->
+                    <div id="componentCanvas" class="BH-frame-autolayout-b1 radius pd24">
+                        <a class="BH-btn_main mg4-right">按鈕</a>
+                        <a class="BH-btn_main-primary mg4-right">按鈕</a>
+                        <a class="BH-btn_main-secondary mg4-right" id="btnSub">訂閱</a>
+                        <a class="BH-btn_main-alert mg4-right">按鈕</a>
+                        <a class="BH-btn_main-disabled mg4-right">按鈕</a>
+                        <script>
+                            $(document).ready(function () {
+                                var clicks = 0;
+                                $("#btnSub").click(function () {
+                                    clicks++;
+                                    $(this).toggleClass("subscribed");
+                                    if ($(this).hasClass("subscribed")) {
+                                        $(this).text("已訂閱");
+                                    } else {
+                                        $(this).text("訂閱");
+                                    }
+                                });
+                            });
+                        </script>
+                    </div>
+                    <pre>
+                        <code>
+    //basic
+    &lt;a class="BH-btn_main"&gt;text&lt;/a&gt;
+    
+    //state
+    &lt;a class="BH-btn_main-primary"&gt;text&lt;/a&gt;
+    
+    &lt;a class="BH-btn_main-secondary"&gt;text&lt;/a&gt;
+    
+    &lt;a class="BH-btn_main-alert"&gt;text&lt;/a&gt;
+    
+    &lt;a class="BH-btn_main-disabled"&gt;text&lt;/a&gt;
+                        </code>
+                    </pre>
+                    <!--[區塊]-->
+                    <div id="componentCanvas" class="BH-frame-autolayout-b1 radius pd24 mg12-top">
+                        <a class="BH-btn_main-large mg4-right">按鈕</a>
+                        <a class="BH-btn_main-primary-large mg4-right">按鈕</a>
+                    </div>
+                    <pre>
+                        <code>
+    //basic
+    &lt;a class="BH-btn_main-large"&gt;
+        按鈕
+    &lt;/a&gt;
+    
+    //varient
+    &lt;a class="BH-btn_main-primary-large"&gt;
+        按鈕
+    &lt;/a&gt;
+    
+                        </code>
+                    </pre>
+                    <!--[區塊]-->
+                    <div id="componentCanvas" class="BH-frame-autolayout-b1 radius pd24 mg12-top">
+                        <a class="BH-btn_main-fill mg4-right">按鈕</a>
+                        <a class="BH-btn_main-primary-fill">按鈕</a>
+                    </div>
+                    <pre>
+                        <code>
+    //basic
+    &lt;a class="BH-btn_main-fill"&gt;&lt;/a&gt;
+    
+    //varient
+    &lt;a class="BH-btn_main-primary-fill"&gt;&lt;/a&gt;
+    
+                        </code>
+                    </pre>
+                    <!--[區塊]-->
+                    <h4 class="mg12-top mg8-bottom">icon support</h4>
+                    <p class="mg16-bottom paragraph-medium">BH-btn_main-icon</p>
+                    <div id="componentCanvas" class="BH-frame-autolayout-b1 radius pd24">
+                        <a class="BH-btn_main-icon mg4-right"><i class="fa fa-heart"></i>按鈕</a>
+                        <a class="BH-btn_main-primary-icon"><i class="fa fa-heart"></i>按鈕</a>
+                    </div>
+                    <pre>
+                        <code>
+    //basic
+    &lt;a class="BH-btn_main-icon"&gt;
+        &lt;i class="fa fa-(class)"&gt;
+    &lt;/i&gt;按鈕&lt;/a&gt;
+    
+    //varient
+    &lt;a class="BH-btn_main-primary-icon"&gt;
+        &lt;i class="fa fa-(class)"&gt;
+    &lt;/i&gt;按鈕&lt;/a&gt;
+    
+                        </code>
+                    </pre>
+                    <!--[Figma]-->
+                    <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="100%" height="250"
+                        src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FSQ5Es3bJY0S4J1PDvJKiGV%2FWEB%25EF%25BC%259AComponent%3Fnode-id%3D37%253A196%26t%3D1Z7fxhD51iMgir0j-1"
+                        allowfullscreen></iframe>
+                    <div id="componentCanvas" class="BH-frame-autolayout-b1 radius pd24 mg12-top">
+                        <a class="BH-btn_icon mg4-right"><i class="fa fa-heart"></i></a>
+                    </div>
+                    <pre>
+                        <code>
+    //basic
+    &lt;a class="BH-btn_icon"&gt;
+        &lt;i class="fa fa-(class)"&gt;&lt;/i&gt;按鈕
+    &lt;/a&gt;
+                        </code>
+                    </pre>
+                    <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="100%" height="250"
+                        src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FSQ5Es3bJY0S4J1PDvJKiGV%2FWEB%25EF%25BC%259AComponent%3Fnode-id%3D339%253A335%26t%3D1Z7fxhD51iMgir0j-1"
+                        allowfullscreen></iframe>
+                    <div id="componentCanvas" class="BH-frame-autolayout-b1 radius pd24 mg12-top">
+                        <a class="BH-btn_text mg12-right">文字按鈕</a>
+                        <a class="BH-btn_text"><i class="fa fa-heart"></i>文字按鈕</a>
+                    </div>
+                    <pre>
+                        <code>
+    &lt;a class="BH-btn_text"&gt;
+        //optional &lt;i class="fa fa-(class)"&gt;&lt;/i&gt;文字按鈕
+    &lt;/a&gt;
+    
+                        </code>
+                    </pre>
+                    <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="100%" height="250"
+                        src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FSQ5Es3bJY0S4J1PDvJKiGV%2FWEB%25EF%25BC%259AComponent%3Fnode-id%3D339%253A329%26t%3D1Z7fxhD51iMgir0j-1"
+                        allowfullscreen></iframe>
+                </div>
+                <!--[標籤]-->
+                <div id="BH-tag" class="BH-frame-autolayout-column-f1 pd24-pd32 mg16-bottom">
+                    <h4 class=" mg8-bottom">標籤</h4>
+                    <p class="mg16-bottom paragraph-medium">BH-tag</p>
+                    <div id="componentCanvas" class="BH-frame-autolayout-b1 radius pd24 mg12-top">
+                        <div class="BH-tag-prompt">
+                            <a>標籤Ａ</a>
+                            <a>標籤Ｂ</a>
+                            <a>標籤Ｃ</a>
+                        </div>
+                    </div>
+                    <pre>
+                        <code>
+    &lt;div class="BH-tag-prompt"&gt;
+        &lt;a&gt;標籤Ａ&lt;/a&gt;
+        &lt;a&gt;標籤Ｂ&lt;/a&gt;
+        &lt;a&gt;標籤Ｃ&lt;/a&gt;
+    &lt;/div&gt;
+                        </code>
+                    </pre>
+                    <div id="componentCanvas" class="BH-frame-autolayout-b1 radius pd24 mg12-top">
+                        <div class="BH-tag-sort">
+                            <a>標籤Ａ</a>
+                            <a>標籤Ｂ</a>
+                            <a>標籤Ｃ</a>
+                            <a>標籤Ｄ</a>
+                        </div>
+                    </div>
+                    <pre>
+                        <code>
+    &lt;div class="BH-tag-sort"&gt;
+        &lt;a&gt;標籤Ａ&lt;/a&gt;
+        &lt;a&gt;標籤Ｂ&lt;/a&gt;
+        &lt;a&gt;標籤Ｃ&lt;/a&gt;
+        &lt;a&gt;標籤Ｄ&lt;/a&gt;
+    &lt;/div&gt;
+                        </code>
+                    </pre>
+                    <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="100%" height="250"
+                        src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FSQ5Es3bJY0S4J1PDvJKiGV%2FWEB%25EF%25BC%259AComponent%3Fnode-id%3D1%253A71%26t%3D1Z7fxhD51iMgir0j-1"
+                        allowfullscreen></iframe>
+                </div>
+                <!--[徽章]-->
+                <div id="BH-badge" class="BH-frame-autolayout-column-f1 pd24-pd32 mg16-bottom">
+                    <h4 class=" mg8-bottom">徽章</h4>
+                    <p class="mg16-bottom paragraph-medium">BH-badge</p>
+                    <div id="componentCanvas" class="BH-frame-autolayout-b1 radius pd24 mg12-top">
+                        <span class="BH-hot">HOT</span>
+                    </div>
+                    <pre>
+                        <code>
+    &lt;span class="BH-hot"&gt;HOT&lt;/span&gt;
+                        </code>
+                    </pre>
+                    <div id="componentCanvas" class="BH-frame-autolayout-b1 radius pd24 mg12-top">
+                        <div class="BH-frame-autolayout-wrap gp4-gp4">
+                            <span class="BH-badge-type-master">
+                                <i>
+                                </i>
+                                達人專欄
+                            </span>
+                            <span class="BH-badge-type-theme">主題</span>
+                            <span class="BH-badge-type-novel">小說</span>
+                            <span class="BH-badge-type-illusration">插畫</span>
+                            <span class="BH-badge-type-comics">漫畫</span>
+                            <span class="BH-badge-type-cosplay">COS</span>
+                            <span class="BH-badge-type-doujin">同人</span>
+                            <span class="BH-badge-type-attic">日誌</span>
+                        </div>
+                    </div>
+                    <pre>
+                        <code>
+    &lt;span class="BH-badge-master"&gt;
+        &lt;i&gt;
+            &lt;img src="/BH-image/master.png" alt=""&gt;
+        &lt;/i&gt;
+        達人專欄
+    &lt;/span&gt;
+    &lt;span class="BH-badge-type-theme"&gt;主題&lt;/span&gt;
+    &lt;span class="BH-badge-type-novel"&gt;小說&lt;/span&gt;
+    &lt;span class="BH-badge-type-illusration"&gt;插畫&lt;/span&gt;
+    &lt;span class="BH-badge-type-comics"&gt;漫畫&lt;/span&gt;
+    &lt;span class="BH-badge-type-cosplay"&gt;COS&lt;/span&gt;
+    &lt;span class="BH-badge-type-doujin"&gt;同人&lt;/span&gt;
+    &lt;span class="BH-badge-type-attic"&gt;日誌&lt;/span&gt;
+                        </code>
+                    </pre>
+                    <div id="componentCanvas" class="BH-frame-autolayout-b1 radius pd24 mg12-top">
+                        <div class="BH-frame-autolayout-wrap gp4-gp4">
+                            <span class="BH-badge-platform">多平台</span>
+                            <span class="BH-badge-platform-mobile">手機</span>
+                            <span class="BH-badge-platform-anime">動漫</span>
+                            <span class="BH-badge-platform-web">WEB</span>
+                            <span class="BH-badge-platform-playstation">PS4</span>
+                            <span class="BH-badge-platform-ios">iOS</span>
+                            <span class="BH-badge-platform-xbox">XBOX</span>
+                            <span class="BH-badge-platform-switch">Switch</span>
+                            <span class="BH-badge-platform-android">Android</span>
+                            <span class="BH-badge-platform-pc">PC</span>
+                        </div>
+                    </div>
+                    <pre>
+                        <code>
+&lt;span class="BH-badge-platform"&gt;多平台&lt;/span&gt;
+&lt;span class="BH-badge-platform-mobile"&gt;手機&lt;/span&gt;
+&lt;span class="BH-badge-platform-anime"&gt;動漫&lt;/span&gt;
+&lt;span class="BH-badge-platform-web"&gt;WEB&lt;/span&gt;
+&lt;span class="BH-badge-platform-playstation"&gt;PS4&lt;/span&gt;
+&lt;span class="BH-badge-platform-ios"&gt;iOS&lt;/span&gt;
+&lt;span class="BH-badge-platform-xbox"&gt;XBOX&lt;/span&gt;
+&lt;span class="BH-badge-platform-switch"&gt;Switch&lt;/span&gt;
+&lt;span class="BH-badge-platform-android"&gt;Android&lt;/span&gt;
+&lt;span class="BH-badge-platform-pc"&gt;PC&lt;/span&gt;
+&lt;span class="BH-badge-platform-other"&gt;其他&lt;/span&gt;
+&lt;span class="BH-badge-platform-olg"&gt;OLG&lt;/span&gt;
+                        </code>
+                    </pre>
+                    <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="100%" height="250"
+                        src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FSQ5Es3bJY0S4J1PDvJKiGV%2FWEB%25EF%25BC%259AComponent%3Fnode-id%3D478%253A327%26t%3D5lg8ZJC1YvJSyBsy-1"
+                        allowfullscreen></iframe>
+                </div>
+                <!--[換頁元件]-->
+                <div id="BH-pagination" class="BH-frame-autolayout-column-f1 pd24-pd32 mg16-bottom">
+                    <h4 class=" mg8-bottom">換頁元件</h4>
+                    <p class="mg16-bottom paragraph-medium">BH-pagination</p>
+                    <div id="componentCanvas" class="BH-frame-autolayout-b1 radius pd24 mg12-top">
+                        <div class="BH-pagination">
+                            <a class="BH-pagination__btn disabled">►</a>
+                            <div>
+                                <a class="now">1</a>
+                                <a>2</a>
+                                <a>3</a>
+                                <a>4</a>
+                                <span>...</span>
+                                <a>999</a>
+                            </div>
+                            <a class="BH-pagination__btn">►</a>
+                        </div>
+                    </div>
+                    <pre>
+                        <code>
+    &lt;div class="BH-pagination"&gt;
+        &lt;a class="BH-pagination__btn disabled"&gt;►&lt;/a&gt;
+        &lt;div&gt;
+            &lt;a class="now"&gt;1&lt;/a&gt;
+            &lt;a&gt;2&lt;/a&gt;
+            &lt;a&gt;3&lt;/a&gt;
+            &lt;a&gt;4&lt;/a&gt;
+            &lt;span&gt;...&lt;/span&gt;
+            &lt;a&gt;999&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;a class="BH-pagination__btn"&gt;►&lt;/a&gt;
+    &lt;/div&gt;
+                        </code>
+                    </pre>
+                    <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="100%" height="250"
+                        src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FSQ5Es3bJY0S4J1PDvJKiGV%2FWEB%25EF%25BC%259AComponent%3Fnode-id%3D339%253A320%26t%3D1Z7fxhD51iMgir0j-1"
+                        allowfullscreen></iframe>
+                </div>
+                <!--[輸入匡]-->
+                <div id="BH-form-control" class="BH-frame-autolayout-column-f1 pd20-pd24 mg12-top mg16-bottom">
+                    <h4 class=" mg8-bottom">輸入框</h4>
+                    <p class="mg12-bottom paragraph-medium">BH-form_control</p>
+                    <div id="componentCanvas" class="BH-frame-autolayout-b1-column radius pd24 mg12-top">
+                        <input type="text" class="BH-form_control mg12-bottom" name="title" placeholder="輸入文字">
+                        <input type="text" class="BH-form_control-error mg12-bottom" name="title" placeholder="輸入文字">
+                        <input type="text" class="BH-form_control" name="title" placeholder="輸入文字" disabled>
+                    </div>
+                    <pre>
+                        <code>
+    // default
+    &lt;input type="text" class="BH-form_control" name="title" placeholder=""&gt;
+    // error
+    &lt;input type="text" class="BH-form_control-error" name="title" placeholder=""&gt;
+    // disabled
+    &lt;input type="text" class="BH-form_control" name="title" placeholder="" disabled&gt;
+                        </code>
+                    </pre>
+                    <div id="componentCanvas" class="BH-frame-autolayout-b1-column radius pd24 mg12-top">
+                        <div class="BH-frame-autolayout">
+                            <input id="limitInput" type="text" class="BH-form_control-limit" name="title"
+                                placeholder="輸入文字">
+                            <small><span id="counter">0</span>/40</small>
+                        </div>
+                        <script>
+                            const input = document.getElementById('limitInput');
+                            const span = document.getElementById('counter');
+
+                            input.addEventListener('input', () => {
+                                const count = input.value.length;
+                                span.textContent = count;
+                                if (count > 40) {
+                                    span.classList.add('limited');
+                                } else {
+                                    span.classList.remove('limited');
+                                }
+                            });
+
+                        </script>
+                    </div>
+                    <pre>
+                        <code>
+    &lt;div class="BH-frame-autolayout"&gt;
+        &lt;input type="text" class="BH-form_control-limit" name="title" placeholder=""&gt;
+        &lt;small&gt;&lt;span&gt;0&lt;/span&gt;/40&lt;/small&gt;
+    &lt;/div&gt;
+                        </code>
+                    </pre>
+                    <div id="componentCanvas" class="BH-frame-autolayout-b1-column radius pd24 mg12-top">
+                        <div class="BH-frame-autolayout-align_center">
+                            <input type="text" class="BH-form_control-search_f2" name="title" placeholder="輸入文字">
+                            <i class="fa fa-search"></i>
+                        </div>
+                    </div>
+                    <pre>
+                        <code>
+    &lt;div class="BH-frame-autolayout"&gt;
+        &lt;input type="text" class="BH-form_control-search_f2" name="title" placeholder=""&gt;
+        &lt;i class="fa fa-search"&gt;&lt;/i&gt;
+    &lt;/div&gt;
+                        </code>
+                    </pre>
+                    <div id="componentCanvas" class="BH-frame-autolayout-b1-column radius pd24 mg12-top">
+                        <div class="BH-frame-autolayout-align_center">
+                            <input type="text" class="BH-form_control-search_btn" name="title" placeholder="輸入文字">
+                            <i class="fa fa-search"></i>
+                            <a class="BH-btn_main btn-primary">搜尋</a>
+                        </div>
+                    </div>
+                    <pre>
+                        <code>
+    &lt;div class="BH-frame-autolayout"&gt;
+        &lt;input type="text" class="BH-form_control-search_btn" name="title" placeholder=""&gt;
+        &lt;i class="fa fa-search"&gt;&lt;/i&gt;
+        &lt;a class="BH-btn_main btn-primary"&gt;搜尋&lt;/a&gt;
+    &lt;/div&gt;
+                        </code>
+                    </pre>
+                    <div id="componentCanvas" class="BH-frame-autolayout-b1-column radius pd24 mg12-top">
+                        <div class="BH-frame-autolayout-align_center">
+                            <input type="text" class="BH-form_control-search-collapsed" name="title" placeholder="輸入文字">
+                            <ul id="collapsedList">
+                                <li>測試</li>
+                                <li>測試</li>
+                                <li>測試</li>
+                            </ul>
+                            <i id="toggleList" class="fa fa-angle-down"></i>
+                            <i class="fa fa-search"></i>
+                        </div>
+                        <script>
+                            const toggleList = document.getElementById('toggleList');
+                            const collapsedList = document.getElementById('collapsedList');
+
+                            toggleList.addEventListener('click', () => {
+                                collapsedList.classList.toggle('collapsed');
+                            });
+
+                        </script>
+                    </div>
+                    <pre>
+                        <code>
+    &lt;div class="BH-frame-autolayout-align_center"&gt;
+        &lt;input type="text" class="BH-form_control-search-collapsed" name="title" placeholder=""&gt;
+        &lt;i class="fa fa-search"&gt;&lt;/i&gt;
+        &lt;i class="fa fa-angle-down"&gt;&lt;/i&gt;
+    &lt;/div&gt;  
+                        </code>
+                    </pre>
+                    <div id="componentCanvas" class="BH-frame-autolayout-b1-column radius pd24 mg12-top">
+                        <div class="BH-frame-autolayout-align_center mg12-bottom">
+                            <a class="BH-avatar-img-frame mg8-right"><img src="BH-image/avatar.png" alt=""></a>
+                            <input type="text" class="BH-form_control-reply" name="title" placeholder="留言">
+                            <div>
+                                <img id="BH-icon-upload-1" src="BH-icon/BH-emoji.svg"
+                                    onmouseover="changeEmojiImage(this)" onmouseout="restoreEmojiImage(this)">
+                                <script>
+                                    function changeEmojiImage(img) {
+                                        img.src = "BH-icon/BH-emoji-hover.svg";
+                                    }
+
+                                    function restoreEmojiImage(img) {
+                                        img.src = "BH-icon/BH-emoji.svg";
+                                    }
+                                </script>
+
+                                <img id="BH-icon-upload-2" src="BH-icon/BH-gif.svg" onmouseover="changeGifImage(this)"
+                                    onmouseout="restoreGifImage(this)">
+                                <script>
+                                    function changeGifImage(img) {
+                                        img.src = "BH-icon/BH-gif-hover.svg";
+                                    }
+
+                                    function restoreGifImage(img) {
+                                        img.src = "BH-icon/BH-gif.svg";
+                                    }
+                                </script>
+
+                                <img id="BH-icon-upload-3" src="BH-icon/BH-upload.svg"
+                                    onmouseover="changeUploadImage(this)" onmouseout="restoreUploadImage(this)">
+                                <script>
+                                    function changeUploadImage(img) {
+                                        img.src = "BH-icon/BH-upload-hover.svg";
+                                    }
+
+                                    function restoreUploadImage(img) {
+                                        img.src = "BH-icon/BH-upload.svg";
+                                    }
+                                </script>
+
+                            </div>
+                        </div>
+                        <div class="BH-frame-autolayout-align_center">
+                            <a class="BH-avatar-img-frame mg8-right"><img src="BH-image/avatar.png" alt=""></a>
+                            <input type="text" class="BH-form_control-reply" name="title" placeholder="留言">
+                            <div>
+                                <img id="BH-icon-upload-3" src="BH-icon/BH-upload.svg"
+                                    onmouseover="changeUploadImage(this)" onmouseout="restoreUploadImage(this)">
+                                <script>
+                                    function changeUploadImage(img) {
+                                        img.src = "BH-icon/BH-upload-hover.svg";
+                                    }
+
+                                    function restoreUploadImage(img) {
+                                        img.src = "BH-icon/BH-upload.svg";
+                                    }
+                                </script>
+
+                            </div>
+                        </div>
+                    </div>
+                    <pre>
+                        <code>
+    &lt;div class="BH-frame-autolayout-align_center"&gt;
+        &lt;a class="BH-avatar-img-frame mg8-right"&gt;&lt;img src="BH-image/avatar.png" alt=""&gt;&lt;/a&gt;
+        &lt;input type="text" class="BH-form_control-reply" name="title" placeholder="留言"&gt;
+        &lt;img id="BH-icon-upload" src="BH-icon/BH-upload.svg" onmouseover="changeImage(this)"
+            onmouseout="restoreImage(this)"&gt;
+        &lt;script&gt;
+            function changeImage(img) {
+                img.src = "BH-icon/BH-upload-hover.svg";
+            }
+    
+            function restoreImage(img) {
+                img.src = "BH-icon/BH-upload.svg";
+            }
+        &lt;/script&gt;
+    &lt;/div&gt;
+                        </code>
+                    </pre>
+                    <div id="componentCanvas" class="BH-frame-autolayout-b1-column radius pd24 mg12-top">
+                        <textarea type="text" class="BH-form_control" name="" placeholder="輸入文字"></textarea>
+                    </div>
+                    <pre>
+                        <code>
+    &lt;textarea type="text" class="BH-form_control" name="" placeholder=""&gt;&lt;/textarea&gt;
+                        </code>
+                    </pre>
+                    <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="100%" height="250"
+                        src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FSQ5Es3bJY0S4J1PDvJKiGV%2FWEB%25EF%25BC%259AComponent%3Fnode-id%3D1%253A73%26t%3D1Z7fxhD51iMgir0j-1"
+                        allowfullscreen></iframe>
+                </div>
+                <!--[下拉式選單]-->
+                <div id="BH-select" class="BH-frame-autolayout-column-f1 pd20-pd24 mg12-top mg16-bottom">
+                    <h4 class=" mg8-bottom">下拉式選單</h4>
+                    <p class="mg12-bottom paragraph-medium">BH-select</p>
+                    <div id="componentCanvas" class="BH-frame-autolayout-b1 radius pd12">
+                        <div class="BH-frame-autolayout-align_center BH-select">
+                            <select>
+                                <option value="0">default</option>
+                                <option value="1">A</option>
+                                <option value="2">B</option>
+                                <option value="3">C</option>
+                            </select>
+                        </div>
+                        <script>
+                            var x, i, j, l, ll, selElmnt, a, b, c;
+                            x = document.getElementsByClassName("BH-select");
+                            l = x.length;
+                            for (i = 0; i < l; i++) {
+                                selElmnt = x[i].getElementsByTagName("select")[0];
+                                ll = selElmnt.length;
+                                /* For each element, create a new DIV that will act as the selected item: */
+                                a = document.createElement("DIV");
+                                a.setAttribute("class", "select-selected fa");
+                                a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+                                x[i].appendChild(a);
+                                /* For each element, create a new DIV that will contain the option list: */
+                                b = document.createElement("DIV");
+                                b.setAttribute("class", "select-items select-hide");
+                                for (j = 1; j < ll; j++) {
+                                    /* For each option in the original select element,
+                                    create a new DIV that will act as an option item: */
+                                    c = document.createElement("DIV");
+                                    c.innerHTML = selElmnt.options[j].innerHTML;
+                                    c.addEventListener("click", function (e) {
+                                        /* When an item is clicked, update the original select box,
+                                        and the selected item: */
+                                        var y, i, k, s, h, sl, yl;
+                                        s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+                                        sl = s.length;
+                                        h = this.parentNode.previousSibling;
+                                        for (i = 0; i < sl; i++) {
+                                            if (s.options[i].innerHTML == this.innerHTML) {
+                                                s.selectedIndex = i;
+                                                h.innerHTML = this.innerHTML;
+                                                y = this.parentNode.getElementsByClassName("same-as-selected");
+                                                yl = y.length;
+                                                for (k = 0; k < yl; k++) {
+                                                    y[k].removeAttribute("class");
+                                                }
+                                                this.setAttribute("class", "same-as-selected");
+                                                break;
+                                            }
+                                        }
+                                        h.click();
+                                    });
+                                    b.appendChild(c);
+                                }
+                                x[i].appendChild(b);
+                                a.addEventListener("click", function (e) {
+                                    /* When the select box is clicked, close any other select boxes,
+                                    and open/close the current select box: */
+                                    e.stopPropagation();
+                                    closeAllSelect(this);
+                                    this.nextSibling.classList.toggle("select-hide");
+                                    this.classList.toggle("select-active");
+                                });
+                            }
+
+                            function closeAllSelect(elmnt) {
+                                /* A function that will close all select boxes in the document,
+                                except the current select box: */
+                                var x, y, i, xl, yl, arrNo = [];
+                                x = document.getElementsByClassName("select-items");
+                                y = document.getElementsByClassName("select-selected");
+                                xl = x.length;
+                                yl = y.length;
+                                for (i = 0; i < yl; i++) {
+                                    if (elmnt == y[i]) {
+                                        arrNo.push(i)
+                                    } else {
+                                        y[i].classList.remove("select-active");
+                                    }
+                                }
+                                for (i = 0; i < xl; i++) {
+                                    if (arrNo.indexOf(i)) {
+                                        x[i].classList.add("select-hide");
+                                    }
+                                }
+                            }
+
+                            /* If the user clicks anywhere outside the select box,
+                            then close all select boxes: */
+                            document.addEventListener("click", closeAllSelect);
+                        </script>
+                    </div>
+                    <pre>
+                        <code>
+    &lt;div class="BH-frame-autolayout-align_center BH-select"&gt;
+        &lt;select&gt;
+            &lt;option value="0"&gt;default&lt;/option&gt;
+            &lt;option value="1"&gt;A&lt;/option&gt;
+            &lt;option value="2"&gt;B&lt;/option&gt;
+            &lt;option value="3"&gt;C&lt;/option&gt;
+        &lt;/select&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+        var x, i, j, l, ll, selElmnt, a, b, c;
+        x = document.getElementsByClassName("BH-select");
+        l = x.length;
+        for (i = 0; i < l; i++) {
+            selElmnt = x[i].getElementsByTagName("select")[0];
+            ll = selElmnt.length;
+            a = document.createElement("DIV");
+            a.setAttribute("class", "select-selected fa");
+            a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+            x[i].appendChild(a);
+            b = document.createElement("DIV");
+            b.setAttribute("class", "select-items select-hide");
+            for (j = 1; j < ll; j++) {
+                c = document.createElement("DIV");
+                c.innerHTML = selElmnt.options[j].innerHTML;
+                c.addEventListener("click", function (e) {
+                    var y, i, k, s, h, sl, yl;
+                    s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+                    sl = s.length;
+                    h = this.parentNode.previousSibling;
+                    for (i = 0; i < sl; i++) {
+                        if (s.options[i].innerHTML == this.innerHTML) {
+                            s.selectedIndex = i;
+                            h.innerHTML = this.innerHTML;
+                            y = this.parentNode.getElementsByClassName("same-as-selected");
+                            yl = y.length;
+                            for (k = 0; k < yl; k++) {
+                                y[k].removeAttribute("class");
+                            }
+                            this.setAttribute("class", "same-as-selected");
+                            break;
+                        }
+                    }
+                    h.click();
+                });
+                b.appendChild(c);
+            }
+            x[i].appendChild(b);
+            a.addEventListener("click", function (e) {
+                e.stopPropagation();
+                closeAllSelect(this);
+                this.nextSibling.classList.toggle("select-hide");
+                this.classList.toggle("select-active");
+            });
+        }
+    
+        function closeAllSelect(elmnt) {
+            var x, y, i, xl, yl, arrNo = [];
+            x = document.getElementsByClassName("select-items");
+            y = document.getElementsByClassName("select-selected");
+            xl = x.length;
+            yl = y.length;
+            for (i = 0; i < yl; i++) {
+                if (elmnt == y[i]) {
+                    arrNo.push(i)
+                } else {
+                    y[i].classList.remove("select-active");
+                }
+            }
+            for (i = 0; i < xl; i++) {
+                if (arrNo.indexOf(i)) {
+                    x[i].classList.add("select-hide");
+                }
+            }
+        }
+        document.addEventListener("click", closeAllSelect);
+    &lt;/script&gt;
+                        </code>
+                    </pre>
+                    <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="100%" height="250"
+                        src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FSQ5Es3bJY0S4J1PDvJKiGV%2FWEB%25EF%25BC%259AComponent%3Fnode-id%3D37%253A533%26t%3D5lg8ZJC1YvJSyBsy-1"
+                        allowfullscreen></iframe>
+                </div>
+                <!--[選單]-->
+                <div id="BH-menu" class="BH-frame-autolayout-column-f1 pd20-pd24 mg12-top mg16-bottom">
+                    <h4 class=" mg8-bottom">選單</h4>
+                    <p class="mg12-bottom paragraph-medium">BH-menu</p>
+                    <div id="componentCanvas" class="BH-frame-autolayout-b1 radius pd12">
+                        <div class="BH-menu">
+                            <div class="BH-frame-autolayout-align_center">
+                                <ul id="menuTab">
+                                    <li class="is-active"><a href="">TAB_A</a></li>
+                                    <li><a href="">TAB_B</a></li>
+                                    <li><a href="">TAB_C</a></li>
+                                    <li><a href="">TAB_D</a></li>
+                                    <div id='menuBar' class="bar"></div>
+                                </ul>
+                                <script>
+                                    const menuTab = document.getElementById("menuTab");
+                                    const menuBar = document.getElementById("menuBar");
+
+                                    // Set the initial position and width of the bar
+                                    const isActive = menuTab.querySelector('.is-active');
+                                    menuBar.style.transform = `translateX(${isActive.offsetLeft}px)`;
+                                    menuBar.style.width = `${isActive.offsetWidth}px`;
+
+                                    // Added an event listener for the mouseover event on the ul element
+                                    menuTab.addEventListener("mouseover", function (event) {
+                                        // Check if the target element is an li element
+                                        const target = event.target.closest("li");
+                                        if (target) {
+                                            // Set the position and width of the bar based on the target li element
+                                            menuBar.style.transform = `translateX(${target.offsetLeft}px)`;
+                                            menuBar.style.width = `${target.offsetWidth}px`;
+                                        }
+                                    });
+
+                                    // Added an event listener for the mouseleave event on the ul element
+                                    menuTab.addEventListener("mouseleave", function (event) {
+                                        // Set the position and width of the bar back to the initial li element with class "is-active"
+                                        menuBar.style.transform = `translateX(${isActive.offsetLeft}px)`;
+                                        menuBar.style.width = `${isActive.offsetWidth}px`;
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                    <pre>
+                        <code>
+    &lt;ul id="menuTab"&gt;
+        &lt;li class="is-active"&gt;&lt;a href=""&gt;TAB_A&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=""&gt;TAB_B&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=""&gt;TAB_C&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=""&gt;TAB_D&lt;/a&gt;&lt;/li&gt;
+        &lt;div id='menuBar' class="bar"&gt;&lt;/div&gt;
+    &lt;/ul&gt;
+    &lt;script&gt;
+        const menuTab = document.getElementById("menuTab");
+        const menuBar = document.getElementById("menuBar");
+    
+        // Set the initial position and width of the bar
+        const isActive = menuTab.querySelector('.is-active');
+        menuBar.style.transform = `translateX(${isActive.offsetLeft}px)`;
+        menuBar.style.width = `${isActive.offsetWidth}px`;
+    
+        // Added an event listener for the mouseover event on the ul element
+        menuTab.addEventListener("mouseover", function (event) {
+            // Check if the target element is an li element
+            const target = event.target.closest("li");
+            if (target) {
+                // Set the position and width of the bar based on the target li element
+                menuBar.style.transform = `translateX(${target.offsetLeft}px)`;
+                menuBar.style.width = `${target.offsetWidth}px`;
+            }
+        });
+    
+        // Added an event listener for the mouseleave event on the ul element
+        menuTab.addEventListener("mouseleave", function (event) {
+            // Set the position and width of the bar back to the initial li element with class "is-active"
+            menuBar.style.transform = `translateX(${isActive.offsetLeft}px)`;
+            menuBar.style.width = `${isActive.offsetWidth}px`;
+        });
+    &lt;/script&gt;
+                        </code>
+                    </pre>
+                    <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="100%" height="250"
+                        src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FSQ5Es3bJY0S4J1PDvJKiGV%2FWEB%25EF%25BC%259AComponent%3Fnode-id%3D1%253A76%26t%3D5lg8ZJC1YvJSyBsy-1"
+                        allowfullscreen></iframe>
+                </div>
+                <!--[表格]-->
+                <div id="BH-table" class="BH-frame-autolayout-column-f1 pd24-pd32 mg16-bottom">
+                    <h4 class=" mg8-bottom">表格</h4>
+                    <p class="mg12-bottom paragraph-medium">BH-table</p>
+                    <div id="componentCanvas" class="BH-frame-autolayout-b1 radius pd24 mg12-top">
+                        <table class="BH-table BH-frame-autolayout-column mg16-bottom">
+                            <thead></thead>
+                            <tbody class="BH-frame-autolayout-column">
+                                <tr class="BH-frame-autolayout">
+                                    <th class="BH-frame-autolayout pd12-pd12">type</th>
+                                    <th class="BH-frame-autolayout pd12-pd24">font-size</th>
+                                    <th class="BH-frame-autolayout pd12-pd24">line-height</th>
+                                    <th class="BH-frame pd12-pd24">calc</th>
+                                </tr>
+                                <tr class="BH-frame-autolayout">
+                                    <td class="BH-frame-autolayout pd12-pd12">
+                                        <h1>H1</h1>
+                                    </td>
+                                    <td class="BH-frame-autolayout pd12-pd24">32px</td>
+                                    <td class="BH-frame-autolayout pd12-pd24">100%</td>
+                                    <td class="BH-frame pd12-pd24">2</td>
+                                </tr>
+                                <tr class="BH-frame-autolayout">
+                                    <td class="BH-frame-autolayout pd12-pd12">
+                                        <h2>H2</h2>
+                                    </td>
+                                    <td class="BH-frame-autolayout pd12-pd24">28px</td>
+                                    <td class="BH-frame-autolayout pd12-pd24">100%</td>
+                                    <td class="BH-frame pd12-pd24">1.75</td>
+                                </tr>
+                                <tr class="BH-frame-autolayout">
+                                    <td class="BH-frame-autolayout pd12-pd12">
+                                        <h4>H3</h4>
+                                    </td>
+                                    <td class="BH-frame-autolayout pd12-pd24">24px</td>
+                                    <td class="BH-frame-autolayout pd12-pd24">100%</td>
+                                    <td class="BH-frame pd12-pd24">1.5</td>
+                                </tr>
+                                <tr class="BH-frame-autolayout">
+                                    <td class="BH-frame-autolayout pd12-pd12">
+                                        <h4>H4</h4>
+                                    </td>
+                                    <td class="BH-frame-autolayout pd12-pd24">20px</td>
+                                    <td class="BH-frame-autolayout pd12-pd24">100%</td>
+                                    <td class="BH-frame pd12-pd24">1.25</td>
+                                </tr>
+                                <tr class="BH-frame-autolayout">
+                                    <td class="BH-frame-autolayout pd12-pd12">
+                                        <h5>H5</h5>
+                                    </td>
+                                    <td class="BH-frame-autolayout pd12-pd24">16px</td>
+                                    <td class="BH-frame-autolayout pd12-pd24">100%</td>
+                                    <td class="BH-frame pd12-pd24">1</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <pre>
+                        <code>
+        &lt;table class="BH-table BH-frame-autolayout-column mg16-bottom"&gt;
+        &lt;thead&gt;&lt;/thead&gt;
+        &lt;tbody class="BH-frame-autolayout-column"&gt;
+            &lt;tr class="BH-frame-autolayout"&gt;
+                &lt;th class="BH-frame-autolayout pd12-pd12"&gt;type&lt;/th&gt;
+                &lt;th class="BH-frame-autolayout pd12-pd24"&gt;font-size&lt;/th&gt;
+                &lt;th class="BH-frame-autolayout pd12-pd24"&gt;line-height&lt;/th&gt;
+                &lt;th class="BH-frame pd12-pd24"&gt;calc&lt;/th&gt;
+            &lt;/tr&gt;
+            &lt;tr class="BH-frame-autolayout"&gt;
+                &lt;td class="BH-frame-autolayout pd12-pd12"&gt;
+                    &lt;h1&gt;H1&lt;/h1&gt;
+                &lt;/td&gt;
+                &lt;td class="BH-frame-autolayout pd12-pd24"&gt;32px&lt;/td&gt;
+                &lt;td class="BH-frame-autolayout pd12-pd24"&gt;100%&lt;/td&gt;
+                &lt;td class="BH-frame pd12-pd24"&gt;2&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr class="BH-frame-autolayout"&gt;
+                &lt;td class="BH-frame-autolayout pd12-pd12"&gt;
+                    &lt;h2&gt;H2&lt;/h2&gt;
+                &lt;/td&gt;
+                &lt;td class="BH-frame-autolayout pd12-pd24"&gt;28px&lt;/td&gt;
+                &lt;td class="BH-frame-autolayout pd12-pd24"&gt;100%&lt;/td&gt;
+                &lt;td class="BH-frame pd12-pd24"&gt;1.75&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr class="BH-frame-autolayout"&gt;
+                &lt;td class="BH-frame-autolayout pd12-pd12"&gt;
+                    &lt;h4&gt;H3&lt;/h4&gt;
+                &lt;/td&gt;
+                &lt;td class="BH-frame-autolayout pd12-pd24"&gt;24px&lt;/td&gt;
+                &lt;td class="BH-frame-autolayout pd12-pd24"&gt;100%&lt;/td&gt;
+                &lt;td class="BH-frame pd12-pd24"&gt;1.5&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr class="BH-frame-autolayout"&gt;
+                &lt;td class="BH-frame-autolayout pd12-pd12"&gt;
+                    &lt;h4&gt;H4&lt;/h4&gt;
+                &lt;/td&gt;
+                &lt;td class="BH-frame-autolayout pd12-pd24"&gt;20px&lt;/td&gt;
+                &lt;td class="BH-frame-autolayout pd12-pd24"&gt;100%&lt;/td&gt;
+                &lt;td class="BH-frame pd12-pd24"&gt;1.25&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr class="BH-frame-autolayout"&gt;
+                &lt;td class="BH-frame-autolayout pd12-pd12"&gt;
+                    &lt;h5&gt;H5&lt;/h5&gt;
+                &lt;/td&gt;
+                &lt;td class="BH-frame-autolayout pd12-pd24"&gt;16px&lt;/td&gt;
+                &lt;td class="BH-frame-autolayout pd12-pd24"&gt;100%&lt;/td&gt;
+                &lt;td class="BH-frame pd12-pd24"&gt;1&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+        &lt;/table&gt;
+                        </code>
+                    </pre>
+                    <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="100%" height="250"
+                        src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FSQ5Es3bJY0S4J1PDvJKiGV%2FWEB%25EF%25BC%259AComponent%3Fnode-id%3D1%253A77%26t%3D5lg8ZJC1YvJSyBsy-1"
+                        allowfullscreen></iframe>
+                </div>
+                <!--[核取方塊]-->
+                <div id="BH-checkbox" class="BH-frame-autolayout-column-f1 pd24-pd32 mg16-bottom">
+                    <h4 class=" mg8-bottom">核取方塊</h4>
+                    <p class="mg12-bottom paragraph-medium">BH-check_box</p>
+                    <div id="componentCanvas" class="BH-frame-autolayout-b1 radius pd24 mg12-top">
+                        <ul class="BH-frame-autolayout mobile-swap gp4-gp4 BH-check_box">
+                            <li class="mg8-right">
+                                <div class="check-group BH-frame-autolayout pd4-pd4">
+                                    <input id="check-1" type="checkbox" checked="checked">
+                                    <label for="check-1" class="is-active">
+                                        <div class="label-icon">
+                                            <i class="fa fa-check"></i>
+                                        </div>
+                                        <p class="paragraph-large">多選選項</p>
+                                    </label>
+                                </div>
+                            </li>
+                            <li class="mg8-right">
+                                <div class="check-group BH-frame-autolayout pd4-pd4">
+                                    <input id="check-2" type="checkbox">
+                                    <label for="check-2" class="is-active">
+                                        <div class="label-icon">
+                                            <i class="fa fa-check"></i>
+                                        </div>
+                                        <p class="paragraph-large">多選選項</p>
+                                    </label>
+                                </div>
+                            </li>
+                            <li class="mg8-right">
+                                <div class="check-group BH-frame-autolayout pd4-pd4">
+                                    <input id="check-3" type="checkbox" disabled="disabled">
+                                    <label for="check-3">
+                                        <div class="label-icon">
+                                            <i class="fa fa-check"></i>
+                                        </div>
+                                        <p class="paragraph-large">多選選項</p>
+                                    </label>
+                                </div>
+                            </li>
+                            <li class="mg8-right">
+                                <div class="check-group BH-frame-autolayout pd4-pd4">
+                                    <input id="check-4" type="checkbox" checked="checked" disabled="disabled">
+                                    <label for="check-4">
+                                        <div class="label-icon">
+                                            <i class="fa fa-check"></i>
+                                        </div>
+                                        <p class="paragraph-large">多選選項</p>
+                                    </label>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <pre>
+                    <code>
+    &lt;ul class="BH-check_box"&gt;
+    &lt;li&gt;
+        &lt;div class="check-group BH-frame-autolayout pd4-pd4"&gt;
+            &lt;input id="check-1" type="checkbox" checked="checked"&gt;
+            &lt;label for="check-1" class="is-active"&gt;
+                &lt;div class="label-icon"&gt;
+                    &lt;i class="fa fa-check"&gt;&lt;/i&gt;
+                &lt;/div&gt;
+                &lt;p class="paragraph-large"&gt;多選選項&lt;/p&gt;
+            &lt;/label&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;div class="check-group BH-frame-autolayout pd4-pd4"&gt;
+            &lt;input id="check-2" type="checkbox"&gt;
+            &lt;label for="check-2" class="is-active"&gt;
+                &lt;div class="label-icon"&gt;
+                    &lt;i class="fa fa-check"&gt;&lt;/i&gt;
+                &lt;/div&gt;
+                &lt;p class="paragraph-large"&gt;多選選項&lt;/p&gt;
+            &lt;/label&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;div class="check-group BH-frame-autolayout pd4-pd4"&gt;
+            &lt;input id="check-3" type="checkbox" disabled="disabled"&gt;
+            &lt;label for="check-3"&gt;
+                &lt;div class="label-icon"&gt;
+                    &lt;i class="fa fa-check"&gt;&lt;/i&gt;
+                &lt;/div&gt;
+                &lt;p class="paragraph-large"&gt;多選選項&lt;/p&gt;
+            &lt;/label&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;div class="check-group BH-frame-autolayout pd4-pd4"&gt;
+            &lt;input id="check-4" type="checkbox" checked="checked" disabled="disabled"&gt;
+            &lt;label for="check-4"&gt;
+                &lt;div class="label-icon"&gt;
+                    &lt;i class="fa fa-check"&gt;&lt;/i&gt;
+                &lt;/div&gt;
+                &lt;p class="paragraph-large"&gt;多選選項&lt;/p&gt;
+            &lt;/label&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;/ul&gt;
+                    </code>
+                </pre>
+                    <!--[單選]-->
+                    <div id="componentCanvas" class="BH-frame-autolayout-b1 radius pd24 mg12-top">
+                        <ul class="BH-frame-autolayout mobile-swap gp4-gp4 BH-radio_box">
+                            <li>
+                                <div class="check-group BH-frame-autolayout pd4-pd4">
+                                    <input type="radio" id="r-1" name="radio" checked="checked">
+                                    <label class="label--radio" for="r-1">
+                                        <p class="paragraph-large">單選選項</p>
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="check-group BH-frame-autolayout pd4-pd4    ">
+                                    <input type="radio" id="r-2" name="radio">
+                                    <label class="label--radio" for="r-2">
+                                        <p class="paragraph-large">單選選項</p>
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="check-group BH-frame-autolayout pd4-pd4    ">
+                                    <input type="radio" id="r-3" name="radio" disabled="disabled">
+                                    <label class="label--radio" for="r-3">
+                                        <p class="paragraph-large">單選選項</p>
+                                    </label>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <pre>
+                    <code>
+    &lt;ul class="BH-radio_box"&gt;
+    &lt;li&gt;
+        &lt;div class="check-group BH-frame-autolayout pd4-pd4"&gt;
+            &lt;input type="radio" id="r-1" name="radio" checked="checked"&gt;
+            &lt;label class="label--radio" for="r-1"&gt;
+                &lt;p class="paragraph-large"&gt;單選選&lt;/p&gt;
+            &lt;/label&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;div class="check-group BH-frame-autolayout pd4-pd4    "&gt;
+            &lt;input type="radio" id="r-2" name="radio"&gt;
+            &lt;label class="label--radio" for="r-2"&gt;
+                &lt;p class="paragraph-large"&gt;單選選&lt;/p&gt;
+            &lt;/label&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;div class="check-group BH-frame-autolayout pd4-pd4    "&gt;
+            &lt;input type="radio" id="r-3" name="radio" disabled="disabled"&gt;
+            &lt;label class="label--radio" for="r-3"&gt;
+                &lt;p class="paragraph-large"&gt;單選選&lt;/p&gt;
+            &lt;/label&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;/ul&gt;
+                    </code>
+                </pre>
+                    <!--[開關]-->
+                    <div id="componentCanvas" class="BH-frame-autolayout-b1 radius pd24 mg12-top">
+                        <ul>
+                            <li class="mg12-right">
+                                <div class="BH-switch pd4-pd4 mg8-bottom">
+                                    <p class="mg8-right">開關選項</p>
+                                    <label>
+                                        <input type="checkbox" checked="checked">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </li>
+                            <li class="mg12-right">
+                                <div class="BH-switch pd4-pd4 mg8-bottom">
+                                    <p class="mg8-right">開關選項</p>
+                                    <label>
+                                        <input type="checkbox" disabled="disabled">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </li>
+                            <li class="mg12-right">
+                                <div class="BH-switch pd4-pd4 mg8-bottom">
+                                    <p class="mg8-right">開關選項</p>
+                                    <label>
+                                        <input type="checkbox" checked="checked" disabled="disabled">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <pre>
+                    <code>
+    &lt;ul&gt;
+    &lt;li&gt;
+        &lt;div class="BH-switch pd4-pd4 mg8-bottom"&gt;
+            &lt;p class="mg4-right"&gt;開關選項&lt;/p&gt;
+            &lt;label&gt;
+                &lt;input type="checkbox" checked="checked"&gt;
+                &lt;span class="slider"&gt;&lt;/span&gt;
+            &lt;/label&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;div class="BH-switch pd4-pd4 mg8-bottom"&gt;
+            &lt;p class="mg4-right"&gt;開關選項&lt;/p&gt;
+            &lt;label&gt;
+                &lt;input type="checkbox" disabled="disabled"&gt;
+                &lt;span class="slider"&gt;&lt;/span&gt;
+            &lt;/label&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;div class="BH-switch pd4-pd4 mg8-bottom"&gt;
+            &lt;p class="mg4-right"&gt;開關選項&lt;/p&gt;
+            &lt;label&gt;
+                &lt;input type="checkbox" checked="checked" disabled="disabled"&gt;
+                &lt;span class="slider"&gt;&lt;/span&gt;
+            &lt;/label&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;/ul&gt;
+                    </code>
+                </pre>
+                    <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="100%" height="250"
+                        src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FSQ5Es3bJY0S4J1PDvJKiGV%2FWEB%25EF%25BC%259AComponent%3Fnode-id%3D1%253A72%26t%3D5lg8ZJC1YvJSyBsy-1"
+                        allowfullscreen></iframe>
+                </div>
+                <!--[互動按鈕]-->
+                <div id="BH-interactive" class="BH-frame-autolayout-column-f1 pd24-pd32 mg16-bottom">
+                    <h4 class=" mg8-bottom">互動按鈕</h4>
+                    <p class="mg12-bottom paragraph-medium">BH-like</p>
+                    <div id="componentCanvas" class="BH-frame-autolayout-b1 radius pd24 mg12-top">
+                        <div class="BH-like">
+                            <div class="BH-like__frame"
+                                onclick="WallGp.like('245906', 'https://gnn.gamer.com.tw/detail.php?sn=245906');">
+                                <span class="BH-like__frame__img"></span>
+                            </div>
+                            <p><span>99</span> 個人說推</p>
+                        </div>
+                    </div>
+                    <pre>
+                    <code>
+    &lt;div class="BH-like mg12-bottom"&gt;
+    &lt;div class="BH-like__frame"
+        onclick="WallGp.like('245906', 'https://gnn.gamer.com.tw/detail.php?sn=245906');"&gt;
+        &lt;span class="BH-like__frame__img"&gt;&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;p&gt;&lt;span&gt;99&lt;/span&gt; 個人說推&lt;/p&gt;
+    &lt;/div&gt;
+                    </code>
+                </pre>
+                    <h4 class="mg12-top mg8-bottom">互動按鈕(小)</h4>
+                    <p class="mg12-bottom paragraph-medium">BH-interactive</p>
+                    <div id="componentCanvas" class="BH-frame-autolayout-b1 radius pd24 mg12-top">
+                        <div class="BH-frame-autolayout-align_center">
+                            <div class="BH-interactive mg8-right">
+                                <img class="mg4-right" src="BH-icon/BH-like.svg">
+                                <span>999</span>
+                            </div>
+                            <div class="BH-interactive">
+                                <img class="mg4-right" src="BH-icon/BH-reply.svg" style="top: -1px;">
+                                <span>999</span>
+                            </div>
+                        </div>
+                    </div>
+                    <pre>
+                    <code>
+    &lt;div class="BH-frame-autolayout-align_center"&gt;
+        &lt;div class="BH-interactive mg8-right"&gt;
+            &lt;img class="mg4-right" src="BH-icon/BH-like.svg"&gt;
+            &lt;span&gt;999&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class="BH-interactive"&gt;
+            &lt;img class="mg4-right" src="BH-icon/BH-reply.svg" style="top: -1px;"&gt;
+            &lt;span&gt;999&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+                    </code>
+                </pre>
+                    <div id="componentCanvas" class="BH-frame-autolayout-b1 radius pd24 mg12-top">
+                        <div class="BH-frame-autolayout-align_center">
+                            <div class="BH-interactive-s mg8-right">
+                                <img class="mg4-right" src="BH-icon/BH-like.svg">
+                                <span>999</span>
+                            </div>
+                            <div class="BH-interactive-s">
+                                <img class="mg4-right" src="BH-icon/BH-reply.svg" style="top: -1px;">
+                                <span>999</span>
+                            </div>
+                        </div>
+                    </div>
+                    <pre>
+                    <code>
+    &lt;div class="BH-frame-autolayout-align_center"&gt;
+        &lt;div class="BH-interactive mg8-right"&gt;
+            &lt;img class="mg4-right" src="BH-icon/BH-like.svg"&gt;
+            &lt;span&gt;999&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class="BH-interactive"&gt;
+            &lt;img class="mg4-right" src="BH-icon/BH-reply.svg" style="top: -1px;"&gt;
+            &lt;span&gt;999&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="BH-frame-autolayout-align_center"&gt;
+    &lt;div class="BH-interactive-s mg8-right"&gt;
+        &lt;img class="mg4-right" src="BH-icon/BH-like.svg"&gt;
+        &lt;span&gt;999&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="BH-interactive-s"&gt;
+        &lt;img class="mg4-right" src="BH-icon/BH-reply.svg" style="top: -1px;"&gt;
+        &lt;span&gt;999&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;/div&gt;
+                    </code>
+                </pre>
+                    <div id="componentCanvas" class="BH-frame-autolayout-b1 radius pd24 mg12-top">
+                        <div class="BH-frame-autolayout-align_center">
+                            <a class="BH-interactive-xs-gp mg8-right">
+                                <span class="material-icons mg4-right">thumb_up</span>
+                                <span>1</span>
+                            </a>
+                            <a class="BH-interactive-xs">
+                                <span class="material-icons mg4-right">thumb_down</span>
+                                <span>1</span>
+                            </a>
+                        </div>
+                    </div>
+                    <pre>
+                    <code>
+    &lt;div class="BH-frame-autolayout-align_center mg12-bottom"&gt;
+    &lt;a class="BH-interactive-xs-gp mg8-right"&gt;
+        &lt;span class="material-icons mg4-right"&gt;thumb_up&lt;/span&gt;
+        &lt;span&gt;1&lt;/span&gt;
+    &lt;/a&gt;
+    &lt;a class="BH-interactive-xs"&gt;
+        &lt;span class="material-icons mg4-right"&gt;thumb_down&lt;/span&gt;
+        &lt;span&gt;1&lt;/span&gt;
+    &lt;/a&gt;
+    &lt;/div&gt;
+                    </code>
+                    </pre>
+                    <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="100%" height="250"
+                        src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FSQ5Es3bJY0S4J1PDvJKiGV%2FWEB%25EF%25BC%259AComponent%3Fnode-id%3D1%253A71%26t%3D5lg8ZJC1YvJSyBsy-1"
+                        allowfullscreen></iframe>
+                </div>
+                <!--[提示文字]-->
+                <div id="BH-tooltip" class="BH-frame-autolayout-column-f1 pd24-pd32 mg16-bottom">
+                    <h4 class=" mg8-bottom">提示文字</h4>
+                    <p class="mg12-bottom paragraph-medium">BH-tooltip</p>
+                    <div id="componentCanvas" class="BH-frame-autolayout-b1 radius pd24 mg12-top">
+                        <div class="BH-frame-autolayout-between-fill pd0-pd48">
+                            <div class="BH-tooltip-bottom">
+                                <img src="BH-image/tip.png" alt="">
+                                <span>提示文字</span>
+                            </div>
+                            <div class="BH-tooltip-left">
+                                <img src="BH-image/tip.png" alt="">
+                                <span>提示文字</span>
+                            </div>
+                            <div class="BH-tooltip-right">
+                                <img src="BH-image/tip.png" alt="">
+                                <span>提示文字</span>
+                            </div>
+                            <div class="BH-tooltip-top">
+                                <img src="BH-image/tip.png" alt="">
+                                <span>提示文字</span>
+                            </div>
+                        </div>
+                    </div>
+                    <pre>
+                    <code>
+    &lt;div class="BH-tooltip-bottom"&gt;
+        &lt;img src="BH-image/tip.png" alt=""&gt;
+        &lt;span&gt;提示文字&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="BH-tooltip-left"&gt;
+        &lt;img src="BH-image/tip.png" alt=""&gt;
+        &lt;span&gt;提示文字&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="BH-tooltip-right"&gt;
+        &lt;img src="BH-image/tip.png" alt=""&gt;
+        &lt;span&gt;提示文字&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="BH-tooltip-top"&gt;
+        &lt;img src="BH-image/tip.png" alt=""&gt;
+        &lt;span&gt;提示文字&lt;/span&gt;
+    &lt;/div&gt;
+                    </code>
+                </pre>
+                    <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="100%" height="250"
+                        src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FSQ5Es3bJY0S4J1PDvJKiGV%2FWEB%25EF%25BC%259AComponent%3Fnode-id%3D2091%253A421%26t%3D5lg8ZJC1YvJSyBsy-1"
+                        allowfullscreen></iframe>
+                </div>
+                <!--[彈出式選單]-->
+                <div id="BH-tippy" class="BH-frame-autolayout-column-f1 pd24-pd32 mg16-bottom">
+                    <h4 class=" mg8-bottom">彈出式選單</h4>
+                    <p class="mg12-bottom paragraph-medium">BH-tippy</p>
+                    <div id="componentCanvas" class="BH-frame-autolayout-b1 radius pd24 mg12-top">
+                        <div class="BH-frame-autolayout-align_center mobile-swap gp12-gp12">
+                            <div class="BH-tippy-top">
+                                <ul>
+                                    <li><a>選單選項</a></li>
+                                    <li><a>選單選項</a></li>
+                                    <li><a>選單選項</a></li>
+                                </ul>
+                            </div>
+                            <div class="BH-tippy-bottom">
+                                <ul>
+                                    <li><a>選單選項</a></li>
+                                    <li><a>選單選項</a></li>
+                                    <li><a>選單選項</a></li>
+                                </ul>
+                            </div>
+                            <div class="BH-tippy-top">
+                                <ul>
+                                    <li><a><i class="fa fa-heart-o"></i> 選單選項</a></li>
+                                    <li><a><i class="fa fa-heart-o"></i> 選單選項</a></li>
+                                    <li><a class="alert"><i class="fa fa-heart-o"></i> 選單選項</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <pre>
+                    <code>
+    &lt;div class="BH-tippy-top mg12-right"&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a&gt;選單選項&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a&gt;選單選項&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a&gt;選單選項&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;div class="BH-tippy-bottom mg12-right"&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a&gt;選單選項&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a&gt;選單選項&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a&gt;選單選項&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;div class="BH-tippy-top"&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a&gt;&lt;i class="fa fa-heart-o"&gt;&lt;/i&gt; 選單選項&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a&gt;&lt;i class="fa fa-heart-o"&gt;&lt;/i&gt; 選單選項&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a class="alert"&gt;&lt;i class="fa fa-heart-o"&gt;&lt;/i&gt; 選單選項&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;/div&gt;
+                    </code>
+                </pre>
+                </div>
+                <!--[輪播＋切換選單]-->
+                <div id="BH-carousel" class="BH-frame-f1-autolayout-columns pd20-pd24 mg16-bottom">
+                    <h4 class=" mg8-bottom">輪播 + 分頁</h4>
+                    <p class="mg12-bottom paragraph-medium">BH-carousel / BH-tab</p>
+                    <div id="componentCanvas" class="BH-frame-autolayout-b1 radius pd24 mg12-top">
+                        <div class="BH-frame-autolayout-column-align_start BH-carousel">
+                            <div class="BH-tab pd8">
+                                <ul id="tab-list" class="tab-list mg16-bottom">
+                                    <li class="tab-item is-active" data-tab-target="#tab1">新聞</li>
+                                    <li class="tab-item" data-tab-target="#tab2">投稿</li>
+                                    <li class="tab-item" data-tab-target="#tab3">文章</li>
+                                    <div class="tab-deco-bar"></div>
+                                </ul>
+                                <div id="tab-content">
+                                    <div id="tab1" class="BH-frame-autolayout gp4-gp12 tab-pane is-active">
+                                        <a href="" class="BH-frame-card-autolayout-column-hug">
+                                            <div class="BH-image_4x3">
+                                                <img src="BH-image/example.png" alt="">
+                                            </div>
+                                            <div class="BH-frame-f1 pd8-pd12">
+                                                <p class="paragraph-large-spacing-m mg8-bottom">第一段
+                                                </p>
+                                                <div class="BH-frame-autolayout">
+                                                    <div class="BH-interactive-s mg8-right">
+                                                        <img class="mg4-right" src="BH-icon/BH-like.svg">
+                                                        <span>999</span>
+                                                    </div>
+                                                    <div class="BH-interactive-s">
+                                                        <img class="mg4-right" src="BH-icon/BH-reply.svg"
+                                                            style="top: -1px;">
+                                                        <span>999</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="BH-tag-card">多平台
+                                                <span>投稿</span>
+                                            </div>
+                                        </a>
+                                        <a href="" class="BH-frame-card-autolayout-column-hug">
+                                            <div class="BH-image_4x3">
+                                                <img src="BH-image/example.png" alt="">
+                                            </div>
+                                            <div class="BH-frame-f1 pd8-pd12">
+                                                <p class="paragraph-large-spacing-m mg8-bottom">第一段
+                                                </p>
+                                                <div class="BH-frame-autolayout">
+                                                    <div class="BH-interactive-s mg8-right">
+                                                        <img class="mg4-right" src="BH-icon/BH-like.svg">
+                                                        <span>999</span>
+                                                    </div>
+                                                    <div class="BH-interactive-s">
+                                                        <img class="mg4-right" src="BH-icon/BH-reply.svg"
+                                                            style="top: -1px;">
+                                                        <span>999</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="BH-tag-card">多平台
+                                                <span>投稿</span>
+                                            </div>
+                                        </a>
+                                        <a href="" class="BH-frame-card-autolayout-column-hug">
+                                            <div class="BH-image_4x3">
+                                                <img src="BH-image/example.png" alt="">
+                                            </div>
+                                            <div class="BH-frame-f1 pd8-pd12">
+                                                <p class="paragraph-large-spacing-m mg8-bottom">第一段
+                                                </p>
+                                                <div class="BH-frame-autolayout">
+                                                    <div class="BH-interactive-s mg8-right">
+                                                        <img class="mg4-right" src="BH-icon/BH-like.svg">
+                                                        <span>999</span>
+                                                    </div>
+                                                    <div class="BH-interactive-s">
+                                                        <img class="mg4-right" src="BH-icon/BH-reply.svg"
+                                                            style="top: -1px;">
+                                                        <span>999</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="BH-tag-card">多平台
+                                                <span>投稿</span>
+                                            </div>
+                                        </a>
+                                        <a href="" class="BH-frame-card-autolayout-column-hug">
+                                            <div class="BH-image_4x3">
+                                                <img src="BH-image/example.png" alt="">
+                                            </div>
+                                            <div class="BH-frame-f1 pd8-pd12">
+                                                <p class="paragraph-large-spacing-m mg8-bottom">第一段
+                                                </p>
+                                                <div class="BH-frame-autolayout">
+                                                    <div class="BH-interactive-s mg8-right">
+                                                        <img class="mg4-right" src="BH-icon/BH-like.svg">
+                                                        <span>999</span>
+                                                    </div>
+                                                    <div class="BH-interactive-s">
+                                                        <img class="mg4-right" src="BH-icon/BH-reply.svg"
+                                                            style="top: -1px;">
+                                                        <span>999</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="BH-tag-card">多平台
+                                                <span>投稿</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div id="tab2" class="BH-frame-autolayout tab-pane gp4-gp12">
+                                        <a href="" class="BH-frame-card-autolayout-column-hug">
+                                            <div class="BH-image_4x3">
+                                                <img src="BH-image/example.png" alt="">
+                                            </div>
+                                            <div class="BH-frame-f1 pd8-pd12">
+                                                <p class="paragraph-large-spacing-m mg8-bottom">第二段
+                                                </p>
+                                                <div class="BH-frame-autolayout">
+                                                    <div class="BH-interactive-s mg8-right">
+                                                        <img class="mg4-right" src="BH-icon/BH-like.svg">
+                                                        <span>999</span>
+                                                    </div>
+                                                    <div class="BH-interactive-s">
+                                                        <img class="mg4-right" src="BH-icon/BH-reply.svg"
+                                                            style="top: -1px;">
+                                                        <span>999</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="BH-tag-card">多平台
+                                                <span>投稿</span>
+                                            </div>
+                                        </a>
+                                        <a href="" class="BH-frame-card-autolayout-column-hug">
+                                            <div class="BH-image_4x3">
+                                                <img src="BH-image/example.png" alt="">
+                                            </div>
+                                            <div class="BH-frame-f1 pd8-pd12">
+                                                <p class="paragraph-large-spacing-m mg8-bottom">第二段
+                                                </p>
+                                                <div class="BH-frame-autolayout">
+                                                    <div class="BH-interactive-s mg8-right">
+                                                        <img class="mg4-right" src="BH-icon/BH-like.svg">
+                                                        <span>999</span>
+                                                    </div>
+                                                    <div class="BH-interactive-s">
+                                                        <img class="mg4-right" src="BH-icon/BH-reply.svg"
+                                                            style="top: -1px;">
+                                                        <span>999</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="BH-tag-card">多平台
+                                                <span>投稿</span>
+                                            </div>
+                                        </a>
+                                        <a href="" class="BH-frame-card-autolayout-column-hug">
+                                            <div class="BH-image_4x3">
+                                                <img src="BH-image/example.png" alt="">
+                                            </div>
+                                            <div class="BH-frame-f1 pd8-pd12">
+                                                <p class="paragraph-large-spacing-m mg8-bottom">第二段
+                                                </p>
+                                                <div class="BH-frame-autolayout">
+                                                    <div class="BH-interactive-s mg8-right">
+                                                        <img class="mg4-right" src="BH-icon/BH-like.svg">
+                                                        <span>999</span>
+                                                    </div>
+                                                    <div class="BH-interactive-s">
+                                                        <img class="mg4-right" src="BH-icon/BH-reply.svg"
+                                                            style="top: -1px;">
+                                                        <span>999</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="BH-tag-card">多平台
+                                                <span>投稿</span>
+                                            </div>
+                                        </a>
+                                        <a href="" class="BH-frame-card-autolayout-column-hug">
+                                            <div class="BH-image_4x3">
+                                                <img src="BH-image/example.png" alt="">
+                                            </div>
+                                            <div class="BH-frame-f1 pd8-pd12">
+                                                <p class="paragraph-large-spacing-m mg8-bottom">第二段
+                                                </p>
+                                                <div class="BH-frame-autolayout">
+                                                    <div class="BH-interactive-s mg8-right">
+                                                        <img class="mg4-right" src="BH-icon/BH-like.svg">
+                                                        <span>999</span>
+                                                    </div>
+                                                    <div class="BH-interactive-s">
+                                                        <img class="mg4-right" src="BH-icon/BH-reply.svg"
+                                                            style="top: -1px;">
+                                                        <span>999</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="BH-tag-card">多平台
+                                                <span>投稿</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div id="tab3" class="BH-frame-autolayout tab-pane gp4-gp12">
+                                        <a href="" class="BH-frame-card-autolayout-column-hug">
+                                            <div class="BH-image_4x3">
+                                                <img src="BH-image/example.png" alt="">
+                                            </div>
+                                            <div class="BH-frame-f1 pd8-pd12">
+                                                <p class="paragraph-large-spacing-m mg8-bottom">第三段
+                                                </p>
+                                                <div class="BH-frame-autolayout">
+                                                    <div class="BH-interactive-s mg8-right">
+                                                        <img class="mg4-right" src="BH-icon/BH-like.svg">
+                                                        <span>999</span>
+                                                    </div>
+                                                    <div class="BH-interactive-s">
+                                                        <img class="mg4-right" src="BH-icon/BH-reply.svg"
+                                                            style="top: -1px;">
+                                                        <span>999</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="BH-tag-card">多平台
+                                                <span>投稿</span>
+                                            </div>
+                                        </a>
+                                        <a href="" class="BH-frame-card-autolayout-column-hug">
+                                            <div class="BH-image_4x3">
+                                                <img src="BH-image/example.png" alt="">
+                                            </div>
+                                            <div class="BH-frame-f1 pd8-pd12">
+                                                <p class="paragraph-large-spacing-m mg8-bottom">第三段
+                                                </p>
+                                                <div class="BH-frame-autolayout">
+                                                    <div class="BH-interactive-s mg8-right">
+                                                        <img class="mg4-right" src="BH-icon/BH-like.svg">
+                                                        <span>999</span>
+                                                    </div>
+                                                    <div class="BH-interactive-s">
+                                                        <img class="mg4-right" src="BH-icon/BH-reply.svg"
+                                                            style="top: -1px;">
+                                                        <span>999</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="BH-tag-card">多平台
+                                                <span>投稿</span>
+                                            </div>
+                                        </a>
+                                        <a href="" class="BH-frame-card-autolayout-column-hug">
+                                            <div class="BH-image_4x3">
+                                                <img src="BH-image/example.png" alt="">
+                                            </div>
+                                            <div class="BH-frame-f1 pd8-pd12">
+                                                <p class="paragraph-large-spacing-m mg8-bottom">第三段
+                                                </p>
+                                                <div class="BH-frame-autolayout">
+                                                    <div class="BH-interactive-s mg8-right">
+                                                        <img class="mg4-right" src="BH-icon/BH-like.svg">
+                                                        <span>999</span>
+                                                    </div>
+                                                    <div class="BH-interactive-s">
+                                                        <img class="mg4-right" src="BH-icon/BH-reply.svg"
+                                                            style="top: -1px;">
+                                                        <span>999</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="BH-tag-card">多平台
+                                                <span>投稿</span>
+                                            </div>
+                                        </a>
+                                        <a href="" class="BH-frame-card-autolayout-column-hug">
+                                            <div class="BH-image_4x3">
+                                                <img src="BH-image/example.png" alt="">
+                                            </div>
+                                            <div class="BH-frame-f1 pd8-pd12">
+                                                <p class="paragraph-large-spacing-m mg8-bottom">第三段
+                                                </p>
+                                                <div class="BH-frame-autolayout">
+                                                    <div class="BH-interactive-s mg8-right">
+                                                        <img class="mg4-right" src="BH-icon/BH-like.svg">
+                                                        <span>999</span>
+                                                    </div>
+                                                    <div class="BH-interactive-s">
+                                                        <img class="mg4-right" src="BH-icon/BH-reply.svg"
+                                                            style="top: -1px;">
+                                                        <span>999</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="BH-tag-card">多平台
+                                                <span>投稿</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-btn-left"><i class="fa fa-angle-left"></i></div>
+                            <div class="carousel-btn-right"><i class="fa fa-angle-right"></i></div>
+                            <div class="carousel-pagination gp4">
+                                <a href="" class="active"></a>
+                                <a href=""></a>
+                                <a href=""></a>
+                                <a href=""></a>
+                            </div>
+                            <script>
+                                (function () {
+                                    const tabList = document.getElementById("tab-list");
+                                    const tabContent = document.getElementById("tab-content");
+                                    const tabItems = document.querySelectorAll(".tab-item");
+                                    const decoBar = document.querySelector(".tab-deco-bar");
+
+                                    // Set the initial position and width of the bar
+                                    const active = tabList.querySelector('.is-active');
+                                    decoBar.style.transform = `translateX(${active.offsetLeft}px)`;
+                                    decoBar.style.width = `${active.offsetWidth}px`;
+
+                                    tabList.addEventListener("mouseover", function (event) {
+                                        // Check if the target element is an li element
+                                        const target = event.target.closest("li");
+                                        if (target) {
+                                            // Set the position and width of the bar based on the target li element
+                                            decoBar.style.transform = `translateX(${target.offsetLeft}px)`;
+                                            decoBar.style.width = `${target.offsetWidth}px`;
+                                        }
+                                    });
+
+                                    // Added an event listener for the mouseleave event on the ul element
+                                    tabList.addEventListener("mouseleave", function (event) {
+                                        // Set the position and width of the bar back to the initial li element with class "is-active"
+                                        const active = tabList.querySelector('.is-active');
+                                        decoBar.style.transform = `translateX(${active.offsetLeft}px)`;
+                                        decoBar.style.width = `${active.offsetWidth}px`;
+                                    });
+
+                                    // Added an event listener for the click event on the tab items
+                                    tabItems.forEach((tab) => {
+                                        tab.addEventListener("click", (event) => {
+                                            const target = event.currentTarget;
+                                            const tabTarget = target.getAttribute("data-tab-target");
+                                            const activeTab = document.querySelector(".tab-item.is-active");
+                                            const activeContent = document.querySelector(".tab-pane.is-active");
+                                            const targetTab = document.querySelector(tabTarget);
+
+                                            // Remove the active class from the current active tab and tab item
+                                            active.classList.remove("is-active");
+                                            activeTab.classList.remove("is-active");
+                                            activeContent.classList.remove("is-active");
+
+                                            // Add the active class to the clicked tab item and target tab
+                                            target.classList.add("is-active");
+                                            targetTab.classList.add("is-active");
+
+                                            // Set the position and width of the deco bar based on the clicked tab item
+                                            decoBar.style.transform = `translateX(${target.offsetLeft}px)`;
+                                            decoBar.style.width = `${target.offsetWidth}px`;
+                                        });
+                                    });
+                                })();
+
+                            </script>
+                        </div>
+                    </div>
+                    <pre>
+                    <code>
+    &lt;div class="BH-tab pd8"&gt;
+    &lt;ul id="tab-list" class="tab-list mg16-bottom"&gt;
+        &lt;li class="tab-item is-active" data-tab-target="#tab1"&gt;新聞&lt;/li&gt;
+        &lt;li class="tab-item" data-tab-target="#tab2"&gt;投稿&lt;/li&gt;
+        &lt;li class="tab-item" data-tab-target="#tab3"&gt;文章&lt;/li&gt;
+        &lt;div class="tab-deco-bar"&gt;&lt;/div&gt;
+    &lt;/ul&gt;
+    &lt;div id="tab-content"&gt;
+        &lt;div id="tab1" class="BH-frame-autolayout gp4-gp12 tab-pane is-active"&gt;
+    
+        &lt;div id="tab2" class="BH-frame-autolayout tab-pane gp4-gp12"&gt;
+    
+        &lt;/div&gt;
+        &lt;div id="tab3" class="BH-frame-autolayout tab-pane gp4-gp12"&gt;
+    
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+    (function () {
+        const tabList = document.getElementById("tab-list");
+        const tabContent = document.getElementById("tab-content");
+        const tabItems = document.querySelectorAll(".tab-item");
+        const decoBar = document.querySelector(".tab-deco-bar");
+    
+        // Set the initial position and width of the bar
+        const active = tabList.querySelector('.is-active');
+        decoBar.style.transform = `translateX(${active.offsetLeft}px)`;
+        decoBar.style.width = `${active.offsetWidth}px`;
+    
+        tabList.addEventListener("mouseover", function (event) {
+            // Check if the target element is an li element
+            const target = event.target.closest("li");
+            if (target) {
+                // Set the position and width of the bar based on the target li element
+                decoBar.style.transform = `translateX(${target.offsetLeft}px)`;
+                decoBar.style.width = `${target.offsetWidth}px`;
+            }
+        });
+    
+        // Added an event listener for the mouseleave event on the ul element
+        tabList.addEventListener("mouseleave", function (event) {
+            // Set the position and width of the bar back to the initial li element with class "is-active"
+            const active = tabList.querySelector('.is-active');
+            decoBar.style.transform = `translateX(${active.offsetLeft}px)`;
+            decoBar.style.width = `${active.offsetWidth}px`;
+        });
+    
+        // Added an event listener for the click event on the tab items
+        tabItems.forEach((tab) => {
+            tab.addEventListener("click", (event) => {
+                const target = event.currentTarget;
+                const tabTarget = target.getAttribute("data-tab-target");
+                const activeTab = document.querySelector(".tab-item.is-active");
+                const activeContent = document.querySelector(".tab-pane.is-active");
+                const targetTab = document.querySelector(tabTarget);
+    
+                // Remove the active class from the current active tab and tab item
+                active.classList.remove("is-active");
+                activeTab.classList.remove("is-active");
+                activeContent.classList.remove("is-active");
+    
+                // Add the active class to the clicked tab item and target tab
+                target.classList.add("is-active");
+                targetTab.classList.add("is-active");
+    
+                // Set the position and width of the deco bar based on the clicked tab item
+                decoBar.style.transform = `translateX(${target.offsetLeft}px)`;
+                decoBar.style.width = `${target.offsetWidth}px`;
+            });
+        });
+    })();
+    
+    &lt;/script&gt;
+                    </code>
+                    </pre>
+                    <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="100%" height="250"
+                        src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FSQ5Es3bJY0S4J1PDvJKiGV%2FWEB%25EF%25BC%259AComponent%3Fnode-id%3D39%253A639%26t%3D5lg8ZJC1YvJSyBsy-1"
+                        allowfullscreen></iframe>
+                </div>
+                <div id="BH-dialogify" class="BH-frame-autolayout-column-f1 pd24-pd32 mg16-bottom">
+                    <h4 class=" mg8-bottom">彈出視窗</h4>
+                    <p class="mg12-bottom paragraph-medium">BH-dialogify</p>
+                    <div id="componentCanvas" class="BH-frame-autolayout-b1 radius pd24 mg12-top">
+                        <dialog id="dialogify_2" class="BH-dialogify" open=""
+                            style="position: relative;inset: unset;transform: unset;">
+                            <form method="dialog">
+                                <div class="BH-dialogify__content BH-dialogify__fixedwidth">
+                                    <div class="BH-frame-autolayout-column">
+                                        <h5 class="BH-dialogify_title mg16-bottom"><img
+                                                src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/PjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iJiN4NTcxNjsmI3g1QzY0O18xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDEyIDEwIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAxMiAxMDsiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxnPjxyZWN0IHk9IjEiIHN0eWxlPSJmaWxsOiM4RDhEOEQ7IiB3aWR0aD0iMyIgaGVpZ2h0PSIzIi8+PHJlY3QgeT0iNyIgc3R5bGU9ImZpbGw6IzhEOEQ4RDsiIHdpZHRoPSIzIiBoZWlnaHQ9IjMiLz48cmVjdCB4PSIzIiB5PSI0IiBzdHlsZT0iZmlsbDojOEQ4RDhEOyIgd2lkdGg9IjMiIGhlaWdodD0iMyIvPjwvZz48L3N2Zz4=">
+                                            標題
+                                        </h5>
+                                        <div class="BH-dialogify__body mg12-bottom">
+                                            <p class="p-large-sapcing-m">Lorem ipsum dolor sit amet consectetur
+                                                adipisicing elit. Libero
+                                                laboriosam incidunt quam dicta minima dolor earum. Quisquam officiis sit
+                                                quis alias
+                                                necessitatibus amet, culpa aperiam corrupti illo exercitationem sed
+                                                iusto.</p>
+                                        </div>
+                                        <div class="BH-frame-autolayout-column mg12-bottom">
+                                            <input type="text" class="BH-form_control mg8-bottom" name="title"
+                                                placeholder="輸入文字">
+                                            <textarea type="text" class="BH-form_control" name="edit-content"
+                                                placeholder="輸入文字"></textarea>
+                                        </div>
+                                        <div class="BH-frame-autolayout-justify_end">
+                                            <a class="BH-btn_main mg4-right">取消</a>
+                                            <a class="BH-btn_main-primary mg4-right">確定</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <a class="BH-dialogify__close">
+                                <img
+                                    src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMTYgMTYiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDE2IDE2OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHN0eWxlIHR5cGU9InRleHQvY3NzIj4uc3Qwe2ZpbGw6IzA1NTY2Njt9PC9zdHlsZT48cmVjdCB4PSIzLjEiIHk9IjEiIGNsYXNzPSJzdDAiIHdpZHRoPSIxLjciIGhlaWdodD0iMSIvPjxyZWN0IHg9IjIuMSIgeT0iMi4xIiBjbGFzcz0ic3QwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIi8+PHJlY3QgeD0iMSIgeT0iMy4xIiBjbGFzcz0ic3QwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxLjciLz48cmVjdCB4PSIxIiB5PSIxMS4xIiBjbGFzcz0ic3QwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxLjciLz48cmVjdCB4PSIyLjEiIHk9IjEyLjkiIGNsYXNzPSJzdDAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiLz48cmVjdCB4PSIzLjEiIHk9IjEzLjkiIGNsYXNzPSJzdDAiIHdpZHRoPSIxLjciIGhlaWdodD0iMSIvPjxnPjxyZWN0IHg9IjQuOSIgY2xhc3M9InN0MCIgd2lkdGg9IjYuMyIgaGVpZ2h0PSIxIi8+PC9nPjxyZWN0IHg9IjQuOSIgeT0iMTUiIGNsYXNzPSJzdDAiIHdpZHRoPSI2LjMiIGhlaWdodD0iMSIvPjxyZWN0IHk9IjQuOSIgY2xhc3M9InN0MCIgd2lkdGg9IjEiIGhlaWdodD0iNi4zIi8+PHJlY3QgeD0iMTEuMSIgeT0iMSIgY2xhc3M9InN0MCIgd2lkdGg9IjEuNyIgaGVpZ2h0PSIxIi8+PHJlY3QgeD0iMTIuOSIgeT0iMi4xIiBjbGFzcz0ic3QwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIi8+PHJlY3QgeD0iMTMuOSIgeT0iMy4xIiBjbGFzcz0ic3QwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxLjciLz48cmVjdCB4PSIxMy45IiB5PSIxMS4xIiBjbGFzcz0ic3QwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxLjciLz48cmVjdCB4PSIxMi45IiB5PSIxMi45IiBjbGFzcz0ic3QwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIi8+PHJlY3QgeD0iMTEuMSIgeT0iMTMuOSIgY2xhc3M9InN0MCIgd2lkdGg9IjEuNyIgaGVpZ2h0PSIxIi8+PHJlY3QgeD0iMTUiIHk9IjQuOSIgY2xhc3M9InN0MCIgd2lkdGg9IjEiIGhlaWdodD0iNi4zIi8+PHBvbHlnb24gY2xhc3M9InN0MCIgcG9pbnRzPSI5LjcsMy44IDkuNyw0LjkgOC43LDQuOSA4LjcsNS45IDcuMyw1LjkgNy4zLDQuOSA2LjMsNC45IDYuMywzLjggMy44LDMuOCAzLjgsNS4yIDQuOSw1LjIgNC45LDYuMyA1LjksNi4zIDUuOSw3LjMgNyw3LjMgNyw4LjMgNS45LDguMyA1LjksOS40IDQuOSw5LjQgNC45LDEwLjQgMy44LDEwLjQgMy44LDEwLjggMy44LDExLjggNi4zLDExLjggNi4zLDEwLjggNy4zLDEwLjggNy4zLDkuNyA4LjcsOS43IDguNywxMC44IDkuNywxMC44IDkuNywxMS44IDEyLjIsMTEuOCAxMi4yLDEwLjQgMTEuMSwxMC40IDExLjEsOS40IDEwLjEsOS40IDEwLjEsOC4zIDksOC4zIDksNy4zIDEwLjEsNy4zIDEwLjEsNi4zIDExLjEsNi4zIDExLjEsNS4yIDEyLjIsNS4yIDEyLjIsNC45IDEyLjIsMy44ICIvPjwvc3ZnPg==">
+                            </a>
+                        </dialog>
+                    </div>
+                    <pre>
+                        <code>
+&lt;dialog id="dialogify" class="BH-dialogify fixed" open=""&gt;
+    &lt;form method="dialog"&gt;
+        &lt;div class="BH-dialogify__content BH-dialogify__fixedwidth"&gt;
+            &lt;div class="BH-frame-autolayout-column"&gt;
+                &lt;h5 class="BH-dialogify_title mg16-bottom"&gt;&lt;img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/PjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iJiN4NTcxNjsmI3g1QzY0O18xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDEyIDEwIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAxMiAxMDsiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxnPjxyZWN0IHk9IjEiIHN0eWxlPSJmaWxsOiM4RDhEOEQ7IiB3aWR0aD0iMyIgaGVpZ2h0PSIzIi8+PHJlY3QgeT0iNyIgc3R5bGU9ImZpbGw6IzhEOEQ4RDsiIHdpZHRoPSIzIiBoZWlnaHQ9IjMiLz48cmVjdCB4PSIzIiB5PSI0IiBzdHlsZT0iZmlsbDojOEQ4RDhEOyIgd2lkdGg9IjMiIGhlaWdodD0iMyIvPjwvZz48L3N2Zz4="&gt;
+                    標題
+                &lt;/h5&gt;
+                &lt;div class="BH-dialogify__body mg12-bottom"&gt;
+                    &lt;p class="p-large-sapcing-m"&gt;Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero
+                        laboriosam incidunt quam dicta minima dolor earum. Quisquam officiis sit quis alias
+                        necessitatibus amet, culpa aperiam corrupti illo exercitationem sed iusto.&lt;/p&gt;
+                &lt;/div&gt;
+                &lt;div class="BH-frame-autolayout-column mg12-bottom"&gt;
+                    &lt;input type="text" class="BH-form_control mg8-bottom" name="title" placeholder="輸入文字"&gt;
+                    &lt;textarea type="text" class="BH-form_control" name="edit-content" placeholder="輸入文字"&gt;&lt;/textarea&gt;
+                &lt;/div&gt;
+                &lt;div class="BH-frame-autolayout-justify_end"&gt;
+                    &lt;a class="BH-btn_main mg4-right"&gt;取消&lt;/a&gt;
+                    &lt;a class="BH-btn_main-primary mg4-right"&gt;確定&lt;/a&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/form&gt;
+    &lt;a class="BH-dialogify__close"&gt;
+        &lt;img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMTYgMTYiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDE2IDE2OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHN0eWxlIHR5cGU9InRleHQvY3NzIj4uc3Qwe2ZpbGw6IzA1NTY2Njt9PC9zdHlsZT48cmVjdCB4PSIzLjEiIHk9IjEiIGNsYXNzPSJzdDAiIHdpZHRoPSIxLjciIGhlaWdodD0iMSIvPjxyZWN0IHg9IjIuMSIgeT0iMi4xIiBjbGFzcz0ic3QwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIi8+PHJlY3QgeD0iMSIgeT0iMy4xIiBjbGFzcz0ic3QwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxLjciLz48cmVjdCB4PSIxIiB5PSIxMS4xIiBjbGFzcz0ic3QwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxLjciLz48cmVjdCB4PSIyLjEiIHk9IjEyLjkiIGNsYXNzPSJzdDAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiLz48cmVjdCB4PSIzLjEiIHk9IjEzLjkiIGNsYXNzPSJzdDAiIHdpZHRoPSIxLjciIGhlaWdodD0iMSIvPjxnPjxyZWN0IHg9IjQuOSIgY2xhc3M9InN0MCIgd2lkdGg9IjYuMyIgaGVpZ2h0PSIxIi8+PC9nPjxyZWN0IHg9IjQuOSIgeT0iMTUiIGNsYXNzPSJzdDAiIHdpZHRoPSI2LjMiIGhlaWdodD0iMSIvPjxyZWN0IHk9IjQuOSIgY2xhc3M9InN0MCIgd2lkdGg9IjEiIGhlaWdodD0iNi4zIi8+PHJlY3QgeD0iMTEuMSIgeT0iMSIgY2xhc3M9InN0MCIgd2lkdGg9IjEuNyIgaGVpZ2h0PSIxIi8+PHJlY3QgeD0iMTIuOSIgeT0iMi4xIiBjbGFzcz0ic3QwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIi8+PHJlY3QgeD0iMTMuOSIgeT0iMy4xIiBjbGFzcz0ic3QwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxLjciLz48cmVjdCB4PSIxMy45IiB5PSIxMS4xIiBjbGFzcz0ic3QwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxLjciLz48cmVjdCB4PSIxMi45IiB5PSIxMi45IiBjbGFzcz0ic3QwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIi8+PHJlY3QgeD0iMTEuMSIgeT0iMTMuOSIgY2xhc3M9InN0MCIgd2lkdGg9IjEuNyIgaGVpZ2h0PSIxIi8+PHJlY3QgeD0iMTUiIHk9IjQuOSIgY2xhc3M9InN0MCIgd2lkdGg9IjEiIGhlaWdodD0iNi4zIi8+PHBvbHlnb24gY2xhc3M9InN0MCIgcG9pbnRzPSI5LjcsMy44IDkuNyw0LjkgOC43LDQuOSA4LjcsNS45IDcuMyw1LjkgNy4zLDQuOSA2LjMsNC45IDYuMywzLjggMy44LDMuOCAzLjgsNS4yIDQuOSw1LjIgNC45LDYuMyA1LjksNi4zIDUuOSw3LjMgNyw3LjMgNyw4LjMgNS45LDguMyA1LjksOS40IDQuOSw5LjQgNC45LDEwLjQgMy44LDEwLjQgMy44LDEwLjggMy44LDExLjggNi4zLDExLjggNi4zLDEwLjggNy4zLDEwLjggNy4zLDkuNyA4LjcsOS43IDguNywxMC44IDkuNywxMC44IDkuNywxMS44IDEyLjIsMTEuOCAxMi4yLDEwLjQgMTEuMSwxMC40IDExLjEsOS40IDEwLjEsOS40IDEwLjEsOC4zIDksOC4zIDksNy4zIDEwLjEsNy4zIDEwLjEsNi4zIDExLjEsNi4zIDExLjEsNS4yIDEyLjIsNS4yIDEyLjIsNC45IDEyLjIsMy44ICIvPjwvc3ZnPg=="&gt;
+    &lt;/a&gt;
+&lt;/dialog&gt;
+                        </code>
+                    </pre>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+                $('a[href^="#"]').on('click', function(e) {
+        // Prevent default anchor click behavior
+        e.preventDefault();
+        // Get the target element ID from the href attribute
+        var target = $(this).attr('href');
+        // Set amount of offset from top of page (in pixels)
+        var offset = 50;
+        // Scroll to target element with offset
+        $('html, body').animate({
+            scrollTop: $(target).offset().top - offset
+        }, 400);
+        });
+
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#ham_m").on("click", function () {
+                $("#ham_m").toggleClass("active");
+            });
+            $(".backdrop").on("click", function () {
+                $(".BH-mobile_menu").removeClass("active");
+            });
+            $("a").on("click", function () {
+                $(".BH-mobile_menu").removeClass("active");
+            });
+        });
+    </script>
+    <script>
+        const codeSwitch = document.querySelector('#codeToggle');
+        const codeElements = document.querySelectorAll('pre');
+        const canvasElements = document.querySelectorAll('#componentCanvas');
+
+        codeSwitch.addEventListener('change', function () {
+            codeElements.forEach(function (code) {
+                if (codeSwitch.checked) {
+                    code.classList.add('show');
+                } else {
+                    code.classList.remove('show');
+                }
+            });
+            canvasElements.forEach(function (canvas) {
+                if (codeSwitch.checked) {
+                    canvas.classList.add('radius_fix');
+                    canvas.classList.remove('radius');
+                } else {
+                    canvas.classList.remove('radius_fix');
+                    canvas.classList.add('radius');
+                }
+            });
+        });
+        
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="https://unpkg.com/@highlightjs/cdn-assets@11.7.0/languages/go.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+// -------------------------------------
+//   BH-CAROUSEL
+// -------------------------------------
+
+@use "../BH-style" as *;
+
+
+[class*=#{$prefix}-carousel] {
+    overflow: hidden;
+    [class*=carousel-btn] {
+        cursor: pointer;
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 30px;
+        height: 60px;
+        background: var(--primary-light);
+        transform: translateY(-50%);
+        top: 55%;
+        z-index: z-layers(cover);
+        transition: 0.3s;
+        opacity: 70%;
+
+        &[class*=-left] {
+            border-radius: 0 $radius-4 $radius-4 0;
+            left: -24px;
+        }
+        &[class*=-right] {
+            border-radius: $radius-4 0 0 $radius-4;
+            right: -24px;
+        }
+    }
+    [class*=carousel-pagination] {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 16px;
+        gap: 4px;
+        a {
+            width: 5px;
+            height: 5px;
+            background: var(--quaternary-text);
+            border-radius: $radius-max;
+            &.active {
+                background: var(--primary-light);
+            }
+        }
+    }
+    &:hover {
+        [class*=carousel-btn] {
+            opacity: 90%;
+            &[class*=-left] {
+                left: 0;
+            }
+            &[class*=-right] {
+                right: 0;
+            }
+        }
+    }
+    i {
+        color: var(--purewhite);
+        font-weight: 700;
+        font-size: 20px;
+    }
+}

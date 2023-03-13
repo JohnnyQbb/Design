@@ -1,0 +1,48 @@
+// -------------------------------------
+//   BH-IMAGE
+// -------------------------------------
+
+@use "../BH-style" as *;
+
+
+[class*=#{$prefix}-image] {
+    overflow: hidden;
+
+    &[class*=_1x1] {
+        aspect-ratio: 1/1;
+    }
+    &[class*=_4x3] {
+        aspect-ratio: 4/3;
+    }
+    &[class*=_16x9] {
+        aspect-ratio: 16/9;
+    }
+    &[class*=_21x9] {
+        aspect-ratio: 21/9;
+    }
+    &[class*=-xl] {
+        max-width: 240px;
+    }
+    &[class*=-l] {
+        max-width: 180px;
+    }
+    &[class*=-m] {
+        max-width: 120px;
+    }
+    &[class*=-s] {
+        max-width: 60px;
+    }
+    &[class*=-xs] {
+        max-width: 30px;
+    }
+    img {
+        width: 100%;
+        height: auto;
+        transition: transform 0.5s ease-in-out;
+    }
+    &:hover {
+        img {
+            transform: scale(1.1);
+        }
+    }
+}

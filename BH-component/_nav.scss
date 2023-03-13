@@ -1,0 +1,82 @@
+// -------------------------------------
+//   BH-MENU
+// -------------------------------------
+
+@use "../BH-style" as *;
+
+[class*=#{$prefix}-menu] {
+    position: sticky;
+    top: 0;
+    height: 40px;
+    width: 100%;
+    display: flex;
+    padding: 0 20px;
+    background-color: var(--f1-bg);
+    align-items: center;
+    z-index: z-layers(nav);
+    overflow: hidden;
+    @include media(mobile_land) {
+        padding: 0;
+    }
+
+    &[class*=-between] {
+        justify-content: space-between;
+    }
+
+    ul {
+        display: flex;
+        align-items: center;
+        height: 40px;
+
+        li {
+            a {
+                padding: 0 12px 0 16px;
+                display: inline-block;
+                color: var(--secondary-text);
+
+                &::before {
+                    content: "";
+                    display: inline-block;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 1px;
+                    height: 16px;
+                    background: var(--primary-border);
+                }
+
+                &:hover {
+                    color: var(--primary);
+                }
+            }
+
+            &:first-child {
+                a {
+                    &::before {
+                        display: none;
+                    }
+                }
+            }
+
+            &.is-active {
+                a {
+                    color: var(--primary);
+                    font-weight: 500;
+                }
+            }
+
+        }
+        @include media (mobile_land) {
+            display: none;
+        }
+        .bar {
+            position: absolute;
+            bottom: 0px;
+            height: 4px;
+            background-color: var(--primary);
+            border-radius: 2px;
+            transition: all 0.3s ease-in-out;
+            @include Shadow-Color;
+        }
+    }
+}

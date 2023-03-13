@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW" data-theme="light">
+
+</html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BAHA_COMPONENT</title>
+    <meta property="og:title" content="巴哈姆特電玩資訊站" />
+    <meta property="og:image" content="https://i2.bahamut.com.tw/bahaLOGO_1200x630.jpg" />
+    <meta name="thumbnail" content="https://i2.bahamut.com.tw/bahaLOGO_1200x630.jpg" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Teko:300,400">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <!---->
+    <link rel="stylesheet" href="component_library.css">
+</head>
+
+<body>
+    <div class="BH-container">
+        <!--[主欄位]-->
+        <div class="BH-mobile_menu">
+            <div class="BH-frame-autolayout-align_center mg16-bottom">
+                <div id="ham_m" class="ham"><i class="fa fa-bars"></i></div>
+                <script>
+                    $(document).ready(function () {
+                        $("#ham_m").on("click", function () {
+                            $("#ham_m").toggleClass("active");
+                        });
+                    });
+                </script>
+                <div href="" class="BH-logo"></div>
+            </div>
+            <ul>
+                <li><a href="BH-intro.html">Intro</a></li>
+                <li class="is-active"><a href="BH-style.html">Style</a></li>
+                <li><a href="BH-component.html">Component</a></li>
+                <li><a href="BH-card.html">Card</a></li>
+                <div id='bar' class="bar"></div>
+            </ul>
+            <hr class="divider mg12-top mg16-bottom">
+            <ul>
+                <li><a href="#primaryColor">Primary Color</a></li>
+                <li><a href="#textColor">Text Color</a></li>
+                <li><a href="#backgroundColor">Background Color</a></li>
+                <li><a href="#borderColor">Border Color</a></li>
+                <li><a href="#function-Color">Function Color</a></li>
+                <li><a href="#fontStyle">Font Style</a></li>
+                <li><a href="#spacingSystem">Spacing System</a></li>
+                <li><a href="#boxShadow">Box-Shadow</a></li>
+                <li><a href="#designFile">Design File</a></li>
+            </ul>
+        </div>
+        <div class="backdrop"></div>
+        <div class="BH-frame-autolayout-column-fill-align_center">
+            <div class="BH-frame-autolayout-align_center-between"
+                style="position: sticky;top: 0;width: 100%;height: 40px;z-index: 10;background-color: var(--base-bg);">
+                <div class="BH-frame-autolayout-align_center show_tablet_land">
+                    <div class="ham"><i class="fa fa-bars"></i></div>
+                    <script>
+                        $(document).ready(function () {
+                            $(".ham").on("click", function () {
+                                $(".BH-mobile_menu").toggleClass("active");
+                            });
+                        });
+                    </script>
+                    <div href="" class="BH-logo"></div>
+                </div>
+                <div class="BH-frame-autolayout-align_center">
+                    <div class="BH-switch pd4-pd4">
+                        <i class="fa fa-code mg8-right"></i>
+                        <label>
+                            <input id="codeToggle" type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="BH-switch pd4-pd4">
+                        <i class="fa fa-universal-access mg8-right"></i>
+                        <label>
+                            <input id="accessibilityToggle" type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <script>
+                        const toggleSwitch = document.querySelector('#accessibilityToggle');
+                        const body = document.querySelector('body');
+
+                        toggleSwitch.addEventListener('change', function () {
+                            if (this.checked) {
+                                body.classList.add('accessibility-filter');
+                            } else {
+                                body.classList.remove('accessibility-filter');
+                            }
+                        });
+                    </script>
+                    <div class="BH-switch pd4-pd4">
+                        <i class="fa fa-moon-o mg8-right"></i>
+                        <label>
+                            <input id="themeToggle" type="checkbox" checked="checked">
+                            <span class="slider"></span>
+                        </label>
+                        <script>
+                            const myDiv = $("html");
+                            const Toggle = $("#themeToggle");
+                            const currentTheme = localStorage.getItem("theme");
+
+                            if (currentTheme) {
+                                myDiv.attr("data-theme", currentTheme);
+                                if (currentTheme === "light") {
+                                    Toggle.prop("checked", false);
+                                }
+                            }
+
+                            Toggle.change(function () {
+                                if ($(this).is(":checked")) {
+                                    myDiv.attr("data-theme", "dark");
+                                    localStorage.setItem("theme", "dark");
+                                } else {
+                                    myDiv.attr("data-theme", "light");
+                                    localStorage.setItem("theme", "light");
+                                }
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>
+            <div class="BH-wrapper-main BH-frame-autolayout">
+                <!--[Primary-Color]-->
+                <div class="BH-frame-autolayout-column-f1 pd20-pd24 mg16-bottom">
+                    <div id="primaryColor" class="BH-frame-autolayout-column mg24-bottom">
+                        <h3 class="mg8-bottom">Primary Color</h3>
+                        <p class="mg12-bottom paragraph-medium">主色</p>
+                        <div class="BH-frame-autolayout gp8-gp12 mg12-bottom tablet-swap">
+                            <a href="" class="BH-frame-card-autolayout-column tablet-swap">
+                                <div class="BH-frame pd48" style="background-color: var(--primary-transparent);"></div>
+                                <div class="BH-frame-autolayout-column-between  pd8-pd12">
+                                    <h4 class="mg12-bottom">Transparent</h4>
+                                    <div class="BH-frame-autolayout-column mobile_land-swap">
+                                        <p id="primaryTransparent" data-theme="light"
+                                            class="paragraph-medium-spacing-m mg4-right"></p>
+                                        <p class="paragraph-medium-spacing-m-note"> (--primary-transparent)</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="" class="BH-frame-card-autolayout-column tablet-swap">
+                                <div class="BH-frame pd48" style="background-color: var(--primary-light);"></div>
+                                <div class="BH-frame-autolayout-column-between  pd8-pd12">
+                                    <h4 class="mg12-bottom">Light</h4>
+                                    <div class="BH-frame-autolayout-column mobile_land-swap">
+                                        <p id="primaryLight" data-theme="light"
+                                            class="paragraph-medium-spacing-m mg4-right"></p>
+                                        <p class="paragraph-medium-spacing-m-note"> (--primar-light)</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="" class="BH-frame-card-autolayout-column tablet-swap">
+                                <div class="BH-frame pd48" style="background-color: var(--primary);"></div>
+                                <div class="BH-frame-autolayout-column-between pd8-pd12">
+                                    <h4 class="mg12-bottom">Default</h4>
+                                    <div class="BH-frame-autolayout-column mobile_land-swap">
+                                        <p id="primaryDefault" data-theme="light"
+                                            class="paragraph-medium-spacing-m mg4-right"></p>
+                                        <p class="paragraph-medium-spacing-m-note"> (--primary)</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="" class="BH-frame-card-autolayout-column tablet-swap">
+                                <div class="BH-frame pd48" style="background-color: var(--primary-dark);"></div>
+                                <div class="BH-frame-autolayout-column-between pd8-pd12">
+                                    <h4 class="mg12-bottom">Dark</h4>
+                                    <div class="BH-frame-autolayout-column mobile_land-swap">
+                                        <p id="primaryHeavy" data-theme="light"
+                                            class="paragraph-medium-spacing-m mg4-right"></p>
+                                        <p class="paragraph-medium-spacing-m-note"> (--primary)</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <!--[Text-Color]-->
+                    <div id="textColor" class="BH-frame-autolayout-column mg24-bottom">
+                        <h3 class="mg8-bottom">Text Color</h3>
+                        <p class="mg12-bottom paragraph-medium">文字顏色</p>
+                        <div class="BH-frame-autolayout gp8-gp12 mg12-bottom tablet-swap">
+                            <a href="" class="BH-frame-card-autolayout-column tablet-swap">
+                                <div class="BH-frame pd48" style="background-color: var(--primary-text);"></div>
+                                <div class="BH-frame-autolayout-column-between  pd8-pd12">
+                                    <h4 class="mg12-bottom">Heading</h4>
+                                    <div class="BH-frame-autolayout-column mobile_land-swap">
+                                        <p id="textHeading" data-theme="light" class="paragraph-medium-spacing-m mg4-right">
+                                        </p>
+                                        <p class="paragraph-medium-spacing-m-note"> (--primar-text)</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="" class="BH-frame-card-autolayout-column tablet-swap">
+                                <div class="BH-frame pd48" style="background-color: var(--secondary-text);"></div>
+                                <div class="BH-frame-autolayout-column-between pd8-pd12">
+                                    <h4 class="mg12-bottom">Paragraph</h4>
+                                    <div class="BH-frame-autolayout-column mobile_land-swap">
+                                        <p id="textParagraph" data-theme="light"
+                                            class="paragraph-medium-spacing-m mg4-right"></p>
+                                        <p class="paragraph-medium-spacing-m-note"> (--secondary-text)</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="" class="BH-frame-card-autolayout-column tablet-swap">
+                                <div class="BH-frame pd48" style="background-color: var(--tertiary-text);"></div>
+                                <div class="BH-frame-autolayout-column-between pd8-pd12">
+                                    <h4 class="mg12-bottom">Subtitle</h4>
+                                    <div class="BH-frame-autolayout-column mobile_land-swap">
+                                        <p id="textSubtitle" data-theme="light"
+                                            class="paragraph-medium-spacing-m mg4-right"></p>
+                                        <p class="paragraph-medium-spacing-m-note"> (--tertiary-text)</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="" class="BH-frame-card-autolayout-column tablet-swap">
+                                <div class="BH-frame pd48" style="background-color: var(--quaternary-text);"></div>
+                                <div class="BH-frame-autolayout-column-between pd8-pd12">
+                                    <h4 class="mg12-bottom">Placeholder</h4>
+                                    <div class="BH-frame-autolayout-column mobile_land-swap">
+                                        <p id="textPLaceholder" data-theme="light"
+                                            class="paragraph-medium-spacing-m mg4-right"></p>
+                                        <p class="paragraph-medium-spacing-m-note"> (--quaternary-text)</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="" class="BH-frame-card-autolayout-column tablet-swap">
+                                <div class="BH-frame pd48" style="background-color: var(--purewhite);"></div>
+                                <div class="BH-frame-autolayout-column-between pd8-pd12">
+                                    <h4 class="mg12-bottom">White</h4>
+                                    <div class="BH-frame-autolayout-column mobile_land-swap">
+                                        <p class="paragraph-medium-spacing-m mg4-right">#FFFFFF</p>
+                                        <p class="paragraph-medium-spacing-m-note"> (--purewhite)</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <!--[Background-Color]-->
+                    <div id="backgroundColor" class="BH-frame-autolayout-column mg24-bottom">
+                        <h3 class="mg8-bottom">Background Color</h3>
+                        <p class="mg12-bottom paragraph-medium">背景顏色</p>
+                        <div class="BH-frame-autolayout gp8-gp12 mg12-bottom tablet-swap">
+                            <a href="" class="BH-frame-card-autolayout-column tablet-swap">
+                                <div class="BH-frame pd48" style="background-color: var(--base-bg);"></div>
+                                <div class="BH-frame-autolayout-column-between  pd8-pd12">
+                                    <h4 class="mg12-bottom">Base</h4>
+                                    <div class="BH-frame-autolayout-column mobile_land-swap">
+                                        <p id="backgroundBase" data-theme="light"
+                                            class="paragraph-medium-spacing-m mg4-right"></p>
+                                        <p class="paragraph-medium-spacing-m-note"> (--base-bg)</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="" class="BH-frame-card-autolayout-column tablet-swap">
+                                <div class="BH-frame pd48" style="background-color: var(--b1-bg);"></div>
+                                <div class="BH-frame-autolayout-column-between pd8-pd12">
+                                    <h4 class="mg12-bottom">B1</h4>
+                                    <div class="BH-frame-autolayout-column mobile_land-swap">
+                                        <p id="backgroundB1" data-theme="light"
+                                            class="paragraph-medium-spacing-m mg4-right"></p>
+                                        <p class="paragraph-medium-spacing-m-note"> (--b1-bg)</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="" class="BH-frame-card-autolayout-column tablet-swap">
+                                <div class="BH-frame pd48" style="background-color: var(--f1-bg);"></div>
+                                <div class="BH-frame-autolayout-column-between pd8-pd12">
+                                    <h4 class="mg12-bottom">F1</h4>
+                                    <div class="BH-frame-autolayout-column mobile_land-swap">
+                                        <p id="backgroundF1" data-theme="light"
+                                            class="paragraph-medium-spacing-m mg4-right"></p>
+                                        <p class="paragraph-medium-spacing-m-note"> (--f1-bg)</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="" class="BH-frame-card-autolayout-column tablet-swap">
+                                <div class="BH-frame pd48" style="background-color: var(--f2-bg);"></div>
+                                <div class="BH-frame-autolayout-column-between pd8-pd12">
+                                    <h4 class="mg12-bottom">F2</h4>
+                                    <div class="BH-frame-autolayout-column mobile_land-swap">
+                                        <p id="backgroundF2" data-theme="light"
+                                            class="paragraph-medium-spacing-m mg4-right"></p>
+                                        <p class="paragraph-medium-spacing-m-note"> (--f2-bg)</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <!--[Border-Color]-->
+                    <div id="borderColor" class="BH-frame-autolayout-column mg24-bottom">
+                        <h3 class="mg8-bottom">Border Color</h3>
+                        <p class="mg12-bottom paragraph-medium">邊界顏色</p>
+                        <div class="BH-frame-autolayout gp8-gp12 mg12-bottom tablet-swap">
+                            <a href="" class="BH-frame-card-autolayout-column tablet-swap">
+                                <div class="BH-frame pd48" style="background-color: var(--primary-border);"></div>
+                                <div class="BH-frame-autolayout-column-between  pd8-pd12">
+                                    <h4 class="mg12-bottom">Primary</h4>
+                                    <div class="BH-frame-autolayout-column mobile_land-swap">
+                                        <p id="borderPrimary" data-theme="light"
+                                            class="paragraph-medium-spacing-m mg4-right"></p>
+                                        <p class="paragraph-medium-spacing-m-note"> (--primary-border)</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="" class="BH-frame-card-autolayout-column tablet-swap">
+                                <div class="BH-frame pd48" style="background-color: var(--secondary-border);"></div>
+                                <div class="BH-frame-autolayout-column-between pd8-pd12">
+                                    <h4 class="mg12-bottom">Secondary</h4>
+                                    <div class="BH-frame-autolayout-column mobile_land-swap">
+                                        <p id="borderSecondary" data-theme="light"
+                                            class="paragraph-medium-spacing-m mg4-right"></p>
+                                        <p class="paragraph-medium-spacing-m-note"> (--secondary-border)</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <!--[Function-Color]-->
+                    <div id="functionColor" class="BH-frame-autolayout-column mg24-bottom">
+                        <h3 class="mg8-bottom">Function Color</h3>
+                        <p class="mg12-bottom paragraph-medium">輔助顏色</p>
+                        <div class="BH-frame-autolayout gp8-gp12 mg12-bottom tablet-swap">
+                            <a href="" class="BH-frame-card-autolayout-column tablet-swap">
+                                <div class="BH-frame pd48" style="background-color: var(--warning);"></div>
+                                <div class="BH-frame-autolayout-column-between-  pd8-pd12">
+                                    <h4 class="mg12-bottom">Warn</h4>
+                                    <div class="BH-frame-autolayout-column mobile_land-swap">
+                                        <p id="functionWarn" data-theme="light"
+                                            class="paragraph-medium-spacing-m mg4-right"></p>
+                                        <p class="paragraph-medium-spacing-m-note"> (--warning)</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="" class="BH-frame-card-autolayout-column tablet-swap">
+                                <div class="BH-frame pd48" style="background-color: var(--goodpoint);"></div>
+                                <div class="BH-frame-autolayout-column-between pd8-pd12">
+                                    <h4 class="mg12-bottom">GP</h4>
+                                    <div class="BH-frame-autolayout-column mobile_land-swap">
+                                        <p class="paragraph-medium-spacing-m mg4-right">#F89406</p>
+                                        <p class="paragraph-medium-spacing-m-note"> (--goodpoint)</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <pre>
+                        <code>
+$colors: (
+    "light": (
+        "primary": #117E96,
+        "secondary": #009CAD,
+        "primary-light": #11AAC1,
+        "primary-dark": #126E7D,
+        "primary-transparent": #E7F6F9,
+        "primary-transparent-darken": darken(#E7F6F9,2%),
+    
+        //text
+        "primary-text": #2D2D2D,
+        "secondary-text": #464646,
+        "tertiary-text": #8C8C8C,
+        "quaternary-text": #B3B3B3,
+    
+        //border
+        "primary-border": #E5E5E5,
+        "secondary-border": #D9D9D9,
+    
+        //background
+        "base-bg": #FFFFFF,
+        "b1-bg": #F8F8F8,
+        "f1-bg": #FFFFFF,
+        "f2-bg": #F3F3F3,
+    
+        //funciton
+        "warning": #F44336,
+        "purewhite": #FFFFFF,
+        "goodpoint": #F89406,
+    ),
+    "dark": (
+        "primary": #00B0B6,
+        "secondary": #00B0B6,
+        "primary-light": #33CCCC,
+        "primary-dark": #33CCCC,
+        "primary-transparent": #234147,
+        "primary-transparent-darken": lighten(#234147, 5%),
+    
+        //text
+        "primary-text": #F7F7F7,
+        "secondary-text": #C7C6CB,
+        "tertiary-text": #A7A6AD,
+        "quaternary-text": #A7A6AD,
+    
+        //border
+        "primary-border": #444444,
+        "secondary-border": #444444,
+    
+        //background
+        "base-bg": #1C1C1C,
+        "b1-bg": #111111,
+        "f1-bg": #272728,
+        "f2-bg": #444444,
+    
+        //function
+        "warning": #F25C62,
+        "purewhite": #FFFFFF,
+        "goodpoint": #F89406)
+    );
+    
+    :root {
+    
+    @each $theme,
+    $color in $colors {
+        &[data-theme="#{ $theme }"] {
+    
+            @each $name,
+            $value in $color {
+                --#{ $name }: #{ $value };
+            }
+        }
+    }
+    }
+                        </code>
+                    </pre>
+                </div>
+                <!--[Font-Style]-->
+                <div id="fontStyle" class="BH-frame-autolayout-column-f1 pd20-pd24 mg16-bottom">
+                    <h3 class="mg8-bottom">字級</h3>
+                    <p class="mg12-bottom paragraph-medium">font-size</p>
+                    <table class="BH-table BH-frame-autolayout-column mg16-bottom">
+                        <thead></thead>
+                        <tbody class="BH-frame-autolayout-column">
+                            <tr class="BH-frame-autolayout">
+                                <th class="BH-frame-autolayout pd12-pd12">type</th>
+                                <th class="BH-frame-autolayout pd12-pd24">font-size</th>
+                                <th class="BH-frame-autolayout pd12-pd24">line-height</th>
+                                <th class="BH-frame pd12-pd24">calc</th>
+                            </tr>
+                            <tr class="BH-frame-autolayout">
+                                <td class="BH-frame-autolayout pd12-pd12">
+                                    <h1>H1</h1>
+                                </td>
+                                <td class="BH-frame-autolayout pd12-pd24">32px</td>
+                                <td class="BH-frame-autolayout pd12-pd24">100%</td>
+                                <td class="BH-frame pd12-pd24">2</td>
+                            </tr>
+                            <tr class="BH-frame-autolayout">
+                                <td class="BH-frame-autolayout pd12-pd12">
+                                    <h2>H2</h2>
+                                </td>
+                                <td class="BH-frame-autolayout pd12-pd24">28px</td>
+                                <td class="BH-frame-autolayout pd12-pd24">100%</td>
+                                <td class="BH-frame pd12-pd24">1.75</td>
+                            </tr>
+                            <tr class="BH-frame-autolayout">
+                                <td class="BH-frame-autolayout pd12-pd12">
+                                    <h3>H3</h3>
+                                </td>
+                                <td class="BH-frame-autolayout pd12-pd24">24px</td>
+                                <td class="BH-frame-autolayout pd12-pd24">100%</td>
+                                <td class="BH-frame pd12-pd24">1.5</td>
+                            </tr>
+                            <tr class="BH-frame-autolayout">
+                                <td class="BH-frame-autolayout pd12-pd12">
+                                    <h4>H4</h4>
+                                </td>
+                                <td class="BH-frame-autolayout pd12-pd24">20px</td>
+                                <td class="BH-frame-autolayout pd12-pd24">100%</td>
+                                <td class="BH-frame pd12-pd24">1.25</td>
+                            </tr>
+                            <tr class="BH-frame-autolayout">
+                                <td class="BH-frame-autolayout pd12-pd12">
+                                    <h5>H5</h5>
+                                </td>
+                                <td class="BH-frame-autolayout pd12-pd24">16px</td>
+                                <td class="BH-frame-autolayout pd12-pd24">100%</td>
+                                <td class="BH-frame pd12-pd24">1</td>
+                            </tr>
+                            <tr class="BH-frame-autolayout">
+                                <td class="BH-frame-autolayout pd12-pd12">
+                                    <p class="paragraph-large">P_large</p>
+                                </td>
+                                <td class="BH-frame-autolayout pd12-pd24">15px</td>
+                                <td class="BH-frame-autolayout pd12-pd24">100%</td>
+                                <td class="BH-frame pd12-pd24">0.9375</td>
+                            </tr>
+                            <tr class="BH-frame-autolayout">
+                                <td class="BH-frame-autolayout pd12-pd12">
+                                    <p class="paragraph-medium">P_Medium</p>
+                                </td>
+                                <td class="BH-frame-autolayout pd12-pd24">14px</td>
+                                <td class="BH-frame-autolayout pd12-pd24">100%</td>
+                                <td class="BH-frame pd12-pd24">0.875</td>
+                            </tr>
+                            <tr class="BH-frame-autolayout">
+                                <td class="BH-frame-autolayout pd12-pd12">
+                                    <p class="paragraph-small">P_Small</p>
+                                </td>
+                                <td class="BH-frame-autolayout pd12-pd24">13px</td>
+                                <td class="BH-frame-autolayout pd12-pd24">100%</td>
+                                <td class="BH-frame pd12-pd24">0.8125</td>
+                            </tr>
+                            <tr class="BH-frame-autolayout">
+                                <td class="BH-frame-autolayout pd12-pd12">
+                                    <p class="paragraph-label">Label</p>
+                                </td>
+                                <td class="BH-frame-autolayout pd12-pd24">12px</td>
+                                <td class="BH-frame-autolayout pd12-pd24">125%</td>
+                                <td class="BH-frame pd12-pd24">0.75</td>
+                            </tr>
+                            <tr class="BH-frame-autolayout">
+                                <td class="BH-frame-autolayout pd12-pd12">
+                                    <p class="paragraph-caption">Caption</p>
+                                </td>
+                                <td class="BH-frame-autolayout pd12-pd24">10px</td>
+                                <td class="BH-frame-autolayout pd12-pd24">120%</td>
+                                <td class="BH-frame pd12-pd24">0.625</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <pre>
+                        <code>
+$font-size-desktop:     16px;
+$font-size-tablet:      14px;
+$font-size-mobile:      12px;
+
+@mixin FontStyle ($font-size,$line-height) {
+    font-size: $font-size;
+    line-height: $line-height;
+}
+@mixin FontFamily {
+    font-family: "Helvetica Neue", 
+                  Helvetica, 
+                 "Roboto", 
+                  Arial, 
+                 "Lucida Grande", 
+                 "PingFang TC", 
+                 "蘋果儷中黑", 
+                 "Apple LiGothic Medium", 
+                  sans-serif;
+}
+@mixin H1($line-height:1) {
+    @include FontStyle(2 * $font-size-desktop, $line-height); //32
+    @include media(desktop) {
+        font-size: $font-size-desktop * 2;
+        }
+        @include media(tablet) {
+        font-size: $font-size-tablet * 2;
+        }
+        @include media(mobile) {
+        font-size: $font-size-mobile * 2;
+        }
+}
+@mixin H2($line-height:1) {
+    @include FontStyle(1.75 * $font-size-desktop, $line-height); //28
+    @include media(desktop) {
+        font-size: $font-size-desktop * 1.75;
+        }
+        @include media(tablet) {
+        font-size: $font-size-tablet * 1.75;
+        }
+        @include media(mobile) {
+        font-size: $font-size-mobile * 1.75;
+        }
+}
+@mixin H3($line-height:1) {
+    @include FontStyle(1.5 * $font-size-desktop, $line-height);//24
+    @include media(desktop) {
+        font-size: $font-size-desktop * 1.5;
+        }
+        @include media(tablet) {
+        font-size: $font-size-tablet * 1.5;
+        }
+        @include media(mobile) {
+        font-size: $font-size-mobile * 1.5;
+        }
+} 
+@mixin H4($line-height:1) {
+    @include FontStyle(1.25 * $font-size-desktop, $line-height);//20
+    @include media(desktop) {
+        font-size: $font-size-desktop * 1.25;
+        }
+        @include media(tablet) {
+        font-size: $font-size-tablet * 1.25;
+        }
+        @include media(mobile) {
+        font-size: $font-size-mobile * 1.25;
+        }
+}
+@mixin H5($line-height:1) {
+    @include FontStyle(1 * $font-size-desktop, $line-height);//16
+    @include media(desktop) {
+        font-size: $font-size-desktop * 1;
+        }
+        @include media(tablet) {
+        font-size: $font-size-tablet * 1;
+        }
+        @include media(mobile) {
+        font-size: $font-size-mobile * 1;
+        }
+}
+
+@mixin P_Large($line-height:1) {
+    @include FontStyle(0.9375 * $font-size-desktop, $line-height);//15
+    @include media(desktop) {
+        font-size: $font-size-desktop * 0.9375;
+        }
+        @include media(tablet) {
+        font-size: $font-size-tablet * 0.9375;
+        }
+        @include media(mobile) {
+        font-size: $font-size-mobile * 0.9375;
+        }
+}
+@mixin P_Medium($line-height:1) {
+    @include FontStyle(0.875 * $font-size-desktop, $line-height);//14
+    @include media(desktop) {
+        font-size: $font-size-desktop * 0.875;
+        }
+        @include media(tablet) {
+        font-size: $font-size-tablet * 0.875;
+        }
+        @include media(mobile) {
+        font-size: $font-size-mobile * 0.875;
+        }
+}
+@mixin P_Small($line-height:1) {
+    @include FontStyle(0.8125 * $font-size-desktop, $line-height);//13
+    @include media(desktop) {
+        font-size: $font-size-desktop * 0.8125;
+        }
+        @include media(tablet) {
+        font-size: $font-size-tablet * 0.8125;
+        }
+        @include media(mobile) {
+        font-size: $font-size-mobile * 0.8125;
+        }
+}
+
+@mixin Label($line-height:1.25) {
+    @include FontStyle(0.75 * $font-size-desktop, $line-height);//12
+    @include media(desktop) {
+        font-size: $font-size-desktop * 0.75;
+        }
+        @include media(tablet) {
+        font-size: $font-size-tablet * 0.75;
+        }
+        @include media(mobile) {
+        font-size: $font-size-mobile * 0.75;
+        }
+}
+@mixin Caption($line-height:1.2) {
+    @include FontStyle(0.625 * $font-size-desktop, $line-height);//10
+    @include media(desktop) {
+        font-size: $font-size-desktop * 0.625;
+        }
+        @include media(tablet) {
+        font-size: $font-size-tablet * 0.625;
+        }
+        @include media(mobile) {
+        font-size: $font-size-mobile * 0.625;
+        }
+}
+
+body {
+    line-height: 1;
+    font-weight: normal;
+    text-decoration: none;
+    color: var(--secondary-text);
+    @include media(desktop) {
+    font-size: $font-size-desktop;
+    }
+    @include media(tablet) {
+    font-size: $font-size-tablet;
+    }
+    @include media(mobile) {
+    font-size: $font-size-mobile;
+    }
+}
+
+h1 {
+    @include H1;
+    color: var(--primary-text);
+    font-weight: 500
+}
+h2 {
+    @include H2;
+    color: var(--primary-text);
+    font-weight: 500
+}
+h3 {
+    @include H3;
+    color: var(--primary-text);
+    font-weight: 500;
+    small {
+        position: absolute;
+        top: calc((100% - 12px) * 0.5 );
+        right: 0;
+        @include Label(1);
+        color: var(--quaternary-text);
+        font-weight: 400;
+    }
+}
+h4 {
+    @include H4;
+    color: var(--primary-text);
+    font-weight: 500
+}
+h5 {
+    @include H5;
+    color: var(--primary-text);
+}
+p, span, a, td, th, li, input, textarea {
+    &[class*=paragraph-] {
+        color: var(--secondary-text);
+        &[class*=-large] {
+            @include P_Large;
+        }
+        &[class*=-medium] {
+            @include P_Medium;
+        }
+        &[class*=-small] {
+            @include P_Small;
+        }
+        &[class*=-label] {
+            @include Label;
+        }
+        &[class*=-caption] {
+            @include Caption;
+        }
+        &[class*=-spacing-s] {
+            line-height: 1.25;
+        }
+        &[class*=-spacing-m] {
+            line-height: 1.5;
+        }
+        &[class*=-spacing-l] {
+            line-height: 1.75;
+        }
+        &[class*=-spacing-xl] {
+            line-height: 1;
+        }
+        &[class*=-note] {
+            color: var(--quaternary-text);
+        }
+        
+    }
+}
+
+a {
+    cursor: pointer;
+    color: var(--primary);
+    text-decoration: none;
+    &:hover {
+        color: var(--primary);
+        text-decoration: none;
+    }
+}
+                        </code>
+                    </pre>
+                </div>
+                <!--[Spacing]-->
+                <div id="spacingSystem" class="BH-frame-autolayout-column-f1 pd20-pd24 mg16-bottom">
+                    <h3 class="mg8-bottom">間距</h3>
+                    <p class="mg12-bottom paragraph-medium">spacing</p>
+                    <table class="BH-table BH-frame-autolayout-column mg16-bottom">
+                        <thead></thead>
+                        <tbody class="BH-frame-autolayout-column">
+                            <tr class="BH-frame-autolayout">
+                                <th class="BH-frame-autolayout pd12-pd12">spacing</th>
+                                <th class="BH-frame-autolayout pd12-pd24">size</th>
+                                <th class="BH-frame-autolayout pd12-pd24">calc</th>
+                            </tr>
+                            <tr class="BH-frame-autolayout">
+                                <td class="BH-frame-autolayout pd12-pd12">
+                                    <div class="pd48-right"
+                                        style="height: 24px; background-color: var(--primary-transparent);">
+                                    </div>
+                                </td>
+                                <td class="BH-frame-autolayout pd12-pd24">48px</td>
+                                <td class="BH-frame-autolayout pd12-pd24">3</td>
+                            </tr>
+                            <tr class="BH-frame-autolayout">
+                                <td class="BH-frame-autolayout pd12-pd12">
+                                    <div class="pd40-right"
+                                        style="height: 24px; background-color: var(--primary-transparent);">
+                                    </div>
+                                </td>
+                                <td class="BH-frame-autolayout pd12-pd24">40px</td>
+                                <td class="BH-frame-autolayout pd12-pd24">2.5</td>
+                            </tr>
+                            <tr class="BH-frame-autolayout">
+                                <td class="BH-frame-autolayout pd12-pd12">
+                                    <div class="pd36-right"
+                                        style="height: 24px; background-color: var(--primary-transparent);">
+                                    </div>
+                                </td>
+                                <td class="BH-frame-autolayout pd12-pd24">36px</td>
+                                <td class="BH-frame-autolayout pd12-pd24">2.25</td>
+                            </tr>
+                            <tr class="BH-frame-autolayout">
+                                <td class="BH-frame-autolayout pd12-pd12">
+                                    <div class="pd32-right"
+                                        style="height: 24px; background-color: var(--primary-transparent);">
+                                    </div>
+                                </td>
+                                <td class="BH-frame-autolayout pd12-pd24">32px</td>
+                                <td class="BH-frame-autolayout pd12-pd24">2</td>
+                            </tr>
+                            <tr class="BH-frame-autolayout">
+                                <td class="BH-frame-autolayout pd12-pd12">
+                                    <div class="pd24-right"
+                                        style="height: 24px; background-color: var(--primary-transparent);">
+                                    </div>
+                                </td>
+                                <td class="BH-frame-autolayout pd12-pd24">24px</td>
+                                <td class="BH-frame-autolayout pd12-pd24">1.5</td>
+                            </tr>
+                            <tr class="BH-frame-autolayout">
+                                <td class="BH-frame-autolayout pd12-pd12">
+                                    <div class="pd20-right"
+                                        style="height: 24px; background-color: var(--primary-transparent);">
+                                    </div>
+                                </td>
+                                <td class="BH-frame-autolayout pd12-pd24">20px</td>
+                                <td class="BH-frame-autolayout pd12-pd24">1.25</td>
+                            </tr>
+                            <tr class="BH-frame-autolayout">
+                                <td class="BH-frame-autolayout pd12-pd12">
+                                    <div class="pd16-right"
+                                        style="height: 24px; background-color: var(--primary-transparent);">
+                                    </div>
+                                </td>
+                                <td class="BH-frame-autolayout pd12-pd24">16px</td>
+                                <td class="BH-frame-autolayout pd12-pd24">1</td>
+                            </tr>
+                            <tr class="BH-frame-autolayout">
+                                <td class="BH-frame-autolayout pd12-pd12">
+                                    <div class="pd12-right"
+                                        style="height: 24px; background-color: var(--primary-transparent);">
+                                    </div>
+                                </td>
+                                <td class="BH-frame-autolayout pd12-pd24">12px</td>
+                                <td class="BH-frame-autolayout pd12-pd24">.75</td>
+                            </tr>
+                            <tr class="BH-frame-autolayout">
+                                <td class="BH-frame-autolayout pd12-pd12">
+                                    <div class="pd8-right"
+                                        style="height: 24px; background-color: var(--primary-transparent);">
+                                    </div>
+                                </td>
+                                <td class="BH-frame-autolayout pd12-pd24">8px</td>
+                                <td class="BH-frame-autolayout pd12-pd24">.5</td>
+                            </tr>
+                            <tr class="BH-frame-autolayout">
+                                <td class="BH-frame-autolayout pd12-pd12">
+                                    <div class="pd4-right"
+                                        style="height: 24px; background-color: var(--primary-transparent);">
+                                    </div>
+                                </td>
+                                <td class="BH-frame-autolayout pd12-pd24">4px</td>
+                                <td class="BH-frame-autolayout pd12-pd24">.25</td>
+                            </tr>
+                            <tr class="BH-frame-autolayout">
+                                <td class="BH-frame-autolayout pd12-pd12">
+                                    <div class="pd2-right"
+                                        style="height: 24px; background-color: var(--primary-transparent);">
+                                    </div>
+                                </td>
+                                <td class="BH-frame-autolayout pd12-pd24">2px</td>
+                                <td class="BH-frame-autolayout pd12-pd24">.125</td>
+                            </tr>
+                            <tr class="BH-frame-autolayout">
+                                <td class="BH-frame-autolayout pd12-pd12">
+                                    <div class="pd0-right"
+                                        style="height: 24px; background-color: var(--primary-transparent);">
+                                    </div>
+                                </td>
+                                <td class="BH-frame-autolayout pd12-pd24">0px</td>
+                                <td class="BH-frame-autolayout pd12-pd24">0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <pre>
+                        <code>
+$default-spacing: 16;
+
+@function space($num) {
+    @return ($num * $default-spacing);
+}
+$spacing: (
+            "0":           space(.0),       //0
+            "2":           space(.125),     //2
+            "4":           space(.25),      //4
+            "8":           space(.5),       //8
+            "12":          space(.75),      //12
+            "16":          space(1),        //16
+            "20":          space(1.25),     //20
+            "24":          space(1.5),      //24
+            "32":          space(2),        //32
+            "36":          space(2.25),     //36
+            "40":          space(2.5),      //40
+            "48":          space(3),        //48
+);
+
+@function spacing($key) {
+    @return map-get($spacing, $key);
+}
+
+@each $key,
+$value in $spacing {
+    .pd#{$key} {
+        padding: spacing($key) + px;
+    }
+
+    .pd#{$key}-left {
+        padding-left: spacing($key) + px;
+    }
+
+    .pd#{$key}-right {
+        padding-right: spacing($key) + px;
+    }
+
+    .pd#{$key}-top {
+        padding-top: spacing($key) + px;
+    }
+
+    .pd#{$key}-bottom {
+        padding-bottom: spacing($key) + px;
+    }
+
+    .mg#{$key} {
+        margin: spacing($key) + px;
+    }
+
+    .mg#{$key}-left {
+        margin-left: spacing($key) + px;
+    }
+
+    .mg#{$key}-right {
+        margin-right: spacing($key) + px;
+    }
+
+    .mg#{$key}-top {
+        margin-top: spacing($key) + px;
+    }
+
+    .mg#{$key}-bottom {
+        margin-bottom: spacing($key) + px;
+    }
+}
+
+@each $key1,
+$value in $spacing {
+
+    @each $key2,
+    $value in $spacing {
+        .pd#{$key1}-pd#{$key2} {
+            padding: spacing($key1) + px spacing($key2) + px;
+        }
+    }
+}
+
+@each $key1,
+$value in $spacing {
+
+    @each $key2,
+    $value in $spacing {
+        .gp#{$key1}-gp#{$key2} {
+            gap: spacing($key1) + px spacing($key2) + px;
+        }
+    }
+}
+                        </code>
+                    </pre>
+                </div>
+                <!--[Shadow]-->
+                <div id="boxShadow" class="BH-frame-autolayout-column-f1 pd20-pd24 mg16-bottom">
+                    <h3 class="mg8-bottom">陰影</h3>
+                    <p class="mg12-bottom paragraph-medium">box-shadow</p>
+                    <div class="BH-frame-autolayout pd20-pd24 mg16-bottom">
+                        <div class="BH-frame shadow-soft pd36 mg12-right"></div>
+                        <div class="BH-frame shadow-above pd36 mg12-right"></div>
+                        <div class="BH-frame shadow-hard pd36 mg12-right"></div>
+                        <div class="BH-frame shadow-color pd36 mg12-right"></div>
+                    </div>
+                    <pre>
+                        <code>
+@mixin Shadow-Soft {
+    box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.1), 
+                0px 1px 8px rgba(0, 0, 0, 0.05), 
+                0px 4px 4px rgba(0, 0, 0, 0.1);
+}
+@mixin Shadow-Above {
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.33);
+}
+@mixin Shadow-Hard {
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+@mixin Shadow-Color() {
+    box-shadow: 
+                0px 3px 20px var(--primary-transparent),
+                0px 1px 8px var(--primary-transparent),
+                0px 4px 4px var(--primary-transparent);
+}
+
+.shadow-soft {
+    @include Shadow-Soft();
+}
+.shadow-above {
+    @include Shadow-Above();
+}
+.shadow-hard {
+    @include Shadow-Hard();
+}
+.shadow-color {
+    @include Shadow-Color();
+}
+                        </code>
+                    </pre>
+                </div>
+                <!--[File]-->
+                <div id="designFile" class="BH-frame-f1-autolayout-column-f1 pd20-pd24 mg16-bottom">
+                    <h4 class="mg12-bottom">設計檔案</h4>
+                    <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="100%" height="250"
+                        src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2Fqnx65Eq6i1alZXYnslYZPx%2FWEB%25EF%25BC%259ABasic%3Fnode-id%3D2%253A450%26t%3DUcyOCIT7XKHNLoGl-1"
+                        allowfullscreen></iframe>
+                    <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="100%" height="250"
+                        src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2Fqnx65Eq6i1alZXYnslYZPx%2FWEB%25EF%25BC%259ABasic%3Fnode-id%3D548%253A1488%26t%3DUcyOCIT7XKHNLoGl-1"
+                        allowfullscreen></iframe>
+                    <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="100%" height="250"
+                        src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2Fqnx65Eq6i1alZXYnslYZPx%2FWEB%25EF%25BC%259ABasic%3Fnode-id%3D531%253A814%26t%3DUcyOCIT7XKHNLoGl-1"
+                        allowfullscreen></iframe>
+                    <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="100%" height="250"
+                        src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2Fqnx65Eq6i1alZXYnslYZPx%2FWEB%25EF%25BC%259ABasic%3Fnode-id%3D815%253A1711%26t%3DUcyOCIT7XKHNLoGl-1"
+                        allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $('a[href^="#"]').on('click', function(e) {
+// Prevent default anchor click behavior
+e.preventDefault();
+// Get the target element ID from the href attribute
+var target = $(this).attr('href');
+// Set amount of offset from top of page (in pixels)
+var offset = 50;
+// Scroll to target element with offset
+$('html, body').animate({
+    scrollTop: $(target).offset().top - offset
+}, 400);
+});
+
+</script>
+<script>
+    $(document).ready(function () {
+        $("#ham_m").on("click", function () {
+            $("#ham_m").toggleClass("active");
+        });
+        $(".backdrop").on("click", function () {
+            $(".BH-mobile_menu").removeClass("active");
+        });
+        $("a").on("click", function () {
+            $(".BH-mobile_menu").removeClass("active");
+        });
+    });
+</script>
+<script>
+    const codeSwitch = document.querySelector('#codeToggle');
+    const codeElements = document.querySelectorAll('pre');
+    const canvasElements = document.querySelectorAll('#componentCanvas');
+
+    codeSwitch.addEventListener('change', function () {
+        codeElements.forEach(function (code) {
+            if (codeSwitch.checked) {
+                code.classList.add('show');
+            } else {
+                code.classList.remove('show');
+            }
+        });
+        canvasElements.forEach(function (canvas) {
+            if (codeSwitch.checked) {
+                canvas.classList.add('radius_fix');
+                canvas.classList.remove('radius');
+            } else {
+                canvas.classList.remove('radius_fix');
+                canvas.classList.add('radius');
+            }
+        });
+    });
+    
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+<script src="https://unpkg.com/@highlightjs/cdn-assets@11.7.0/languages/go.min.js"></script>
+<script>hljs.highlightAll();</script>
+    <script>
+        const primaryLight = document.getElementById("primaryLight");
+        const primaryDefault = document.getElementById("primaryDefault");
+        const primaryDark = document.getElementById("primaryLDark");
+        const textHeading = document.getElementById("textHeading");
+        const textParagraph = document.getElementById("textParagraph");
+        const textSubtitle = document.getElementById("textSubtitle");
+        const textPLaceholder = document.getElementById("textPLaceholder");
+        const backgroundBase = document.getElementById("backgroundBase");
+        const backgroundB1 = document.getElementById("backgroundB1");
+        const backgroundF1 = document.getElementById("backgroundF1");
+        const backgroundF2 = document.getElementById("backgroundF2");
+        const borderPrimary = document.getElementById("borderPrimary");
+        const borderSecondary = document.getElementById("borderSecondary");
+        const functionWarn = document.getElementById("functionWarn");
+        const functionGp = document.getElementById("functionGp");
+        const themeToggle = document.getElementById("themeToggle");
+
+        function updateTheme() {
+            if (document.documentElement.getAttribute("data-theme") === "dark") {
+                primaryTransparent.innerHTML = "#234147"
+                primaryLight.innerHTML = "#33CCCC";
+                primaryDefault.innerHTML = "#00B0B6";
+                primaryHeavy.innerHTML = "#009CAD";
+                textHeading.innerHTML = "#F7F7F7";
+                textParagraph.innerHTML = "#C7C6CB";
+                textSubtitle.innerHTML = "#A7A6AD";
+                textPLaceholder.innerHTML = "#A7A6AD";
+                backgroundBase.innerHTML = "#1C1C1C";
+                backgroundB1.innerHTML = "#111111";
+                backgroundF1.innerHTML = "#272728";
+                backgroundF2.innerHTML = "#444444";
+                borderPrimary.innerHTML = "#444444";
+                borderSecondary.innerHTML = "#444444";
+                functionWarn.innerHTML = "#F25C62";
+            } else {
+                primaryTransparent.innerHTML = "#E7F6F9"
+                primaryLight.innerHTML = "#11AAC1";
+                primaryDefault.innerHTML = "#117E96";
+                primaryHeavy.innerHTML = "#126E7D";
+                textHeading.innerHTML = "#2D2D2D";
+                textParagraph.innerHTML = "#464646";
+                textSubtitle.innerHTML = "#8C8C8C";
+                textPLaceholder.innerHTML = "#B3B3B3";
+                backgroundBase.innerHTML = "#FFFFFF";
+                backgroundB1.innerHTML = "F8F8F8";
+                backgroundF1.innerHTML = "#FFFFFF";
+                backgroundF2.innerHTML = "#F3F3F3";
+                borderPrimary.innerHTML = "#E5E5E5";
+                borderSecondary.innerHTML = "#D9D9D9";
+                functionWarn.innerHTML = "#F44336";
+            }
+        }
+
+        updateTheme();
+
+        themeToggle.addEventListener("change", () => {
+            updateTheme();
+        });
+    </script>
+</body>
+
+</html>

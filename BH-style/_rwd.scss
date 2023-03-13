@@ -1,0 +1,44 @@
+// -------------------------------------
+//   BH-RWD
+// -------------------------------------
+@use "spacing" as *;
+
+$rwd :(
+    "tablet_land",
+    "tablet",
+    "mobile_land",
+    "mobile",
+);
+
+
+@mixin media($screen) {
+    @if $screen ==desktop {
+        @media (max-width: 1280px) {
+            @content;
+        }
+    }
+
+    @else if $screen ==tablet_land {
+        @media (max-width: 1024px) {
+            @content;
+        }
+    }
+
+    @else if $screen ==tablet {
+        @media (max-width: 768px) {
+            @content;
+        }
+    }
+
+    @else if $screen ==mobile_land {
+        @media (max-width: 667px) {
+            @content;
+        }
+    }
+
+    @else if $screen ==mobile {
+        @media (max-width: 375px) {
+            @content;
+        }
+    }
+}

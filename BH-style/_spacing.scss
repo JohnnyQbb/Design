@@ -1,0 +1,89 @@
+
+$default-spacing: 16;
+
+@function space($num) {
+    @return ($num * $default-spacing);
+}
+$spacing: (
+            "0":           space(.0),       //0
+            "2":           space(.125),     //2
+            "4":           space(.25),      //4
+            "8":           space(.5),       //8
+            "12":          space(.75),      //12
+            "16":          space(1),        //16
+            "20":          space(1.25),     //20
+            "24":          space(1.5),      //24
+            "32":          space(2),        //32
+            "36":          space(2.25),     //36
+            "40":          space(2.5),      //40
+            "48":          space(3),        //48
+);
+
+@function spacing($key) {
+    @return map-get($spacing, $key);
+}
+
+@each $key,
+$value in $spacing {
+    .pd#{$key} {
+        padding: spacing($key) + px;
+    }
+
+    .pd#{$key}-left {
+        padding-left: spacing($key) + px;
+    }
+
+    .pd#{$key}-right {
+        padding-right: spacing($key) + px;
+    }
+
+    .pd#{$key}-top {
+        padding-top: spacing($key) + px;
+    }
+
+    .pd#{$key}-bottom {
+        padding-bottom: spacing($key) + px;
+    }
+
+    .mg#{$key} {
+        margin: spacing($key) + px;
+    }
+
+    .mg#{$key}-left {
+        margin-left: spacing($key) + px;
+    }
+
+    .mg#{$key}-right {
+        margin-right: spacing($key) + px;
+    }
+
+    .mg#{$key}-top {
+        margin-top: spacing($key) + px;
+    }
+
+    .mg#{$key}-bottom {
+        margin-bottom: spacing($key) + px;
+    }
+}
+
+@each $key1,
+$value in $spacing {
+
+    @each $key2,
+    $value in $spacing {
+        .pd#{$key1}-pd#{$key2} {
+            padding: spacing($key1) + px spacing($key2) + px;
+        }
+    }
+}
+
+@each $key1,
+$value in $spacing {
+
+    @each $key2,
+    $value in $spacing {
+        .gp#{$key1}-gp#{$key2} {
+            gap: spacing($key1) + px spacing($key2) + px;
+        }
+    }
+}

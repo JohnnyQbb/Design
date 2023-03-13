@@ -1,0 +1,128 @@
+// -------------------------------------
+//   BH-INTERACTIVE
+// -------------------------------------
+
+@use "../BH-style/" as *;
+
+[class^=#{$prefix}-interactive] {
+    display: inline-flex;
+    align-items: center;
+    height: 24px;
+    color: var(--tertiary-text);
+
+    &[class*=-s] {
+        height: 16px;
+
+        span {
+            color: var(--tertiary-text);
+            @include Caption(1);
+        }
+
+        img {
+            width: 16px;
+            height: 16px;
+        }
+
+        .material-icons {
+            @include Caption(1);
+            transition: transform .3s ease;
+
+            &:hover {
+                transform: scale(1.2, 1.2)
+            }
+        }
+    }
+
+    &[class*=-xs] {
+        height: 14px;
+
+        span {
+            color: var(--tertiary-text);
+            @include Label(1);
+        }
+
+        img {
+            width: 14px;
+            height: 14px;
+        }
+
+        .material-icons {
+            @include Label(1);
+            transition: transform .3s ease;
+
+            &:hover {
+                color: var(--primary);
+                transform: scale(1.2, 1.2);
+            }
+        }
+    }
+
+    &[class*=-gp] {
+        .material-icons {
+            &:hover {
+                color: var(--goodpoint);
+            }
+        }
+    }
+}
+
+.#{$prefix}-like {
+    display: flex;
+    align-items: center;
+
+    &__frame {
+        display: flex;
+        width: 44px;
+        height: 44px;
+        border: solid 1px var(--primary-border);
+        border-radius: 50%;
+        margin-right: 8px;
+        box-sizing: border-box;
+        cursor: pointer;
+        transition: box-shadow 0.3s ease-out;
+
+        &__img {
+            width: 24px;
+            height: 24px;
+            background: url(BH-icon/BH-like.svg);
+            background-size: 24px;
+            margin: auto;
+            transition: transform 0.3s ease-out;
+        }
+
+        &.is-active {
+            background: transparent;
+            border-color: #F89406;
+
+            .#{$prefix}-like__frame__img {
+                background: url(https://i2.bahamut.com.tw/icon/icon_post_like_selected.png);
+                background-size: 24px;
+            }
+        }
+
+        &:hover {
+            background: transparent;
+            border-color: var(--goodpoint);
+            box-shadow: 0px 0px 5px rgb(255, 152, 0);
+
+            .#{$prefix}-like__frame__img {
+                background: url(https://i2.bahamut.com.tw/icon/icon_post_like_selected.png);
+                background-size: 24px;
+                transform: scale(1.1);
+            }
+        }
+
+        &.is-active .#{$prefix}-like__frame__img {
+            animation-name: press;
+            animation-duration: 0.4s;
+        }
+    }
+    p {
+        color: var(--tertiary-text);
+        @include P_Small(1);
+        span {
+            @include P_Medium(1);
+            color: var(--secondary-text);
+        }
+    }
+}

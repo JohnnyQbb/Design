@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BAHA_COMPONENT</title>
+    <meta property="og:title" content="巴哈姆特電玩資訊站" />
+    <meta property="og:image" content="https://i2.bahamut.com.tw/bahaLOGO_1200x630.jpg" />
+    <meta name="thumbnail" content="https://i2.bahamut.com.tw/bahaLOGO_1200x630.jpg" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Teko:300,400">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <!---->
+    <link rel="stylesheet" href="component_library.css">
+</head>
+
+<body>
+    <div class="BH-container">
+        <!--[主欄位]-->
+        <div class="BH-mobile_menu">
+            <div class="BH-frame-autolayout-align_center mg16-bottom">
+                <div id="ham_m" class="ham"><i class="fa fa-bars"></i></div>
+                <script>
+                    $(document).ready(function () {
+                        $("#ham_m").on("click", function () {
+                            $("#ham_m").toggleClass("active");
+                        });
+                    });
+                </script>
+                <div href="" class="BH-logo"></div>
+            </div>
+            <ul>
+                <li><a href="BH-intro.html">Intro</a></li>
+                <li><a href="BH-style.html">Style</a></li>
+                <li><a href="BH-component.html">Component</a></li>
+                <li class="is-active"><a href="BH-card.html">Card</a></li>
+                <div id='bar' class="bar"></div>
+            </ul>
+            <hr class="divider mg12-top mg16-bottom">
+        </div>
+        <div class="backdrop"></div>
+        <div class="BH-frame-autolayout-column-fill-align_center">
+            <div class="BH-frame-autolayout-align_center-between"
+                style="position: sticky;top: 0;width: 100%;height: 40px;z-index: 10;background-color: var(--base-bg);">
+                <div class="BH-frame-autolayout-align_center show_tablet_land">
+                    <div class="ham"><i class="fa fa-bars"></i></div>
+                    <script>
+                        $(document).ready(function () {
+                            $(".ham").on("click", function () {
+                                $(".BH-mobile_menu").toggleClass("active");
+                            });
+                        });
+                    </script>
+                    <div href="" class="BH-logo"></div>
+                </div>
+                <div class="BH-frame-autolayout-align_center">
+                    <div class="BH-switch pd4-pd4">
+                        <i class="fa fa-code mg8-right"></i>
+                        <label>
+                            <input id="codeToggle" type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="BH-switch pd4-pd4">
+                        <i class="fa fa-universal-access mg8-right"></i>
+                        <label>
+                            <input id="accessibilityToggle" type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <script>
+                        const toggleSwitch = document.querySelector('#accessibilityToggle');
+                        const body = document.querySelector('body');
+
+                        toggleSwitch.addEventListener('change', function () {
+                            if (this.checked) {
+                                body.classList.add('accessibility-filter');
+                            } else {
+                                body.classList.remove('accessibility-filter');
+                            }
+                        });
+                    </script>
+                    <div class="BH-switch pd4-pd4">
+                        <i class="fa fa-moon-o mg8-right"></i>
+                        <label>
+                            <input id="themeToggle" type="checkbox" checked="checked">
+                            <span class="slider"></span>
+                        </label>
+                        <script>
+                            const myDiv = $("html");
+                            const themeToggle = $("#themeToggle");
+                            const currentTheme = localStorage.getItem("theme");
+
+                            if (currentTheme) {
+                                myDiv.attr("data-theme", currentTheme);
+                                if (currentTheme === "light") {
+                                    themeToggle.prop("checked", false);
+                                }
+                            }
+
+                            themeToggle.change(function () {
+                                if ($(this).is(":checked")) {
+                                    myDiv.attr("data-theme", "dark");
+                                    localStorage.setItem("theme", "dark");
+                                } else {
+                                    myDiv.attr("data-theme", "light");
+                                    localStorage.setItem("theme", "light");
+                                }
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>
+            <div class="BH-wrapper-main">
+                <div class="BH-frame-f1-autolayout-column-start pd20-pd24 mg16-bottom">
+                    <h3 class="mg8-bottom">卡片_1:1</h3>
+                    <p class="mg12-bottom paragraph-medium">"BH-frame-card / BH-image_1x1</p>
+                    <div id="componentCanvas" class="BH-frame-autolayout-b1 radius pd24 mg12-top">
+                        <div class="BH-frame-autolayout gp8-gp12">
+                            <a href="" class="BH-frame-card-autolayout-column-hug">
+                                <div class="BH-image_1x1">
+                                    <img src="BH-image/example.png" alt="">
+                                </div>
+                                <div class="BH-frame-f1 pd8-pd12">
+                                    <p class="paragraph-large-spacing-m mg8-bottom">劇透警告！《Final Fantasy XVI》全球首次試玩影片解禁
+                                        實機解析戰鬥機制
+                                    </p>
+                                    <div class="BH-frame-autolayout">
+                                        <div class="BH-interactive-s mg8-right">
+                                            <img class="mg4-right" src="BH-icon/BH-like.svg">
+                                            <span>999</span>
+                                        </div>
+                                        <div class="BH-interactive-s">
+                                            <img class="mg4-right" src="BH-icon/BH-reply.svg" style="top: -1px;">
+                                            <span>999</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="BH-tag-card">多平台
+                                    <span>投稿</span>
+                                </div>
+                            </a>
+                            <a href="" class="BH-frame-card-autolayout-column-hug">
+                                <div class="BH-image_1x1">
+                                    <img src="BH-image/example.png" alt="">
+                                </div>
+                                <div class="BH-frame-f1 pd8-pd12">
+                                    <p class="paragraph-large-spacing-m mg8-bottom">劇透警告！《Final Fantasy XVI》全球首次試玩影片解禁
+                                        實機解析戰鬥機制
+                                    </p>
+                                    <div class="BH-frame-autolayout">
+                                        <div class="BH-interactive-s mg8-right">
+                                            <img class="mg4-right" src="BH-icon/BH-like.svg">
+                                            <span>999</span>
+                                        </div>
+                                        <div class="BH-interactive-s">
+                                            <img class="mg4-right" src="BH-icon/BH-reply.svg" style="top: -1px;">
+                                            <span>999</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="BH-tag-card">多平台
+                                    <span>投稿</span>
+                                </div>
+                            </a>
+                            <a href="" class="BH-frame-card-autolayout-column-hug">
+                                <div class="BH-image_1x1">
+                                    <img src="BH-image/example.png" alt="">
+                                </div>
+                                <div class="BH-frame-f1 pd8-pd12">
+                                    <p class="paragraph-large-spacing-m mg8-bottom">劇透警告！《Final Fantasy XVI》全球首次試玩影片解禁
+                                        實機解析戰鬥機制
+                                    </p>
+                                    <div class="BH-frame-autolayout">
+                                        <div class="BH-interactive-s mg8-right">
+                                            <img class="mg4-right" src="BH-icon/BH-like.svg">
+                                            <span>999</span>
+                                        </div>
+                                        <div class="BH-interactive-s">
+                                            <img class="mg4-right" src="BH-icon/BH-reply.svg" style="top: -1px;">
+                                            <span>999</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="BH-tag-card">多平台
+                                    <span>投稿</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <pre>
+                        <code>
+&lt;a href="" class="BH-frame-card-autolayout-column-hug"&gt;
+    &lt;div class="BH-image_1x1"&gt;
+        &lt;img src="BH-image/example.png" alt=""&gt;
+    &lt;/div&gt;
+    &lt;div class="BH-frame-f1 pd8-pd12"&gt;
+        &lt;p class="paragraph-large-spacing-m mg8-bottom"&gt;劇透警告！《Final Fantasy XVI》全球首次試玩影片解禁
+            實機解析戰鬥機制
+        &lt;/p&gt;
+        &lt;div class="BH-frame-autolayout"&gt;
+            &lt;div class="BH-interactive-s mg8-right"&gt;
+                &lt;img class="mg4-right" src="BH-icon/BH-like.svg"&gt;
+                &lt;span&gt;999&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class="BH-interactive-s"&gt;
+                &lt;img class="mg4-right" src="BH-icon/BH-reply.svg" style="top: -1px;"&gt;
+                &lt;span&gt;999&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="BH-tag-card"&gt;多平台
+        &lt;span&gt;投稿&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/a&gt;
+                        </code>
+                    </pre>
+                    <!--[CARD L 4:3]-->
+                    <h3 class="mg16-top mg8-bottom">卡片_4:3</h3>
+                    <p class="mg12-bottom paragraph-medium">BH-frame-card / BH-image_4x3</p>
+                    <div id="componentCanvas" class="BH-frame-autolayout-b1 radius pd24 mg12-top">
+                        <div class="BH-frame-autolayout gp8-gp12 mg16-bottom">
+                            <a href="" class="BH-frame-card-autolayout-column-hug">
+                                <div class="BH-image_4x3">
+                                    <img src="BH-image/example.png" alt="">
+                                </div>
+                                <div class="BH-frame-f1 pd8-pd12">
+                                    <p class="paragraph-large-spacing-m mg8-bottom">劇透警告！《Final Fantasy XVI》全球首次試玩影片解禁
+                                        實機解析戰鬥機制
+                                    </p>
+                                    <div class="BH-frame-autolayout">
+                                        <div class="BH-interactive-s mg8-right">
+                                            <img class="mg4-right" src="BH-icon/BH-like.svg">
+                                            <span>999</span>
+                                        </div>
+                                        <div class="BH-interactive-s">
+                                            <img class="mg4-right" src="BH-icon/BH-reply.svg" style="top: -1px;">
+                                            <span>999</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="BH-tag-card">多平台
+                                    <span>投稿</span>
+                                </div>
+                            </a>
+                            <a href="" class="BH-frame-card-autolayout-column-hug">
+                                <div class="BH-image_4x3">
+                                    <img src="BH-image/example.png" alt="">
+                                </div>
+                                <div class="BH-frame-f1 pd8-pd12">
+                                    <p class="paragraph-large-spacing-m mg8-bottom">劇透警告！《Final Fantasy XVI》全球首次試玩影片解禁
+                                        實機解析戰鬥機制
+                                    </p>
+                                    <div class="BH-frame-autolayout">
+                                        <div class="BH-interactive-s mg8-right">
+                                            <img class="mg4-right" src="BH-icon/BH-like.svg">
+                                            <span>999</span>
+                                        </div>
+                                        <div class="BH-interactive-s">
+                                            <img class="mg4-right" src="BH-icon/BH-reply.svg" style="top: -1px;">
+                                            <span>999</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="BH-tag-card">多平台
+                                    <span>投稿</span>
+                                </div>
+                            </a>
+                            <a href="" class="BH-frame-card-autolayout-column-hug">
+                                <div class="BH-image_4x3">
+                                    <img src="BH-image/example.png" alt="">
+                                </div>
+                                <div class="BH-frame-f1 pd8-pd12">
+                                    <p class="paragraph-large-spacing-m mg8-bottom">劇透警告！《Final Fantasy XVI》全球首次試玩影片解禁
+                                        實機解析戰鬥機制
+                                    </p>
+                                    <div class="BH-frame-autolayout">
+                                        <div class="BH-interactive-s mg8-right">
+                                            <img class="mg4-right" src="BH-icon/BH-like.svg">
+                                            <span>999</span>
+                                        </div>
+                                        <div class="BH-interactive-s">
+                                            <img class="mg4-right" src="BH-icon/BH-reply.svg" style="top: -1px;">
+                                            <span>999</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="BH-tag-card">多平台
+                                    <span>投稿</span>
+                                </div>
+                            </a>
+    
+                        </div>
+                    </div>
+                    <!--[CARD L 16:9]-->
+                    <h3 class="mg16-top mg8-bottom">卡片_16:9</h3>
+                    <p class="mg12-bottom paragraph-medium">BH-frame-card / BH-image_16x9</p>
+                    <div id="componentCanvas" class="BH-frame-autolayout-b1 radius pd24 mg12-top">
+                        <div class="BH-frame-autolayout gp8-gp12 mg16-bottom">
+                            <a href="" class="BH-frame-card-autolayout-column-hug">
+                                <div class="BH-image_16x9">
+                                    <img src="BH-image/example.png" alt="">
+                                </div>
+                                <div class="BH-frame-f1 pd8-pd12">
+                                    <p class="paragraph-large-spacing-m mg8-bottom">劇透警告！《Final Fantasy XVI》全球首次試玩影片解禁
+                                        實機解析戰鬥機制
+                                    </p>
+                                    <div class="BH-frame-autolayout">
+                                        <div class="BH-interactive-s mg8-right">
+                                            <img class="mg4-right" src="BH-icon/BH-like.svg">
+                                            <span>999</span>
+                                        </div>
+                                        <div class="BH-interactive-s">
+                                            <img class="mg4-right" src="BH-icon/BH-reply.svg" style="top: -1px;">
+                                            <span>999</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="BH-tag-card">多平台
+                                    <span>投稿</span>
+                                </div>
+                            </a>
+                            <a href="" class="BH-frame-card-autolayout-column-hug">
+                                <div class="BH-image_16x9">
+                                    <img src="BH-image/example.png" alt="">
+                                </div>
+                                <div class="BH-frame-f1 pd8-pd12">
+                                    <p class="paragraph-large-spacing-m mg8-bottom">劇透警告！《Final Fantasy XVI》全球首次試玩影片解禁
+                                        實機解析戰鬥機制
+                                    </p>
+                                    <div class="BH-frame-autolayout">
+                                        <div class="BH-interactive-s mg8-right">
+                                            <img class="mg4-right" src="BH-icon/BH-like.svg">
+                                            <span>999</span>
+                                        </div>
+                                        <div class="BH-interactive-s">
+                                            <img class="mg4-right" src="BH-icon/BH-reply.svg" style="top: -1px;">
+                                            <span>999</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="BH-tag-card">多平台
+                                    <span>投稿</span>
+                                </div>
+                            </a>
+                            <a href="" class="BH-frame-card-autolayout-column-hug">
+                                <div class="BH-image_16x9">
+                                    <img src="BH-image/example.png" alt="">
+                                </div>
+                                <div class="BH-frame-f1 pd8-pd12">
+                                    <p class="paragraph-large-spacing-m mg8-bottom">劇透警告！《Final Fantasy XVI》全球首次試玩影片解禁
+                                        實機解析戰鬥機制
+                                    </p>
+                                    <div class="BH-frame-autolayout">
+                                        <div class="BH-interactive-s mg8-right">
+                                            <img class="mg4-right" src="BH-icon/BH-like.svg">
+                                            <span>999</span>
+                                        </div>
+                                        <div class="BH-interactive-s">
+                                            <img class="mg4-right" src="BH-icon/BH-reply.svg" style="top: -1px;">
+                                            <span>999</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="BH-tag-card">多平台
+                                    <span>投稿</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <!--[CARD H 16:9]-->
+                    <h3 class="mg16-top mg8-bottom">卡片_16:9</h3>
+                    <p class="mg12-bottom paragraph-medium">BH-frame-card / BH-image_16x9</p>
+                    <div id="componentCanvas" class="BH-frame-autolayout-b1 radius pd24 mg12-top">
+                        <div class="BH-frame-autolayout gp8-gp12 mg16-bottom mobile_land-swap">
+                            <a href="" class="BH-frame-card-autolayout-hug">
+                                <div class="BH-image_16x9">
+                                    <img src="BH-image/example.png" alt="">
+                                </div>
+                                <div class="BH-frame-autolayout-f1-column-between pd8-pd12">
+                                    <p class="paragraph-large-spacing-m mg8-bottom">劇透警告！《Final Fantasy XVI》全球首次試玩影片解禁
+                                        實機解析戰鬥機制
+                                    </p>
+                                    <div class="BH-frame-autolayout">
+                                        <div class="BH-interactive-s mg8-right">
+                                            <img class="mg4-right" src="BH-icon/BH-like.svg">
+                                            <span>999</span>
+                                        </div>
+                                        <div class="BH-interactive-s">
+                                            <img class="mg4-right" src="BH-icon/BH-reply.svg" style="top: -1px;">
+                                            <span>999</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="BH-tag-card">多平台
+                                    <span>投稿</span>
+                                </div>
+                            </a>
+                            <a href="" class="BH-frame-card-autolayout-hug">
+                                <div class="BH-image_16x9">
+                                    <img src="BH-image/example.png" alt="">
+                                </div>
+                                <div class="BH-frame-autolayout-f1-column-between pd8-pd12">
+                                    <p class="paragraph-large-spacing-m mg8-bottom">劇透警告！《Final Fantasy XVI》全球首次試玩影片解禁
+                                        實機解析戰鬥機制
+                                    </p>
+                                    <div class="BH-frame-autolayout">
+                                        <div class="BH-interactive-s mg8-right">
+                                            <img class="mg4-right" src="BH-icon/BH-like.svg">
+                                            <span>999</span>
+                                        </div>
+                                        <div class="BH-interactive-s">
+                                            <img class="mg4-right" src="BH-icon/BH-reply.svg" style="top: -1px;">
+                                            <span>999</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="BH-tag-card">多平台
+                                    <span>投稿</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const codeSwitch = document.querySelector('#codeToggle');
+        const codeElements = document.querySelectorAll('pre');
+        const canvasElements = document.querySelectorAll('#componentCanvas');
+
+        codeSwitch.addEventListener('change', function () {
+            codeElements.forEach(function (code) {
+                if (codeSwitch.checked) {
+                    code.classList.add('show');
+                } else {
+                    code.classList.remove('show');
+                }
+            });
+            canvasElements.forEach(function (canvas) {
+                if (codeSwitch.checked) {
+                    canvas.classList.add('radius_fix');
+                    canvas.classList.remove('radius');
+                } else {
+                    canvas.classList.remove('radius_fix');
+                    canvas.classList.add('radius');
+                }
+            });
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="https://unpkg.com/@highlightjs/cdn-assets@11.7.0/languages/go.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+
+</html>

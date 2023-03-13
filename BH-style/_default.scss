@@ -1,0 +1,18 @@
+// -------------------------------------
+//   BH-BASIC
+// -------------------------------------
+@use "colors" as *;
+@use "font" as *;
+
+body {
+    background-color: var(--base-bg);
+    @include FontFamily;
+    //background: url(https://i2.bahamut.com.tw/html_bg.gif) center top #F9F9F9;//
+}
+
+* {
+    box-sizing: border-box;
+    position: relative;
+}
+
+$prefix: "BH";

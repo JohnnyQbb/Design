@@ -1,0 +1,242 @@
+// -------------------------------------
+//   BH-FONT
+// -------------------------------------
+@use "colors"   as *;
+@use "rwd"      as *;
+
+$font-size-desktop:     16px;
+$font-size-tablet:      16px;
+$font-size-mobile:      16px;
+
+@mixin FontStyle ($font-size,$line-height) {
+    font-size: $font-size;
+    line-height: $line-height;
+}
+@mixin FontFamily {
+    font-family: "Helvetica Neue", 
+                  Helvetica, 
+                 "Roboto", 
+                  Arial, 
+                 "Lucida Grande", 
+                 "PingFang TC", 
+                 "蘋果儷中黑", 
+                 "Apple LiGothic Medium", 
+                  sans-serif;
+}
+@mixin H1($line-height:1) {
+    @include FontStyle(2 * $font-size-desktop, $line-height); //32
+    @include media(desktop) {
+        font-size: $font-size-desktop * 2;
+        }
+        @include media(tablet) {
+        font-size: $font-size-tablet * 2;
+        }
+        @include media(mobile) {
+        font-size: $font-size-mobile * 2;
+        }
+}
+@mixin H2($line-height:1) {
+    @include FontStyle(1.75 * $font-size-desktop, $line-height); //28
+    @include media(desktop) {
+        font-size: $font-size-desktop * 1.75;
+        }
+        @include media(tablet) {
+        font-size: $font-size-tablet * 1.75;
+        }
+        @include media(mobile) {
+        font-size: $font-size-mobile * 1.75;
+        }
+}
+@mixin H3($line-height:1) {
+    @include FontStyle(1.5 * $font-size-desktop, $line-height);//24
+    @include media(desktop) {
+        font-size: $font-size-desktop * 1.5;
+        }
+        @include media(tablet) {
+        font-size: $font-size-tablet * 1.5;
+        }
+        @include media(mobile) {
+        font-size: $font-size-mobile * 1.5;
+        }
+} 
+@mixin H4($line-height:1) {
+    @include FontStyle(1.25 * $font-size-desktop, $line-height);//20
+    @include media(desktop) {
+        font-size: $font-size-desktop * 1.25;
+        }
+        @include media(tablet) {
+        font-size: $font-size-tablet * 1.25;
+        }
+        @include media(mobile) {
+        font-size: $font-size-mobile * 1.25;
+        }
+}
+@mixin H5($line-height:1) {
+    @include FontStyle(1 * $font-size-desktop, $line-height);//16
+    @include media(desktop) {
+        font-size: $font-size-desktop * 1;
+        }
+        @include media(tablet) {
+        font-size: $font-size-tablet * 1;
+        }
+        @include media(mobile) {
+        font-size: $font-size-mobile * 1;
+        }
+}
+
+@mixin P_Large($line-height:1) {
+    @include FontStyle(0.9375 * $font-size-desktop, $line-height);//15
+    @include media(desktop) {
+        font-size: $font-size-desktop * 0.9375;
+        }
+        @include media(tablet) {
+        font-size: $font-size-tablet * 0.9375;
+        }
+        @include media(mobile) {
+        font-size: $font-size-mobile * 0.9375;
+        }
+}
+@mixin P_Medium($line-height:1) {
+    @include FontStyle(0.875 * $font-size-desktop, $line-height);//14
+    @include media(desktop) {
+        font-size: $font-size-desktop * 0.875;
+        }
+        @include media(tablet) {
+        font-size: $font-size-tablet * 0.875;
+        }
+        @include media(mobile) {
+        font-size: $font-size-mobile * 0.875;
+        }
+}
+@mixin P_Small($line-height:1) {
+    @include FontStyle(0.8125 * $font-size-desktop, $line-height);//13
+    @include media(desktop) {
+        font-size: $font-size-desktop * 0.8125;
+        }
+        @include media(tablet) {
+        font-size: $font-size-tablet * 0.8125;
+        }
+        @include media(mobile) {
+        font-size: $font-size-mobile * 0.8125;
+        }
+}
+
+@mixin Label($line-height:1.25) {
+    @include FontStyle(0.75 * $font-size-desktop, $line-height);//12
+    @include media(desktop) {
+        font-size: $font-size-desktop * 0.75;
+        }
+        @include media(tablet) {
+        font-size: $font-size-tablet * 0.75;
+        }
+        @include media(mobile) {
+        font-size: $font-size-mobile * 0.75;
+        }
+}
+@mixin Caption($line-height:1.2) {
+    @include FontStyle(0.625 * $font-size-desktop, $line-height);//10
+    @include media(desktop) {
+        font-size: $font-size-desktop * 0.625;
+        }
+        @include media(tablet) {
+        font-size: $font-size-tablet * 0.625;
+        }
+        @include media(mobile) {
+        font-size: $font-size-mobile * 0.625;
+        }
+}
+
+body {
+    line-height: 1;
+    font-weight: normal;
+    text-decoration: none;
+    color: var(--secondary-text);
+    @include media(desktop) {
+    font-size: $font-size-desktop;
+    }
+    @include media(tablet) {
+    font-size: $font-size-tablet;
+    }
+    @include media(mobile) {
+    font-size: $font-size-mobile;
+    }
+}
+
+h1 {
+    @include H1;
+    color: var(--primary-text);
+    font-weight: 500
+}
+h2 {
+    @include H2;
+    color: var(--primary-text);
+    font-weight: 500
+}
+h3 {
+    @include H3;
+    color: var(--primary-text);
+    font-weight: 500;
+    small {
+        position: absolute;
+        top: calc((100% - 12px) * 0.5 );
+        right: 0;
+        @include Label(1);
+        color: var(--quaternary-text);
+        font-weight: 400;
+    }
+}
+h4 {
+    @include H4;
+    color: var(--primary-text);
+    font-weight: 500
+}
+h5 {
+    @include H5;
+    color: var(--primary-text);
+}
+p, span, a, td, th, li, input, textarea {
+    &[class*=paragraph-] {
+        color: var(--secondary-text);
+        &[class*=-large] {
+            @include P_Large;
+        }
+        &[class*=-medium] {
+            @include P_Medium;
+        }
+        &[class*=-small] {
+            @include P_Small;
+        }
+        &[class*=-label] {
+            @include Label;
+        }
+        &[class*=-caption] {
+            @include Caption;
+        }
+        &[class*=-spacing-s] {
+            line-height: 1.25;
+        }
+        &[class*=-spacing-m] {
+            line-height: 1.5;
+        }
+        &[class*=-spacing-l] {
+            line-height: 1.75;
+        }
+        &[class*=-spacing-xl] {
+            line-height: 1;
+        }
+        &[class*=-note] {
+            color: var(--quaternary-text);
+        }
+        
+    }
+}
+
+a {
+    cursor: pointer;
+    color: var(--primary);
+    text-decoration: none;
+    &:hover {
+        color: var(--primary);
+        text-decoration: none;
+    }
+}

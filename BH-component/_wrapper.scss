@@ -1,0 +1,55 @@
+// -------------------------------------
+//   BH-WRAPPER
+// -------------------------------------
+
+@use "../BH-style/" as *;
+
+[class*=#{$prefix}-container] {
+    width: 100%;
+    display: flex;
+
+    @include media(tablet_land) {
+        flex-direction: column;
+        padding: 0;
+        gap: 8px 8px;
+    }
+}
+
+[class*=#{$prefix}-wrapper] {
+    &[class*=-main] {
+        max-width: 840px;
+
+    & > div {
+        width: 100%;
+    }
+
+        @include media(tablet_land) {
+            max-width: 1024px;
+            padding: 16px 12px;
+        }
+
+        @include media(tablet) {
+            max-width: 768px;
+        }
+
+        @include media(mobile_land) {
+            max-width: 667px;
+        }
+
+        @include media(mobile) {
+            max-width: 375px;
+            padding: 0;
+        }
+    }
+
+    &[class*=-side] {
+        padding: 24px 20px;
+        flex-basis: 30%;
+
+        @include media(tablet_land) {
+            padding: 16px 12px;
+            width: 100%;
+            flex-grow: 1;
+        }
+    }
+}

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BAHA_COMPONENT</title>
+    <meta property="og:title" content="巴哈姆特電玩資訊站" />
+    <meta property="og:image" content="https://i2.bahamut.com.tw/bahaLOGO_1200x630.jpg" />
+    <meta name="thumbnail" content="https://i2.bahamut.com.tw/bahaLOGO_1200x630.jpg" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Teko:300,400">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <!---->
+    <link rel="stylesheet" href="component_library.css">
+</head>
+
+<body>
+    <div class="BH-container">
+        <!--[主欄位]-->
+        <div class="BH-mobile_menu">
+            <div class="BH-frame-autolayout-align_center mg16-bottom">
+                <div id="ham_m" class="ham"><i class="fa fa-bars"></i></div>
+                <script>
+                    $(document).ready(function () {
+                        $("#ham_m").on("click", function () {
+                            $("#ham_m").toggleClass("active");
+                        });
+                    });
+                </script>
+                <div href="" class="BH-logo"></div>
+            </div>
+            <ul>
+                <li><a href="BH-intro.html">Intro</a></li>
+                <li><a href="BH-style.html">Style</a></li>
+                <li><a href="BH-component.html">Component</a></li>
+                <li><a href="BH-card.html">Card</a></li>
+                <div id='bar' class="bar"></div>
+            </ul>
+            <hr class="divider mg12-top mg16-bottom">
+        </div>
+        <div class="backdrop"></div>
+        <div class="BH-frame-autolayout-column-fill-align_center">
+            <div class="BH-frame-autolayout-align_center-between" style="position: sticky;top: 0;width: 100%;height: 40px;z-index: 10;background-color: var(--base-bg);">
+                <div class="BH-frame-autolayout-align_center show_tablet_land">
+                    <div class="ham"><i class="fa fa-bars"></i></div>
+                    <script>
+                        $(document).ready(function () {
+                            $(".ham").on("click", function () {
+                                $(".BH-mobile_menu").toggleClass("active");
+                            });
+                        });
+                    </script>
+                    <div href="" class="BH-logo"></div>
+                </div>
+                <div class="BH-frame-autolayout-align_center">
+                    <div class="BH-switch pd4-pd4">
+                        <i class="fa fa-code mg8-right"></i>
+                        <label>
+                            <input id="codeToggle" type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="BH-switch pd4-pd4">
+                        <i class="fa fa-universal-access mg8-right"></i>
+                        <label>
+                            <input id="accessibilityToggle" type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <script>
+                        const toggleSwitch = document.querySelector('#accessibilityToggle');
+                        const body = document.querySelector('body');
+
+                        toggleSwitch.addEventListener('change', function () {
+                            if (this.checked) {
+                                body.classList.add('accessibility-filter');
+                            } else {
+                                body.classList.remove('accessibility-filter');
+                            }
+                        });
+                    </script>
+                    <div class="BH-switch pd4-pd4">
+                        <i class="fa fa-moon-o mg8-right"></i>
+                        <label>
+                            <input id="themeToggle" type="checkbox" checked="checked">
+                            <span class="slider"></span>
+                        </label>
+                        <script>
+                            const myDiv = $("html");
+                            const themeToggle = $("#themeToggle");
+                            const currentTheme = localStorage.getItem("theme");
+
+                            if (currentTheme) {
+                                myDiv.attr("data-theme", currentTheme);
+                                if (currentTheme === "light") {
+                                    themeToggle.prop("checked", false);
+                                }
+                            }
+
+                            themeToggle.change(function () {
+                                if ($(this).is(":checked")) {
+                                    myDiv.attr("data-theme", "dark");
+                                    localStorage.setItem("theme", "dark");
+                                } else {
+                                    myDiv.attr("data-theme", "light");
+                                    localStorage.setItem("theme", "light");
+                                }
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <dialog id="dialogify_2" class="BH-dialogify fixed" open="">
+        <form method="dialog">
+            <div class="BH-dialogify__content BH-dialogify__fixedwidth">
+                <div class="BH-frame-autolayout-column">
+                    <h5 class="BH-dialogify_title"><img
+                            src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/PjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iJiN4NTcxNjsmI3g1QzY0O18xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDEyIDEwIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAxMiAxMDsiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxnPjxyZWN0IHk9IjEiIHN0eWxlPSJmaWxsOiM4RDhEOEQ7IiB3aWR0aD0iMyIgaGVpZ2h0PSIzIi8+PHJlY3QgeT0iNyIgc3R5bGU9ImZpbGw6IzhEOEQ4RDsiIHdpZHRoPSIzIiBoZWlnaHQ9IjMiLz48cmVjdCB4PSIzIiB5PSI0IiBzdHlsZT0iZmlsbDojOEQ4RDhEOyIgd2lkdGg9IjMiIGhlaWdodD0iMyIvPjwvZz48L3N2Zz4=">
+                        標題
+                    </h5>
+                    <div class="BH-dialogify__body mg12-bottom">
+                        <p class="p-large-sapcing-m">Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero
+                            laboriosam incidunt quam dicta minima dolor earum. Quisquam officiis sit quis alias
+                            necessitatibus amet, culpa aperiam corrupti illo exercitationem sed iusto.</p>
+                    </div>
+                    <div class="BH-frame-autolayout-column mg12-bottom">
+                        <input type="text" class="BH-form_control mg8-bottom" name="title" placeholder="輸入文字">
+                        <textarea type="text" class="BH-form_control" name="edit-content" placeholder="輸入文字"></textarea>
+                    </div>
+                    <div class="BH-frame-autolayout-justify_end">
+                        <a class="BH-btn_main mg4-right">取消</a>
+                        <a class="BH-btn_main-primary mg4-right">確定</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <a class="BH-dialogify__close">
+            <img
+                src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMTYgMTYiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDE2IDE2OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHN0eWxlIHR5cGU9InRleHQvY3NzIj4uc3Qwe2ZpbGw6IzA1NTY2Njt9PC9zdHlsZT48cmVjdCB4PSIzLjEiIHk9IjEiIGNsYXNzPSJzdDAiIHdpZHRoPSIxLjciIGhlaWdodD0iMSIvPjxyZWN0IHg9IjIuMSIgeT0iMi4xIiBjbGFzcz0ic3QwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIi8+PHJlY3QgeD0iMSIgeT0iMy4xIiBjbGFzcz0ic3QwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxLjciLz48cmVjdCB4PSIxIiB5PSIxMS4xIiBjbGFzcz0ic3QwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxLjciLz48cmVjdCB4PSIyLjEiIHk9IjEyLjkiIGNsYXNzPSJzdDAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiLz48cmVjdCB4PSIzLjEiIHk9IjEzLjkiIGNsYXNzPSJzdDAiIHdpZHRoPSIxLjciIGhlaWdodD0iMSIvPjxnPjxyZWN0IHg9IjQuOSIgY2xhc3M9InN0MCIgd2lkdGg9IjYuMyIgaGVpZ2h0PSIxIi8+PC9nPjxyZWN0IHg9IjQuOSIgeT0iMTUiIGNsYXNzPSJzdDAiIHdpZHRoPSI2LjMiIGhlaWdodD0iMSIvPjxyZWN0IHk9IjQuOSIgY2xhc3M9InN0MCIgd2lkdGg9IjEiIGhlaWdodD0iNi4zIi8+PHJlY3QgeD0iMTEuMSIgeT0iMSIgY2xhc3M9InN0MCIgd2lkdGg9IjEuNyIgaGVpZ2h0PSIxIi8+PHJlY3QgeD0iMTIuOSIgeT0iMi4xIiBjbGFzcz0ic3QwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIi8+PHJlY3QgeD0iMTMuOSIgeT0iMy4xIiBjbGFzcz0ic3QwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxLjciLz48cmVjdCB4PSIxMy45IiB5PSIxMS4xIiBjbGFzcz0ic3QwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxLjciLz48cmVjdCB4PSIxMi45IiB5PSIxMi45IiBjbGFzcz0ic3QwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIi8+PHJlY3QgeD0iMTEuMSIgeT0iMTMuOSIgY2xhc3M9InN0MCIgd2lkdGg9IjEuNyIgaGVpZ2h0PSIxIi8+PHJlY3QgeD0iMTUiIHk9IjQuOSIgY2xhc3M9InN0MCIgd2lkdGg9IjEiIGhlaWdodD0iNi4zIi8+PHBvbHlnb24gY2xhc3M9InN0MCIgcG9pbnRzPSI5LjcsMy44IDkuNyw0LjkgOC43LDQuOSA4LjcsNS45IDcuMyw1LjkgNy4zLDQuOSA2LjMsNC45IDYuMywzLjggMy44LDMuOCAzLjgsNS4yIDQuOSw1LjIgNC45LDYuMyA1LjksNi4zIDUuOSw3LjMgNyw3LjMgNyw4LjMgNS45LDguMyA1LjksOS40IDQuOSw5LjQgNC45LDEwLjQgMy44LDEwLjQgMy44LDEwLjggMy44LDExLjggNi4zLDExLjggNi4zLDEwLjggNy4zLDEwLjggNy4zLDkuNyA4LjcsOS43IDguNywxMC44IDkuNywxMC44IDkuNywxMS44IDEyLjIsMTEuOCAxMi4yLDEwLjQgMTEuMSwxMC40IDExLjEsOS40IDEwLjEsOS40IDEwLjEsOC4zIDksOC4zIDksNy4zIDEwLjEsNy4zIDEwLjEsNi4zIDExLjEsNi4zIDExLjEsNS4yIDEyLjIsNS4yIDEyLjIsNC45IDEyLjIsMy44ICIvPjwvc3ZnPg==">
+        </a>
+    </dialog>
+    <div class="baha_quicktool">
+        <div class="quicktool serve_elevator">
+            <div class="serve_floor" data-gtm="點擊電梯"
+                data-gtm_type_name="GNN" data-gtm_service_name="homepage" data-gtm_page_name="首頁">GNN</div>
+
+            <div class="serve_floor" data-gtm="點擊電梯"
+                data-gtm_type_name="創作" data-gtm_service_name="homepage" data-gtm_page_name="首頁">創作</div>
+
+            <div class="serve_floor" data-gtm="點擊電梯"
+                data-gtm_type_name="哈啦板" data-gtm_service_name="homepage" data-gtm_page_name="首頁">哈啦板</div>
+        </div>
+        <div class="quicktool iconbtn" onclick="window.scroll({ top: 0, left: 0, behavior: 'smooth' });" data-gtm="點擊電梯"
+            data-gtm_type_name="top" data-gtm_service_name="homepage" data-gtm_page_name="首頁">
+            <svg viewBox="0 0 26.95 22.21" style="pointer-events: none;">
+                <g>
+                    <path
+                        d="M26.37,7.06L13.55,0,.73,7.06c-.54,.3-.74,.98-.44,1.53l.31,.56c.3,.54,.98,.74,1.53,.44L13.55,3.29l11.43,6.3c.54,.3,1.23,.1,1.53-.44l.31-.56c.3-.54,.1-1.23-.44-1.53Z">
+                    </path>
+                    <g>
+                        <path d="M8.26,13.95v1.79h-3.24v6.47h-1.79v-6.47H0v-1.79H8.26Z"></path>
+                        <path
+                            d="M15.66,13.95c.93,0,1.7,.76,1.7,1.7v4.87c0,.94-.77,1.7-1.7,1.7h-4.87c-.94,0-1.7-.76-1.7-1.7v-4.87c0-.94,.76-1.7,1.7-1.7h4.87Zm-4.78,6.47h4.68v-4.68h-4.68v4.68Z">
+                        </path>
+                        <path
+                            d="M25.17,13.96c.94,0,1.71,.77,1.71,1.7v2.13c0,.93-.77,1.7-1.71,1.7h-4.77s.03,.03,.03,.08c0,0-.02,0-.03-.01v2.65h-1.78V13.96h6.55Zm-4.77,3.74h4.68v-1.96h-4.68v1.96Z">
+                        </path>
+                    </g>
+                </g>
+            </svg>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

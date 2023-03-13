@@ -1,0 +1,144 @@
+@use "../BH-style" as *;
+
+:root {
+    --shadow-quicktool-btn: rgba(0, 0, 0, 0.4);
+}
+
+:root .baha_quicktool .quicktool {
+    box-shadow: 0 0 4px -1px var(--shadow-quicktool-btn);
+}
+
+html[data-theme=dark] {
+    --shadow-quicktool-btn: rgba(0, 0, 0, 0.75);
+}
+
+html[data-theme=dark] .baha_quicktool .quicktool {
+    box-shadow: 0 0 4px 0px var(--shadow-quicktool-btn);
+}
+
+.baha_quicktool {
+    display: flex;
+    flex-direction: column;
+    width: 60px;
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 10;
+    font-size: 13px;
+    gap: 8px 0;
+}
+
+.baha_quicktool .quicktool {
+    background: var(--f1-bg);
+    border-radius: 5px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.baha_quicktool .quicktool.iconbtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 0;
+    cursor: pointer;
+}
+
+.baha_quicktool .quicktool.iconbtn svg {
+    width: 26px;
+    height: 26px;
+    fill: var(--quaternary-text);
+}
+
+.baha_quicktool .quicktool.iconbtn.reload svg {
+    width: 24px;
+}
+
+.baha_quicktool .quicktool.iconbtn:hover {
+    background: var(--primary);
+}
+
+.baha_quicktool .quicktool.iconbtn:hover svg {
+    fill: var(--purewhite);
+}
+
+.baha_quicktool .quicktool.serve_elevator {
+    cursor: pointer;
+}
+
+.baha_quicktool .quicktool.serve_elevator .serve_floor {
+    padding: 8px 6px;
+    color: var(--tertiary-text);
+}
+
+.baha_quicktool .quicktool.serve_elevator .serve_floor:hover {
+    background: var(--primary);
+    color: var(--purewhite);
+}
+
+.baha_quicktool .quicktool.jumpfloor {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8px 6px;
+    box-sizing: border-box;
+    gap: 8px 0;
+}
+
+.baha_quicktool .quicktool.jumpfloor input {
+    border: 1px solid var(--secondary-border);
+    border-radius: 3px;
+    padding: 3px;
+    text-align: center;
+    font-size: 12px;
+    background: var(--base-bg);
+    color: var(--primary-text);
+}
+
+.baha_quicktool .quicktool.jumpfloor input:focus {
+    border-color: var(--primary);
+}
+
+.baha_quicktool .quicktool.jumpfloor button {
+    padding: 2px;
+    border-radius: 3px;
+    color: var(--tertiary-text);
+    border: 1px solid var(--primary-border);
+    background: var(--f1-bg);
+}
+
+.baha_quicktool .quicktool.jumpfloor button:hover {
+    background: var(--primary);
+    color: var(--purewhite);
+}
+
+.baha_quicktool .quicktool.extension {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 7px 6px;
+    box-sizing: border-box;
+    color: var(--tertiary-text);
+    min-height: 54px;
+    cursor: pointer;
+}
+
+.baha_quicktool .quicktool.extension:hover {
+    background: var(--primary);
+    color: var(--purewhite);
+}
+
+@media (max-width: 540px) {
+    .baha_quicktool {
+        width: 54px;
+        right: 10px;
+        bottom: 70px;
+    }
+
+    .baha_quicktool .quicktool {
+        opacity: 0.97;
+    }
+
+    .baha_quicktool .quicktool.iconbtn {
+        padding: 13px 0;
+    }
+}

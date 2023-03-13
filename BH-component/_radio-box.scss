@@ -1,0 +1,77 @@
+// -------------------------------------
+//   BH-RADIO-BOX
+// -------------------------------------
+
+@use "../BH-style" as *;
+
+.#{$prefix}-radio_box {
+  .check-group {
+    display: inline-flex;
+    input[type="radio"] {
+      cursor: pointer;
+      width: 18px;
+      height: 18px;
+      margin-right: 4px;
+      overflow: initial;
+
+    
+      & + label {
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        flex-wrap: nowrap;
+        p {
+          white-space: nowrap;
+        }
+    }
+      &:before {
+        transition: transform 0.4s cubic-bezier(0.45, 1.8, 0.5, 0.75);
+        transform: scale(0, 0);
+        content: "";
+        position: absolute;
+        top: 3px;
+        left: 3px;
+        z-index: z-layers(default);
+        width: 12px;
+        height: 12px;
+        background: var(--primary-light);
+        border-radius: 50%;
+      }
+      &:after {
+        content: "";
+        position: absolute;
+        top: -1px;
+        left: -1px;
+        width: 18px;
+        height: 18px;
+        background-color: var(--f1-bg);
+        border: 1px solid var(--secondary-border);
+        border-radius: $radius-max;
+      }
+      &:checked {
+        &:before {
+            transform: scale(1, 1);
+          }
+      }
+      &:disabled {
+        & + label {
+          cursor: not-allowed;
+          .label-icon {
+            pointer-events: none;
+            background-color: var(--quaternary-text);
+            border-color: var(--quaternary-text);
+            opacity: 20%;
+          }
+    
+          p {
+            opacity: 20%;
+          }
+        }
+        &::before {
+          background-color: var(--quaternary-text);
+          opacity: 20%;
+        }
+      }
+    }
+  }
+}
