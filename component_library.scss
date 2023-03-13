@@ -6,6 +6,9 @@ iframe {
     overflow: hidden;
     margin-top: 12px;
     margin-bottom: 16px;
+    @include media(mobile_land) {
+        display: none;
+    }
 }
 
 .accessibility-filter {
